@@ -41,3 +41,7 @@ Nessun altro servizio è necessario.
 ## Nota tecnica
 
 Le API di ViaggiaTreno usate dal workflow sono endpoint non documentati ufficialmente e possono cambiare in futuro. La dashboard mantiene comunque gli orari programmati se il servizio live non risponde.
+
+
+## Treno v3
+Dopo il caricamento apri una volta `reset-treno-v3.html`, poi usa `treno-v3.html`.
