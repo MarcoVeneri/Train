@@ -1,47 +1,18 @@
-# Dashboard Treni — SOLO GitHub
+# Dashboard Treni v4
 
-Questa versione **non richiede Cloudflare, API key o altri account**.
+Treni monitorati:
+- Andata: Regionale Veloce 4099, Figline Valdarno 07:00 → Arezzo 07:36, prosegue per Roma Tiburtina.
+- Ritorno: Regionale 18774, Arezzo 18:08 → Figline Valdarno 18:48.
 
-Funziona così:
+## Correzione live
+Il workflow GitHub Actions gira ora tutti i giorni, sabato e domenica inclusi.
+Prima era limitato a lunedì-venerdì: nei festivi il file live restava fermo e la PWA poteva mostrare "PROGRAMMATO" anche dopo la partenza.
 
-1. GitHub Pages pubblica `index.html`.
-2. GitHub Actions esegue automaticamente `scripts/update_trains.py`.
-3. Lo script interroga ViaggiaTreno dal server GitHub e aggiorna `data/trains.json`.
-4. La dashboard legge quel file.
-5. Il meteo arriva direttamente da Open-Meteo.
+Il backend controlla circa ogni 5 minuti nelle finestre mattina/sera. Se lo stato non cambia, pubblica comunque un heartbeat circa ogni 15 minuti. La PWA segnala chiaramente dati vecchi invece di presentarli come live.
 
-## Treni configurati
+## Installazione
+Caricare tutti i file, compresa la cartella `.github`.
+In GitHub: Settings → Actions → General → Workflow permissions → Read and write permissions.
+In GitHub Pages usare branch `main`, root `/`.
 
-- 18739 — Figline Valdarno → Arezzo
-- 18776 — Arezzo → Figline Valdarno
-
-## Cosa deve fare chi usa l'app
-
-Nulla: apre il link e basta. Su iPhone può fare **Condividi → Aggiungi a Home**.
-
-## Installazione su GitHub
-
-Carica **tutto** il contenuto di questa cartella nel repository, compresa la cartella nascosta:
-
-`.github/workflows/update-trains.yml`
-
-Poi attiva GitHub Pages normalmente da:
-
-`Settings → Pages → Deploy from a branch → main → / (root)`
-
-La GitHub Action parte anche quando carichi inizialmente questi file; in seguito controlla i treni automaticamente ogni circa 5 minuti nelle fasce del pendolarismo dei giorni feriali.
-
-### Se GitHub mostra che il workflow non può scrivere
-
-Solo in quel caso:
-`Settings → Actions → General → Workflow permissions → Read and write permissions`.
-
-Nessun altro servizio è necessario.
-
-## Nota tecnica
-
-Le API di ViaggiaTreno usate dal workflow sono endpoint non documentati ufficialmente e possono cambiare in futuro. La dashboard mantiene comunque gli orari programmati se il servizio live non risponde.
-
-
-## Treno v3
-Dopo il caricamento apri una volta `reset-treno-v3.html`, poi usa `treno-v3.html`.
+Dopo l'upload aprire una volta `reset-treno-v4.html`, poi usare `treno-v4.html`.

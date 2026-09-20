@@ -8,8 +8,8 @@ BASE = "http://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno"
 ROME = ZoneInfo("Europe/Rome")
 OUT = Path("data/trains.json")
 TRAINS = {
-    "18739": ("FIGLINE VALDARNO", "AREZZO"),
-    "18776": ("AREZZO", "FIGLINE VALDARNO"),
+    "4099": ("FIGLINE VALDARNO", "AREZZO"),
+    "18774": ("AREZZO", "FIGLINE VALDARNO"),
 }
 
 def get_text(url):
@@ -172,18 +172,30 @@ def main():
                 current["trains"][number] = {
                     "number":number,"from":fr,"to":to,"status":"NOT_STARTED","cancelled":False,"started":False,
                     "delayMinutes":0,
-                    "departureScheduled":"07:04" if number=="18739" else "19:08",
-                    "arrivalScheduled":"07:54" if number=="18739" else "19:48",
-                    "arrivalExpected":"07:54" if number=="18739" else "19:48",
+                    "departureScheduled":"07:00" if number=="4099" else "18:08",
+                    "arrivalScheduled":"07:36" if number=="4099" else "18:48",
+                    "arrivalExpected":"07:36" if number=="4099" else "18:48",
                     "platform":None,"dataDate":today_strings()[1],"fetchError":str(e),"source":"ViaggiaTreno"
                 }
 
-    # Scrive solo quando i dati significativi cambiano: evita centinaia di commit inutili.
-    if stable_payload(current) == stable_payload(previous) and previous.get("dataDate") == current.get("dataDate"):
-        print("Nessuna variazione: file invariato.")
-        return 0
+    now = datetime.now(ROME)
+    unchanged = stable_payload(current) == stable_payload(previous) and previous.get("dataDate") == current.get("dataDate")
 
-    current["generatedAt"] = datetime.now(ROME).isoformat(timespec="seconds")
+    # Anche se lo stato non cambia, pubblica un heartbeat circa ogni 15 minuti.
+    # Così la PWA sa distinguere "treno programmato e appena controllato" da "dati vecchi".
+    if unchanged:
+        prev_ts = previous.get("generatedAt")
+        try:
+            prev_dt = datetime.fromisoformat(prev_ts) if prev_ts else None
+            if prev_dt and prev_dt.tzinfo is None:
+                prev_dt = prev_dt.replace(tzinfo=ROME)
+        except Exception:
+            prev_dt = None
+        if prev_dt and (now - prev_dt).total_seconds() < 15 * 60:
+            print("Nessuna variazione e heartbeat recente: file invariato.")
+            return 0
+
+    current["generatedAt"] = now.isoformat(timespec="seconds")
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(current, ensure_ascii=False, indent=2) + "\n", "utf-8")
     print("Aggiornato", OUT)

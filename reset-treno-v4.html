@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="it"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Reset Treni v4</title>
+<style>body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;padding:30px;background:#f4f6fa;color:#111}
+.box{max-width:520px;margin:auto;padding:22px;border-radius:22px;background:#fff;border:1px solid #ddd}</style>
+</head><body><div class="box"><h2>Treni v4</h2><p id="s">Pulizia vecchia app…</p></div>
+<script>
+(async function(){
+ try{
+   if("serviceWorker" in navigator){
+     const rs=await navigator.serviceWorker.getRegistrations();
+     await Promise.all(rs.map(r=>r.unregister()));
+   }
+   if("caches" in window){
+     const keys=await caches.keys();
+     await Promise.all(keys.map(k=>caches.delete(k)));
+   }
+ }catch(e){}
+ document.getElementById("s").textContent="Fatto. Apro la dashboard treni v4…";
+ setTimeout(()=>location.replace("./treno-v4.html?build=4&t="+Date.now()),600);
+})();
+</script></body></html>
