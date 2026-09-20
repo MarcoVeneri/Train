@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f9fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#080a0f" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Treni Figline">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <title>Figline ↔ Arezzo</title>
+  <style>
+    :root{
+      color-scheme:light dark;
+      --bg:#f4f6fa;
+      --panel:rgba(255,255,255,.72);
+      --panel2:rgba(255,255,255,.52);
+      --text:#07122f;
+      --muted:#65708a;
+      --border:rgba(103,116,145,.22);
+      --shadow:0 18px 50px rgba(54,72,104,.10);
+      --green:#28c866;
+      --green-soft:rgba(40,200,102,.12);
+      --orange:#ff8a2b;
+      --orange-soft:rgba(255,138,43,.14);
+      --red:#ff4d4f;
+      --red-soft:rgba(255,77,79,.13);
+      --blue:#3478f6;
+      --blue-soft:rgba(52,120,246,.12);
+      --purple:#6c63ff;
+      --glass-blur:26px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:
+      radial-gradient(circle at 75% 6%,rgba(255,209,112,.18),transparent 24%),
+      radial-gradient(circle at 12% 15%,rgba(130,170,255,.14),transparent 30%),
+      var(--bg);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+    body{min-height:100dvh;overflow-x:hidden}
+    button,input{font:inherit}
+    button{-webkit-tap-highlight-color:transparent;color:inherit}
+    .app{
+      width:min(100%,520px);
+      min-height:100dvh;
+      margin:0 auto;
+      padding:
+        max(14px,env(safe-area-inset-top))
+        max(14px,env(safe-area-inset-right))
+        max(16px,env(safe-area-inset-bottom))
+        max(14px,env(safe-area-inset-left));
+      position:relative;
+    }
+    .hero{
+      position:relative;
+      min-height:174px;
+      padding:10px 6px 12px;
+      overflow:hidden;
+      border-radius:0 0 34px 34px;
+    }
+    .hero:before,.hero:after{
+      content:"";
+      position:absolute;pointer-events:none;z-index:-2
+    }
+    .hero:before{
+      left:-15%;right:-12%;bottom:4px;height:88px;
+      background:
+        radial-gradient(ellipse at 13% 100%,rgba(102,126,162,.22) 0 44%,transparent 45%),
+        radial-gradient(ellipse at 48% 105%,rgba(112,133,165,.20) 0 50%,transparent 51%),
+        radial-gradient(ellipse at 83% 108%,rgba(83,110,150,.18) 0 49%,transparent 50%);
+      filter:blur(.2px);
+    }
+    .hero:after{
+      width:92px;height:92px;border-radius:50%;
+      right:18px;top:70px;
+      background:rgba(255,218,128,.24);
+      box-shadow:0 0 55px rgba(255,211,102,.22);
+      z-index:-3;
+    }
+    .topline{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+    .route-mini{font-size:15px;color:var(--muted);margin-top:7px}
+    h1{font-size:clamp(38px,11vw,54px);letter-spacing:-.055em;line-height:.94;margin:7px 0 10px;font-weight:760}
+    .refresh-meta{font-size:13px;color:var(--muted)}
+    .actions{display:flex;gap:8px}
+    .circle{
+      width:48px;height:48px;border:1px solid rgba(255,255,255,.58);
+      background:rgba(255,255,255,.40);
+      backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+      border-radius:50%;display:grid;place-items:center;font-size:21px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 8px 28px rgba(43,60,90,.08);
+      cursor:pointer;
+    }
+    .circle:active,.status-card:active{transform:scale(.985)}
+    .cards{display:grid;gap:14px;margin-top:0}
+    .glass{
+      background:linear-gradient(145deg,rgba(255,255,255,.78),rgba(255,255,255,.55));
+      border:1px solid rgba(255,255,255,.76);
+      backdrop-filter:blur(var(--glass-blur)) saturate(145%);
+      -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(145%);
+      box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.88);
+    }
+    .train-card{
+      border-radius:30px;padding:18px 18px 15px;position:relative;overflow:hidden;
+      min-height:310px;
+    }
+    .train-card:after{
+      content:"";position:absolute;right:-12px;top:70px;width:190px;height:100px;opacity:.10;
+      background:
+        linear-gradient(160deg,transparent 0 34%,rgba(65,89,126,.75) 35% 38%,transparent 39%),
+        linear-gradient(180deg,transparent 0 58%,rgba(65,89,126,.55) 59% 64%,transparent 65%);
+      transform:skewX(-8deg);pointer-events:none
+    }
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .trip-pill{
+      display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;
+      font-size:13px;font-weight:780;letter-spacing:.02em
+    }
+    .trip-pill.out{color:#179650;background:rgba(40,200,102,.10)}
+    .trip-pill.back{color:#246de4;background:rgba(52,120,246,.11)}
+    .dot{width:9px;height:9px;border-radius:50%;background:currentColor;box-shadow:0 0 10px currentColor}
+    .brand{font-size:10px;font-weight:750;letter-spacing:.16em;color:#98a0b3}
+    .route-line{font-size:19px;font-weight:650;letter-spacing:-.025em;margin-top:13px}
+    .train-number{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:32px;font-weight:780;letter-spacing:-.035em}
+    .train-glyph{font-size:26px;opacity:.82}
+    .main-row{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-top:3px}
+    .departure{font-size:clamp(58px,18vw,82px);font-weight:790;letter-spacing:-.065em;line-height:.93}
+    .status-pill{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      min-width:128px;padding:12px 14px;border-radius:999px;
+      font-size:15px;font-weight:800;letter-spacing:.03em;
+      box-shadow:0 9px 24px rgba(0,0,0,.09)
+    }
+    .status-pill.ok{background:linear-gradient(135deg,#35cf73,#22ba5b);color:#fff}
+    .status-pill.delay{background:linear-gradient(135deg,#ff9f43,#ff7b20);color:#fff}
+    .status-pill.bad{background:linear-gradient(135deg,#ff625f,#eb3438);color:#fff}
+    .status-pill.neutral{background:rgba(119,130,151,.13);color:var(--muted);box-shadow:none}
+    .subinfo{font-size:14px;color:#4e5a75;margin-top:7px;min-height:19px}
+    .divider{height:1px;background:var(--border);margin:15px 0 11px}
+    .weather-strip{display:grid;grid-template-columns:1fr 1fr;align-items:center}
+    .weather-item{display:flex;align-items:center;justify-content:center;gap:9px;min-width:0;padding:4px 6px}
+    .weather-item+.weather-item{border-left:1px solid var(--border)}
+    .weather-city{font-size:13px;color:#42516f;white-space:nowrap}
+    .weather-ico{font-size:27px;line-height:1}
+    .weather-temp{font-size:20px;font-weight:700;white-space:nowrap}
+    .scooter{
+      border-radius:25px;padding:13px 15px;display:flex;align-items:center;gap:13px;
+      margin-top:14px
+    }
+    .scooter-icon{
+      width:45px;height:45px;border-radius:15px;display:grid;place-items:center;
+      font-size:24px;background:rgba(108,99,255,.10)
+    }
+    .scooter-copy{min-width:0;flex:1}
+    .scooter-title{font-weight:750;font-size:16px}
+    .scooter-sub{font-size:12px;color:var(--muted);margin-top:2px}
+    .footer{text-align:center;color:#a0a7b8;font-size:8px;letter-spacing:.32em;margin:15px 0 0;text-transform:uppercase}
+    .error-bar{
+      display:none;margin:0 0 12px;padding:10px 12px;border-radius:16px;
+      background:var(--red-soft);color:#b52f34;font-size:12px;border:1px solid rgba(255,77,79,.18)
+    }
+    .error-bar.show{display:block}
+
+    dialog{
+      width:min(calc(100% - 22px),460px);border:none;padding:0;background:transparent;color:var(--text)
+    }
+    dialog::backdrop{background:rgba(6,11,23,.28);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+    .sheet{border-radius:28px;padding:18px;background:rgba(250,251,253,.90);border:1px solid rgba(255,255,255,.8);box-shadow:0 30px 80px rgba(12,25,50,.22)}
+    .sheet-head{display:flex;justify-content:space-between;align-items:center}
+    .sheet h2{margin:0;font-size:24px;letter-spacing:-.03em}
+    .sheet p{font-size:12px;line-height:1.4;color:var(--muted)}
+    label{display:block;font-size:11px;font-weight:750;margin:13px 0 6px}
+    input{
+      width:100%;min-height:46px;border:1px solid var(--border);border-radius:14px;
+      padding:0 12px;background:rgba(255,255,255,.68);color:var(--text);font-size:16px
+    }
+    .save{
+      width:100%;min-height:48px;border:none;border-radius:15px;margin-top:15px;
+      background:#0b73ff;color:#fff;font-weight:750;cursor:pointer
+    }
+    .hint{font-size:10px;color:var(--muted);margin-top:8px}
+    .build{font-size:9px;color:#a1a8b7;text-align:center;margin-top:13px}
+
+    @media(max-height:760px){
+      .app{padding-top:max(8px,env(safe-area-inset-top))}
+      .hero{min-height:128px}
+      .hero:after{top:44px}
+      h1{font-size:37px;margin:4px 0 6px}
+      .route-mini{margin-top:2px;font-size:13px}
+      .refresh-meta{font-size:11px}
+      .circle{width:42px;height:42px;font-size:18px}
+      .cards{gap:9px}
+      .train-card{min-height:0;padding:14px 15px 12px;border-radius:25px}
+      .trip-pill{padding:5px 10px;font-size:11px}
+      .route-line{font-size:16px;margin-top:8px}
+      .train-number{font-size:26px;margin-top:5px}
+      .train-glyph{font-size:21px}
+      .departure{font-size:55px}
+      .status-pill{padding:9px 11px;min-width:111px;font-size:13px}
+      .subinfo{font-size:12px;margin-top:4px}
+      .divider{margin:10px 0 7px}
+      .weather-ico{font-size:22px}.weather-temp{font-size:17px}.weather-city{font-size:11px}
+      .scooter{padding:9px 12px;margin-top:9px}.scooter-icon{width:38px;height:38px;font-size:20px}
+      .scooter-title{font-size:14px}.scooter-sub{font-size:10px}
+      .footer{display:none}
+    }
+
+    @media(min-width:700px){
+      .app{width:min(100%,980px);padding:24px}
+      .hero{min-height:160px;padding-inline:14px}
+      .cards{grid-template-columns:1fr 1fr}
+      .scooter{grid-column:1/-1}
+      .train-card{min-height:360px}
+      .departure{font-size:76px}
+    }
+
+    @media(prefers-color-scheme:dark){
+      :root{
+        --bg:#080a0f;--panel:rgba(27,31,42,.70);--panel2:rgba(27,31,42,.50);
+        --text:#f5f7ff;--muted:#9aa5bd;--border:rgba(255,255,255,.13);
+        --shadow:0 18px 60px rgba(0,0,0,.26)
+      }
+      .glass{background:linear-gradient(145deg,rgba(35,40,53,.82),rgba(18,21,30,.69));border-color:rgba(255,255,255,.12);box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.10)}
+      .circle{background:rgba(40,44,57,.65);border-color:rgba(255,255,255,.11)}
+      .subinfo,.weather-city{color:#b8c1d4}
+      .sheet{background:rgba(24,28,37,.96);border-color:rgba(255,255,255,.12)}
+      input{background:rgba(255,255,255,.06)}
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div class="topline">
+        <div>
+          <div class="route-mini">Figline Valdarno → Arezzo</div>
+          <h1 id="greeting">Buongiorno</h1>
+          <div id="refreshMeta" class="refresh-meta">Aggiornamento in corso…</div>
+        </div>
+        <div class="actions">
+          <button id="refreshBtn" class="circle" type="button" aria-label="Aggiorna">↻</button>
+          <button id="settingsBtn" class="circle" type="button" aria-label="Impostazioni">⚙︎</button>
+        </div>
+      </div>
+    </section>
+
+    <div id="errorBar" class="error-bar"></div>
+
+    <section class="cards">
+      <article class="train-card glass" id="outCard">
+        <div class="card-head">
+          <span class="trip-pill out"><span class="dot"></span>ANDATA</span>
+          <span class="brand">TRENITALIA</span>
+        </div>
+        <div class="route-line">Figline Valdarno → Arezzo</div>
+        <div class="train-number"><span class="train-glyph">🚆</span><span>18739</span></div>
+        <div class="main-row">
+          <div id="outDeparture" class="departure">--:--</div>
+          <div id="outStatus" class="status-pill neutral">IN ATTESA</div>
+        </div>
+        <div id="outInfo" class="subinfo">Dati treno in caricamento…</div>
+        <div class="divider"></div>
+        <div class="weather-strip">
+          <div class="weather-item">
+            <span class="weather-city">Figline</span>
+            <span id="figlineMorningIcon" class="weather-ico">—</span>
+            <span id="figlineMorningTemp" class="weather-temp">--°</span>
+          </div>
+          <div class="weather-item">
+            <span class="weather-city">Arezzo</span>
+            <span id="arezzoMorningIcon" class="weather-ico">—</span>
+            <span id="arezzoMorningTemp" class="weather-temp">--°</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="train-card glass" id="backCard">
+        <div class="card-head">
+          <span class="trip-pill back"><span class="dot"></span>RITORNO</span>
+          <span class="brand">TRENITALIA</span>
+        </div>
+        <div class="route-line">Arezzo → Figline Valdarno</div>
+        <div class="train-number"><span class="train-glyph">🚆</span><span>18776</span></div>
+        <div class="main-row">
+          <div id="backDeparture" class="departure">--:--</div>
+          <div id="backStatus" class="status-pill neutral">IN ATTESA</div>
+        </div>
+        <div id="backInfo" class="subinfo">Dati treno in caricamento…</div>
+        <div class="divider"></div>
+        <div class="weather-strip">
+          <div class="weather-item">
+            <span class="weather-city">Arezzo</span>
+            <span id="arezzoEveningIcon" class="weather-ico">—</span>
+            <span id="arezzoEveningTemp" class="weather-temp">--°</span>
+          </div>
+          <div class="weather-item">
+            <span class="weather-city">Figline</span>
+            <span id="figlineEveningIcon" class="weather-ico">—</span>
+            <span id="figlineEveningTemp" class="weather-temp">--°</span>
+          </div>
+        </div>
+      </article>
+
+      <aside class="scooter glass">
+        <div class="scooter-icon">🛴</div>
+        <div class="scooter-copy">
+          <div class="scooter-title">Monopattino</div>
+          <div id="scooterNote" class="scooter-sub">Controlla pioggia e ritardo prima di uscire</div>
+        </div>
+        <div style="color:var(--muted)">›</div>
+      </aside>
+    </section>
+
+    <div class="footer">piccoli viaggi · grandi giorni</div>
+  </main>
+
+  <dialog id="settingsDialog">
+    <form id="settingsForm" class="sheet" method="dialog">
+      <div class="sheet-head">
+        <h2>Impostazioni</h2>
+        <button id="closeSettings" class="circle" type="button" style="width:38px;height:38px;min-width:38px">×</button>
+      </div>
+      <p>Per i dati live dei treni serve il piccolo proxy incluso nella cartella <b>worker</b>. Dopo averlo pubblicato, incolla qui il suo indirizzo.</p>
+      <label for="proxyUrl">URL proxy ViaggiaTreno</label>
+      <input id="proxyUrl" type="url" placeholder="https://nome-worker.workers.dev" autocapitalize="off" spellcheck="false">
+      <label for="refreshMinutes">Aggiornamento treni</label>
+      <input id="refreshMinutes" type="number" min="1" max="15" value="2">
+      <button class="save" type="submit">Salva e verifica</button>
+      <div id="settingsMessage" class="hint"></div>
+      <div class="build">Versione 1.0 · Figline ↔ Arezzo</div>
+    </form>
+  </dialog>
+
+<script>
+(()=>{
+  "use strict";
+  const BUILD="1.0";
+  const STORAGE_PROXY="train-dashboard.proxy.v1";
+  const STORAGE_REFRESH="train-dashboard.refresh.v1";
+  const FIGLINE={lat:43.6198,lon:11.4719};
+  const AREZZO={lat:43.4633,lon:11.8796};
+  const TRAINS={
+    out:{number:"18739",from:"FIGLINE VALDARNO",to:"AREZZO"},
+    back:{number:"18776",from:"AREZZO",to:"FIGLINE VALDARNO"}
+  };
+
+  const $=s=>document.querySelector(s);
+  const ui={
+    greeting:$("#greeting"), meta:$("#refreshMeta"), refresh:$("#refreshBtn"),
+    settings:$("#settingsBtn"), dialog:$("#settingsDialog"), form:$("#settingsForm"),
+    close:$("#closeSettings"), proxy:$("#proxyUrl"), refreshMin:$("#refreshMinutes"),
+    settingsMsg:$("#settingsMessage"), error:$("#errorBar"),
+    outDeparture:$("#outDeparture"), outStatus:$("#outStatus"), outInfo:$("#outInfo"),
+    backDeparture:$("#backDeparture"), backStatus:$("#backStatus"), backInfo:$("#backInfo"),
+    fmI:$("#figlineMorningIcon"), fmT:$("#figlineMorningTemp"),
+    amI:$("#arezzoMorningIcon"), amT:$("#arezzoMorningTemp"),
+    aeI:$("#arezzoEveningIcon"), aeT:$("#arezzoEveningTemp"),
+    feI:$("#figlineEveningIcon"), feT:$("#figlineEveningTemp"),
+    scooter:$("#scooterNote")
+  };
+
+  let timer=null,lastUpdate=0;
+
+  function romeParts(date=new Date()){
+    const parts=new Intl.DateTimeFormat("it-IT",{
+      timeZone:"Europe/Rome",hour:"2-digit",minute:"2-digit",hourCycle:"h23"
+    }).formatToParts(date);
+    return Object.fromEntries(parts.filter(p=>p.type!=="literal").map(p=>[p.type,p.value]));
+  }
+  function clock(date=new Date()){const p=romeParts(date);return `${p.hour}:${p.minute}`;}
+  function greeting(){
+    const h=Number(romeParts().hour);
+    ui.greeting.textContent=h<12?"Buongiorno":h<18?"Buon pomeriggio":"Buonasera";
+  }
+  function proxyUrl(){return (localStorage.getItem(STORAGE_PROXY)||"").replace(/\/+$/,"");}
+  function refreshMs(){
+    const n=Math.max(1,Math.min(15,Number(localStorage.getItem(STORAGE_REFRESH)||2)));
+    return n*60000;
+  }
+  function showError(msg){
+    if(!msg){ui.error.classList.remove("show");ui.error.textContent="";return}
+    ui.error.textContent=msg;ui.error.classList.add("show");
+  }
+  function statusClass(el,type){
+    el.className="status-pill "+(type||"neutral");
+  }
+  function renderTrain(prefix,data){
+    const dep=prefix==="out"?ui.outDeparture:ui.backDeparture;
+    const status=prefix==="out"?ui.outStatus:ui.backStatus;
+    const info=prefix==="out"?ui.outInfo:ui.backInfo;
+    dep.textContent=data.departureScheduled||"--:--";
+    let text="IN ATTESA",cls="neutral";
+    if(data.cancelled){text="SOPPRESSO";cls="bad"}
+    else if(data.delayMinutes>0){text=`+ ${data.delayMinutes} MIN`;cls=data.delayMinutes>=15?"bad":"delay"}
+    else if(data.started || data.status==="ON_TIME"){text="IN ORARIO";cls="ok"}
+    else if(data.status==="NOT_STARTED"){text="PROGRAMMATO";cls="neutral"}
+    status.textContent=text;statusClass(status,cls);
+
+    const arr=data.arrivalExpected||data.arrivalScheduled||"--:--";
+    const platform=data.platform?` · Binario ${data.platform}`:"";
+    const extra=data.lastDetection?` · ${data.lastDetection}`:"";
+    info.textContent=`Arrivo previsto ${arr}${platform}${extra}`;
+  }
+
+  async function fetchTrain(train){
+    const base=proxyUrl();
+    if(!base) throw new Error("Configura il proxy ViaggiaTreno da ⚙︎");
+    const p=new URLSearchParams({number:train.number,from:train.from,to:train.to});
+    const r=await fetch(`${base}/api/train?${p.toString()}`,{cache:"no-store"});
+    if(!r.ok){
+      let detail="";try{detail=(await r.json()).error||""}catch(_){}
+      throw new Error(detail||`Dati treno non disponibili (${r.status})`);
+    }
+    return r.json();
+  }
+
+  function codeToWeather(code){
+    code=Number(code);
+    if(code===0)return["☀️","Sereno"];
+    if([1,2].includes(code))return["🌤️","Poco nuvoloso"];
+    if(code===3)return["☁️","Nuvoloso"];
+    if([45,48].includes(code))return["🌫️","Nebbia"];
+    if([51,53,55,56,57].includes(code))return["🌦️","Pioviggine"];
+    if([61,63,65,66,67,80,81,82].includes(code))return["🌧️","Pioggia"];
+    if([71,73,75,77,85,86].includes(code))return["🌨️","Neve"];
+    if([95,96,99].includes(code))return["⛈️","Temporale"];
+    return["🌥️","Variabile"];
+  }
+  async function getForecast(point){
+    const qs=new URLSearchParams({
+      latitude:String(point.lat),longitude:String(point.lon),
+      hourly:"temperature_2m,weather_code,precipitation_probability",
+      timezone:"Europe/Rome",forecast_days:"1"
+    });
+    const r=await fetch(`https://api.open-meteo.com/v1/forecast?${qs}`,{cache:"no-store"});
+    if(!r.ok)throw new Error("Meteo non disponibile");
+    return r.json();
+  }
+  function forecastAt(data,hour){
+    const times=data?.hourly?.time||[],temps=data?.hourly?.temperature_2m||[],
+      codes=data?.hourly?.weather_code||[],rain=data?.hourly?.precipitation_probability||[];
+    if(!times.length)return null;
+    const target=String(hour).padStart(2,"0")+":00";
+    let idx=times.findIndex(t=>t.endsWith(target));
+    if(idx<0)idx=0;
+    const [icon,label]=codeToWeather(codes[idx]);
+    return {icon,label,temp:Math.round(temps[idx]),rain:Number(rain[idx]||0)};
+  }
+  function renderWeather(fig,arz){
+    const fMorning=forecastAt(fig,8),aMorning=forecastAt(arz,8);
+    const aEvening=forecastAt(arz,18),fEvening=forecastAt(fig,18);
+    const put=(item,ico,temp)=>{
+      if(!item)return;ico.textContent=item.icon;temp.textContent=`${item.temp}°`;
+    };
+    put(fMorning,ui.fmI,ui.fmT);put(aMorning,ui.amI,ui.amT);
+    put(aEvening,ui.aeI,ui.aeT);put(fEvening,ui.feI,ui.feT);
+    const risks=[fMorning,aMorning,aEvening,fEvening].filter(Boolean);
+    const wet=risks.some(x=>x.rain>=45||["🌧️","⛈️","🌨️"].includes(x.icon));
+    ui.scooter.textContent=wet
+      ?"Possibile pioggia: controlla prima di partire col monopattino"
+      :"Meteo favorevole: controlla comunque lo stato del treno prima di uscire";
+  }
+
+  async function refreshAll({silent=false}={}){
+    if(ui.refresh.disabled)return;
+    ui.refresh.disabled=true;ui.refresh.textContent="…";showError("");
+    const problems=[];
+    const trainPromises=proxyUrl()
+      ? Promise.allSettled([fetchTrain(TRAINS.out),fetchTrain(TRAINS.back)])
+      : Promise.resolve([{status:"rejected",reason:new Error("Configura il proxy da ⚙︎")},{status:"rejected",reason:new Error("Configura il proxy da ⚙︎")}]);
+    const weatherPromise=Promise.allSettled([getForecast(FIGLINE),getForecast(AREZZO)]);
+    const [trains,weather]=await Promise.all([trainPromises,weatherPromise]);
+
+    if(trains[0].status==="fulfilled")renderTrain("out",trains[0].value);else problems.push(trains[0].reason?.message||"Andata non disponibile");
+    if(trains[1].status==="fulfilled")renderTrain("back",trains[1].value);else problems.push(trains[1].reason?.message||"Ritorno non disponibile");
+
+    if(weather[0].status==="fulfilled"&&weather[1].status==="fulfilled"){
+      renderWeather(weather[0].value,weather[1].value);
+    }else problems.push("Meteo non disponibile");
+
+    lastUpdate=Date.now();
+    const next=new Date(lastUpdate+refreshMs());
+    ui.meta.textContent=`Agg. ${clock(new Date(lastUpdate))} · prossimo ${clock(next)}`;
+    if(problems.length)showError([...new Set(problems)].join(" · "));
+    if(!silent && !problems.length) showError("");
+    ui.refresh.disabled=false;ui.refresh.textContent="↻";
+  }
+
+  function schedule(){
+    clearInterval(timer);
+    timer=setInterval(()=>refreshAll({silent:true}),refreshMs());
+  }
+
+  function openSettings(){
+    ui.proxy.value=proxyUrl();
+    ui.refreshMin.value=Math.round(refreshMs()/60000);
+    ui.settingsMsg.textContent="";
+    ui.dialog.showModal();
+  }
+
+  ui.refresh.addEventListener("click",()=>refreshAll());
+  ui.settings.addEventListener("click",openSettings);
+  ui.close.addEventListener("click",()=>ui.dialog.close());
+  ui.form.addEventListener("submit",async e=>{
+    e.preventDefault();
+    const url=ui.proxy.value.trim().replace(/\/+$/,"");
+    const mins=Math.max(1,Math.min(15,Number(ui.refreshMin.value)||2));
+    if(url && !/^https:\/\/.+/i.test(url)){
+      ui.settingsMsg.textContent="Usa un indirizzo HTTPS del Worker.";return;
+    }
+    localStorage.setItem(STORAGE_PROXY,url);
+    localStorage.setItem(STORAGE_REFRESH,String(mins));
+    ui.settingsMsg.textContent=url?"Salvato. Verifico i dati…":"Salvato. Il meteo funzionerà, i treni richiedono il proxy.";
+    schedule();
+    await refreshAll({silent:true});
+    setTimeout(()=>ui.dialog.close(),500);
+  });
+  ui.dialog.addEventListener("click",e=>{
+    const r=ui.dialog.getBoundingClientRect();
+    if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)ui.dialog.close();
+  });
+  document.addEventListener("visibilitychange",()=>{
+    if(document.visibilityState==="visible" && (!lastUpdate || Date.now()-lastUpdate>refreshMs()))refreshAll({silent:true});
+  });
+
+  greeting();
+  setInterval(greeting,60000);
+  schedule();
+  refreshAll({silent:true});
+})();
+</script>
+</body>
+</html>
