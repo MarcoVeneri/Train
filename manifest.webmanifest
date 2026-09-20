@@ -6,7 +6,7 @@
   "display": "standalone",
   "background_color": "#f4f6fa",
   "theme_color": "#f4f6fa",
-  "description": "Dashboard live per i treni 18739 e 18776 tra Figline Valdarno e Arezzo.",
+  "description": "Dashboard automatica per i treni 18739 e 18776 tra Figline Valdarno e Arezzo.",
   "icons": [
     {
       "src": "./icon.svg",

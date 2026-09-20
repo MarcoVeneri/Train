@@ -1,0 +1,36 @@
+{
+  "dataDate": "2000-01-01",
+  "generatedAt": null,
+  "trains": {
+    "18739": {
+      "number": "18739",
+      "from": "FIGLINE VALDARNO",
+      "to": "AREZZO",
+      "status": "NOT_STARTED",
+      "cancelled": false,
+      "started": false,
+      "delayMinutes": 0,
+      "departureScheduled": "07:04",
+      "arrivalScheduled": "07:54",
+      "arrivalExpected": "07:54",
+      "platform": null,
+      "dataDate": "2000-01-01",
+      "source": "ViaggiaTreno"
+    },
+    "18776": {
+      "number": "18776",
+      "from": "AREZZO",
+      "to": "FIGLINE VALDARNO",
+      "status": "NOT_STARTED",
+      "cancelled": false,
+      "started": false,
+      "delayMinutes": 0,
+      "departureScheduled": "19:08",
+      "arrivalScheduled": "19:48",
+      "arrivalExpected": "19:48",
+      "platform": null,
+      "dataDate": "2000-01-01",
+      "source": "ViaggiaTreno"
+    }
+  }
+}

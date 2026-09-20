@@ -1,79 +1,43 @@
-# Dashboard Treni Figline ↔ Arezzo
+# Dashboard Treni — SOLO GitHub
 
-Dashboard web/PWA nello stile Apple Glass per:
+Questa versione **non richiede Cloudflare, API key o altri account**.
 
-- **Andata:** treno **18739**, Figline Valdarno → Arezzo
-- **Ritorno:** treno **18776**, Arezzo → Figline Valdarno
-- meteo Figline/Arezzo utile per il monopattino
-- aggiornamento automatico predefinito ogni **2 minuti**
-- stato evidente: in orario / ritardo / soppresso
-- binario quando disponibile
-- tema chiaro/scuro automatico
-- layout iPhone e iPad
+Funziona così:
 
-## Perché c'è una cartella `worker`
+1. GitHub Pages pubblica `index.html`.
+2. GitHub Actions esegue automaticamente `scripts/update_trains.py`.
+3. Lo script interroga ViaggiaTreno dal server GitHub e aggiorna `data/trains.json`.
+4. La dashboard legge quel file.
+5. Il meteo arriva direttamente da Open-Meteo.
 
-La pagina GitHub Pages è HTTPS, mentre l'endpoint ViaggiaTreno usato per i dati live è una API non ufficialmente documentata e viene normalmente esposta via HTTP. Per evitare problemi di mixed-content/CORS la dashboard usa un piccolo **Cloudflare Worker** come proxy.
+## Treni configurati
 
-Le API ViaggiaTreno sono state ricostruite tramite reverse engineering e possono cambiare; per questo il Worker isola tutta la parte ferroviaria dal layout.
+- 18739 — Figline Valdarno → Arezzo
+- 18776 — Arezzo → Figline Valdarno
 
-## 1. Pubblica la dashboard su GitHub Pages
+## Cosa deve fare chi usa l'app
 
-Carica nella root del repository:
+Nulla: apre il link e basta. Su iPhone può fare **Condividi → Aggiungi a Home**.
 
-- `index.html`
-- `manifest.webmanifest`
-- `icon.svg`
-- `.nojekyll`
+## Installazione su GitHub
 
-Poi in GitHub:
-`Settings → Pages → Deploy from a branch → main → / (root)`.
+Carica **tutto** il contenuto di questa cartella nel repository, compresa la cartella nascosta:
 
-## 2. Pubblica il Worker Cloudflare
+`.github/workflows/update-trains.yml`
 
-Metodo semplice:
+Poi attiva GitHub Pages normalmente da:
 
-1. crea un account Cloudflare se non lo hai;
-2. vai in **Workers & Pages → Create → Worker**;
-3. sostituisci il codice con `worker/worker.js`;
-4. pubblica;
-5. otterrai un URL simile a:
-   `https://figline-arezzo-trains.nomeutente.workers.dev`
-6. apri quell'URL aggiungendo `/health` e verifica che risponda con `"ok": true`.
+`Settings → Pages → Deploy from a branch → main → / (root)`
 
-In alternativa, con Wrangler:
+La GitHub Action parte anche quando carichi inizialmente questi file; in seguito controlla i treni automaticamente ogni circa 5 minuti nelle fasce del pendolarismo dei giorni feriali.
 
-```bash
-cd worker
-npx wrangler deploy
-```
+### Se GitHub mostra che il workflow non può scrivere
 
-## 3. Collega il Worker alla dashboard
+Solo in quel caso:
+`Settings → Actions → General → Workflow permissions → Read and write permissions`.
 
-Apri la dashboard sul telefono:
+Nessun altro servizio è necessario.
 
-1. premi **⚙︎**
-2. incolla l'URL HTTPS del Worker
-3. lascia `2` minuti come aggiornamento
-4. premi **Salva e verifica**
+## Nota tecnica
 
-L'URL viene memorizzato nel browser del dispositivo.
-
-## Meteo
-
-Il meteo usa Open-Meteo direttamente dal browser e non richiede chiavi API.
-
-La dashboard mostra:
-- mattina: Figline + Arezzo
-- sera: Arezzo + Figline
-
-## Installazione su iPhone
-
-In Safari:
-**Condividi → Aggiungi a Home**.
-
-Non è incluso un Service Worker: è una scelta voluta per evitare che iOS conservi vecchie versioni dopo gli aggiornamenti del repository.
-
-## Nota sui dati ferroviari
-
-ViaggiaTreno consente di ottenere numero treno, fermate, ritardo, binari e stato del convoglio. L'integrazione usata qui non è un'API pubblica/supportata ufficialmente: se Trenitalia cambia gli endpoint, può essere necessario aggiornare `worker/worker.js`.
+Le API di ViaggiaTreno usate dal workflow sono endpoint non documentati ufficialmente e possono cambiare in futuro. La dashboard mantiene comunque gli orari programmati se il servizio live non risponde.
