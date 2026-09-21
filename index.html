@@ -78,6 +78,13 @@
     .punctuality.late{color:#fff;background:linear-gradient(135deg,#ff625f,#e73a40);border-color:rgba(255,77,79,.45);box-shadow:0 10px 24px rgba(231,58,64,.20)}
     .punctuality.early{color:#1e63c9;background:linear-gradient(135deg,rgba(52,120,246,.18),rgba(52,120,246,.09));border-color:rgba(52,120,246,.30)}
     .punctuality.bad{color:#fff;background:linear-gradient(135deg,#ff3b30,#c71f2a);border-color:rgba(255,59,48,.48);box-shadow:0 10px 24px rgba(199,31,42,.22)}
+    .timing-split{display:grid;grid-template-columns:1fr 1fr;margin-top:9px;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.30)}
+    .timing-cell{padding:10px 8px;text-align:center;min-width:0}
+    .timing-cell+.timing-cell{border-left:1px solid var(--border)}
+    .timing-label{font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+    .timing-time{font-size:23px;font-weight:820;letter-spacing:-.035em;margin-top:2px}
+    .timing-delta{font-size:10px;font-weight:800;margin-top:1px;color:var(--muted)}
+    .timing-delta.late{color:#d6373e}.timing-delta.early{color:#246de4}.timing-delta.ok{color:#179650}
     .subinfo{font-size:14px;color:#4e5a75;margin-top:7px;min-height:19px}
     .live-note{font-size:10px;color:#8791a7;margin-top:5px;min-height:14px}
     .divider{height:1px;background:var(--border);margin:13px 0 10px}
@@ -109,14 +116,14 @@
     @media(prefers-color-scheme:dark){
       :root{--bg:#080a0f;--text:#f5f7ff;--muted:#9aa5bd;--border:rgba(255,255,255,.13);--shadow:0 18px 60px rgba(0,0,0,.26)}
       .glass{background:linear-gradient(145deg,rgba(35,40,53,.82),rgba(18,21,30,.69));border-color:rgba(255,255,255,.12);box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.10)}
-      .circle{background:rgba(40,44,57,.65);border-color:rgba(255,255,255,.11)}.subinfo,.weather-city{color:#b8c1d4}.punctuality.ok{color:#77e6a2}.punctuality.late{color:#ff8b8e}.punctuality.early{color:#8fb8ff}
+      .circle{background:rgba(40,44,57,.65);border-color:rgba(255,255,255,.11)}.subinfo,.weather-city{color:#b8c1d4}.timing-split{background:rgba(255,255,255,.035)}.punctuality.ok{color:#77e6a2}.punctuality.late{color:#ff8b8e}.punctuality.early{color:#8fb8ff}
     }
   </style>
 
 <script>
 (function(){
   try{
-    const UI_BUILD="42";
+    const UI_BUILD="44";
     const u=new URL(location.href);
     if(u.searchParams.get("build")!==UI_BUILD){
       u.searchParams.set("build",UI_BUILD);
@@ -147,7 +154,7 @@
     <div class="topline">
       <div>
         <div class="route-mini">Figline Valdarno → Arezzo</div>
-        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4.3 · Figline ↔ Arezzo</div>
+        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4.4 · Figline ↔ Arezzo</div>
         <div id="refreshMeta" class="refresh-meta">Caricamento dati…</div>
       </div>
       <div class="actions"><button id="refreshBtn" class="circle" type="button" aria-label="Aggiorna">↻</button></div>
@@ -162,7 +169,10 @@
       <div class="route-line">Figline Valdarno → Arezzo <span style="opacity:.62">· prosegue Roma Tiburtina</span></div>
       <div class="train-number"><span class="train-glyph">🚆</span><span>4099</span></div>
       <div class="main-row"><div id="outDeparture" class="departure">07:00</div><div id="outStatus" class="status-pill neutral">PROGRAMMATO</div></div>
-      <div id="outPunctuality" class="punctuality ok">A FIGLINE · IN ORARIO</div><div id="outInfo" class="subinfo">Arrivo previsto 07:36 · Binario --</div>
+      <div id="outPunctuality" class="punctuality ok">A FIGLINE · IN ORARIO</div><div id="outInfo" class="timing-split">
+        <div class="timing-cell"><div class="timing-label">Arrivo a Figline</div><div id="outBoardTime" class="timing-time">07:00</div><div id="outBoardDelta" class="timing-delta ok">in orario</div></div>
+        <div class="timing-cell"><div class="timing-label">Arrivo ad Arezzo</div><div id="outDestTime" class="timing-time">07:36</div><div id="outDestDelta" class="timing-delta ok">in orario</div></div>
+      </div>
       <div id="outLive" class="live-note">Dati live in caricamento…</div>
       <div class="divider"></div>
       <div class="weather-strip">
@@ -176,7 +186,10 @@
       <div class="route-line">Arezzo → Figline Valdarno</div>
       <div class="train-number"><span class="train-glyph">🚆</span><span>18774</span></div>
       <div class="main-row"><div id="backDeparture" class="departure">18:08</div><div id="backStatus" class="status-pill neutral">PROGRAMMATO</div></div>
-      <div id="backPunctuality" class="punctuality ok">AD AREZZO · IN ORARIO</div><div id="backInfo" class="subinfo">Arrivo previsto 18:48 · Binario --</div>
+      <div id="backPunctuality" class="punctuality ok">AD AREZZO · IN ORARIO</div><div id="backInfo" class="timing-split">
+        <div class="timing-cell"><div class="timing-label">Arrivo ad Arezzo</div><div id="backBoardTime" class="timing-time">18:08</div><div id="backBoardDelta" class="timing-delta ok">in orario</div></div>
+        <div class="timing-cell"><div class="timing-label">Arrivo a Figline</div><div id="backDestTime" class="timing-time">18:48</div><div id="backDestDelta" class="timing-delta ok">in orario</div></div>
+      </div>
       <div id="backLive" class="live-note">Dati live in caricamento…</div>
       <div class="divider"></div>
       <div class="weather-strip">
@@ -197,13 +210,13 @@
 <script>
 (()=>{
 "use strict";
-const VERSION="4.3-github-only";
+const VERSION="4.4-github-only";
 const FIGLINE={lat:43.6198,lon:11.4719}, AREZZO={lat:43.4633,lon:11.8796};
 const $=s=>document.querySelector(s);
 const ui={
  greeting:$("#greeting"),meta:$("#refreshMeta"),refresh:$("#refreshBtn"),notice:$("#notice"),
- outDeparture:$("#outDeparture"),outStatus:$("#outStatus"),outPunctuality:$("#outPunctuality"),outInfo:$("#outInfo"),outLive:$("#outLive"),
- backDeparture:$("#backDeparture"),backStatus:$("#backStatus"),backPunctuality:$("#backPunctuality"),backInfo:$("#backInfo"),backLive:$("#backLive"),
+ outDeparture:$("#outDeparture"),outStatus:$("#outStatus"),outPunctuality:$("#outPunctuality"),outInfo:$("#outInfo"),outLive:$("#outLive"),outBoardTime:$("#outBoardTime"),outBoardDelta:$("#outBoardDelta"),outDestTime:$("#outDestTime"),outDestDelta:$("#outDestDelta"),
+ backDeparture:$("#backDeparture"),backStatus:$("#backStatus"),backPunctuality:$("#backPunctuality"),backInfo:$("#backInfo"),backLive:$("#backLive"),backBoardTime:$("#backBoardTime"),backBoardDelta:$("#backBoardDelta"),backDestTime:$("#backDestTime"),backDestDelta:$("#backDestDelta"),
  fmI:$("#fmI"),fmT:$("#fmT"),amI:$("#amI"),amT:$("#amT"),aeI:$("#aeI"),aeT:$("#aeT"),feI:$("#feI"),feT:$("#feT"),
  scooter:$("#scooterNote")
 };
@@ -250,10 +263,22 @@ function renderTrain(key,d){
  punct.textContent=`${stationLabel} · ${pTxt}`;
  punct.className="punctuality "+pCls;
 
- const depExp=d?.departureExpected||d?.departureScheduled||"--:--";
- const arr=d?.arrivalExpected||d?.arrivalScheduled||"--:--";
- const bin=d?.platform?` · Binario ${d.platform}`:"";
- inf.textContent=`Partenza prevista ${depExp} · Arrivo previsto ${arr}${bin}`;
+ const boardTime=d?.boardingArrivalActual||d?.boardingArrivalExpected||d?.departureExpected||d?.departureScheduled||"--:--";
+ const destTime=d?.arrivalActual||d?.arrivalExpected||d?.arrivalScheduled||"--:--";
+ const destDelay=Number(d?.destinationDelayMinutes ?? d?.delayMinutes ?? 0);
+ const boardTimeEl=key==="out"?ui.outBoardTime:ui.backBoardTime;
+ const boardDeltaEl=key==="out"?ui.outBoardDelta:ui.backBoardDelta;
+ const destTimeEl=key==="out"?ui.outDestTime:ui.backDestTime;
+ const destDeltaEl=key==="out"?ui.outDestDelta:ui.backDestDelta;
+ const deltaView=(mins)=>{
+   const n=Math.round(Number(mins)||0);
+   if(n>0)return {text:`+${n} min`,cls:"late"};
+   if(n<0)return {text:`−${Math.abs(n)} min`,cls:"early"};
+   return {text:"in orario",cls:"ok"};
+ };
+ const bd=deltaView(boardingDelay),dd=deltaView(destDelay);
+ boardTimeEl.textContent=boardTime; boardDeltaEl.textContent=bd.text; boardDeltaEl.className="timing-delta "+bd.cls;
+ destTimeEl.textContent=destTime; destDeltaEl.textContent=dd.text; destDeltaEl.className="timing-delta "+dd.cls;
  let bits=[];
  if(d?.departureActual)bits.push(`Partenza effettiva ${d.departureActual}`);
  else if(d?.trainStarted && d?.lastDetection)bits.push(`Treno in viaggio · ultimo rilevamento: ${d.lastDetection}`);
