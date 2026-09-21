@@ -125,7 +125,7 @@
 <script>
 (function(){
   try{
-    const UI_BUILD="47";
+    const UI_BUILD="48";
     const u=new URL(location.href);
     if(u.searchParams.get("build")!==UI_BUILD){
       u.searchParams.set("build",UI_BUILD);
@@ -156,7 +156,7 @@
     <div class="topline">
       <div>
         <div class="route-mini">Figline Valdarno → Arezzo</div>
-        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4.7 · Figline ↔ Arezzo</div>
+        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4.8 · Figline ↔ Arezzo</div>
         <div id="refreshMeta" class="refresh-meta">Caricamento dati…</div>
       </div>
       <div class="actions"><button id="refreshBtn" class="circle" type="button" aria-label="Aggiorna">↻</button></div>
@@ -212,7 +212,7 @@
 <script>
 (()=>{
 "use strict";
-const VERSION="4.7-github-only";
+const VERSION="4.8-persistent-live";
 const FIGLINE={lat:43.6198,lon:11.4719}, AREZZO={lat:43.4633,lon:11.8796};
 const $=s=>document.querySelector(s);
 const ui={
@@ -261,6 +261,11 @@ function dataAgeMinutes(iso){
  const t=Date.parse(iso); if(!Number.isFinite(t))return Infinity;
  return Math.max(0,(Date.now()-t)/60000);
 }
+function dataClock(iso){
+ const t=Date.parse(iso); if(!Number.isFinite(t))return "--:--";
+ return clock(new Date(t));
+}
+let lastTrainGeneratedAt=null;
 
 function renderTrain(key,d){
  const dep=key==="out"?ui.outDeparture:ui.backDeparture, st=key==="out"?ui.outStatus:ui.backStatus,
@@ -342,6 +347,7 @@ async function loadTrains(){
  const r=await fetch(`./data/trains.json?v=${Date.now()}`,{cache:"no-store"});
  if(!r.ok)throw new Error("Dati ferroviari non disponibili");
  const data=await r.json();
+ lastTrainGeneratedAt=data?.generatedAt||null;
  const staleDay=data?.dataDate && data.dataDate!==todayRome();
 
  // A mezzanotte non mostriamo più ritardi/stati del giorno precedente.
@@ -371,7 +377,7 @@ async function refreshAll(){
   ui.notice.classList.add("show");
  }
  await loadWeather();
- ui.meta.textContent=`Agg. ${clock()} · controllo ferroviario automatico ~5 min${trainOk?"":" · offline"}`;
+ ui.meta.textContent=trainOk&&lastTrainGeneratedAt?`Dati ${dataClock(lastTrainGeneratedAt)} · aggiornamento automatico ogni 5 min`:`Controllo ${clock()} · dati ferroviari non disponibili`;
  ui.refresh.disabled=false;ui.refresh.textContent="↻";
 }
 ui.refresh.addEventListener("click",refreshAll);
