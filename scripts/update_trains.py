@@ -114,7 +114,6 @@ def train_data(number, from_name, to_name):
     else:
         candidates = [detail.get("ritardo"), fr.get("ritardo"), fr.get("ritardoPartenza")]
     delay = next((float(v) for v in candidates if isinstance(v,(int,float)) or (isinstance(v,str) and re.fullmatch(r"-?\d+(\.\d+)?",v))), 0.0)
-    delay = max(0, delay)
 
     cancelled = detail.get("tipoTreno") == "ST" or fr.get("actualFermataType") == 3 or to.get("actualFermataType") == 3
     train_started = bool(detail.get("oraUltimoRilevamento"))
@@ -136,8 +135,8 @@ def train_data(number, from_name, to_name):
         "cancelled": bool(cancelled),
         "started": bool(departed_from_boarding),
         "trainStarted": bool(train_started),
-        "delayMinutes": max(0, round(delay)),
-        "boardingDelayMinutes": max(0, round(delay)),
+        "delayMinutes": round(delay),
+        "boardingDelayMinutes": round(delay),
         "departureScheduled": departure_scheduled,
         "departureExpected": departure_expected,
         "departureActual": departure_actual,
