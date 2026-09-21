@@ -9,7 +9,7 @@ on:
       - ".github/workflows/update-trains.yml"
   schedule:
     # Copre sia ora solare sia ora legale in Italia:
-    # mattina intorno al 4099 delle 07:00 e sera intorno al 18774 delle 18:08.
+    # controllo reale ogni 5 minuti nelle finestre mattina/sera del pendolarismo.
     - cron: "*/5 4-8,15-20 * * *"
 
 permissions:
