@@ -1,7 +1,7 @@
 {
-  "name": "Treni Figline Arezzo v4.6",
+  "name": "Treni Figline Arezzo v4.7",
   "short_name": "Treni",
-  "start_url": "./treno-v4.html?build=46",
+  "start_url": "./treno-v4.html?build=47",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f4f6fa",
