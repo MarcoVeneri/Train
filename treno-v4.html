@@ -73,6 +73,11 @@
     .status-pill.delay{background:linear-gradient(135deg,#ff9f43,#ff7b20);color:#fff}
     .status-pill.bad{background:linear-gradient(135deg,#ff625f,#eb3438);color:#fff}
     .status-pill.neutral{background:rgba(119,130,151,.13);color:var(--muted);box-shadow:none}
+    .punctuality{display:inline-flex;align-items:center;gap:7px;margin-top:9px;padding:7px 11px;border-radius:999px;font-size:12px;font-weight:850;letter-spacing:.02em;border:1px solid transparent}
+    .punctuality.ok{color:#13884a;background:rgba(40,200,102,.11);border-color:rgba(40,200,102,.22)}
+    .punctuality.late{color:#c92f35;background:rgba(255,77,79,.12);border-color:rgba(255,77,79,.24)}
+    .punctuality.early{color:#246de4;background:rgba(52,120,246,.11);border-color:rgba(52,120,246,.22)}
+    .punctuality.bad{color:#fff;background:linear-gradient(135deg,#ff625f,#eb3438);border-color:rgba(255,77,79,.35)}
     .subinfo{font-size:14px;color:#4e5a75;margin-top:7px;min-height:19px}
     .live-note{font-size:10px;color:#8791a7;margin-top:5px;min-height:14px}
     .divider{height:1px;background:var(--border);margin:13px 0 10px}
@@ -104,7 +109,7 @@
     @media(prefers-color-scheme:dark){
       :root{--bg:#080a0f;--text:#f5f7ff;--muted:#9aa5bd;--border:rgba(255,255,255,.13);--shadow:0 18px 60px rgba(0,0,0,.26)}
       .glass{background:linear-gradient(145deg,rgba(35,40,53,.82),rgba(18,21,30,.69));border-color:rgba(255,255,255,.12);box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.10)}
-      .circle{background:rgba(40,44,57,.65);border-color:rgba(255,255,255,.11)}.subinfo,.weather-city{color:#b8c1d4}
+      .circle{background:rgba(40,44,57,.65);border-color:rgba(255,255,255,.11)}.subinfo,.weather-city{color:#b8c1d4}.punctuality.ok{color:#77e6a2}.punctuality.late{color:#ff8b8e}.punctuality.early{color:#8fb8ff}
     }
   </style>
 
@@ -132,7 +137,7 @@
     <div class="topline">
       <div>
         <div class="route-mini">Figline Valdarno → Arezzo</div>
-        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4.1 · Figline ↔ Arezzo</div>
+        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4.2 · Figline ↔ Arezzo</div>
         <div id="refreshMeta" class="refresh-meta">Caricamento dati…</div>
       </div>
       <div class="actions"><button id="refreshBtn" class="circle" type="button" aria-label="Aggiorna">↻</button></div>
@@ -147,7 +152,7 @@
       <div class="route-line">Figline Valdarno → Arezzo <span style="opacity:.62">· prosegue Roma Tiburtina</span></div>
       <div class="train-number"><span class="train-glyph">🚆</span><span>4099</span></div>
       <div class="main-row"><div id="outDeparture" class="departure">07:00</div><div id="outStatus" class="status-pill neutral">PROGRAMMATO</div></div>
-      <div id="outInfo" class="subinfo">Arrivo previsto 07:36 · Binario --</div>
+      <div id="outPunctuality" class="punctuality ok">A FIGLINE · IN ORARIO</div><div id="outInfo" class="subinfo">Arrivo previsto 07:36 · Binario --</div>
       <div id="outLive" class="live-note">Dati live in caricamento…</div>
       <div class="divider"></div>
       <div class="weather-strip">
@@ -161,7 +166,7 @@
       <div class="route-line">Arezzo → Figline Valdarno</div>
       <div class="train-number"><span class="train-glyph">🚆</span><span>18774</span></div>
       <div class="main-row"><div id="backDeparture" class="departure">18:08</div><div id="backStatus" class="status-pill neutral">PROGRAMMATO</div></div>
-      <div id="backInfo" class="subinfo">Arrivo previsto 18:48 · Binario --</div>
+      <div id="backPunctuality" class="punctuality ok">AD AREZZO · IN ORARIO</div><div id="backInfo" class="subinfo">Arrivo previsto 18:48 · Binario --</div>
       <div id="backLive" class="live-note">Dati live in caricamento…</div>
       <div class="divider"></div>
       <div class="weather-strip">
@@ -182,13 +187,13 @@
 <script>
 (()=>{
 "use strict";
-const VERSION="4.1-github-only";
+const VERSION="4.2-github-only";
 const FIGLINE={lat:43.6198,lon:11.4719}, AREZZO={lat:43.4633,lon:11.8796};
 const $=s=>document.querySelector(s);
 const ui={
  greeting:$("#greeting"),meta:$("#refreshMeta"),refresh:$("#refreshBtn"),notice:$("#notice"),
- outDeparture:$("#outDeparture"),outStatus:$("#outStatus"),outInfo:$("#outInfo"),outLive:$("#outLive"),
- backDeparture:$("#backDeparture"),backStatus:$("#backStatus"),backInfo:$("#backInfo"),backLive:$("#backLive"),
+ outDeparture:$("#outDeparture"),outStatus:$("#outStatus"),outPunctuality:$("#outPunctuality"),outInfo:$("#outInfo"),outLive:$("#outLive"),
+ backDeparture:$("#backDeparture"),backStatus:$("#backStatus"),backPunctuality:$("#backPunctuality"),backInfo:$("#backInfo"),backLive:$("#backLive"),
  fmI:$("#fmI"),fmT:$("#fmT"),amI:$("#amI"),amT:$("#amT"),aeI:$("#aeI"),aeT:$("#aeT"),feI:$("#feI"),feT:$("#feT"),
  scooter:$("#scooterNote")
 };
@@ -209,6 +214,7 @@ function dataAgeMinutes(iso){
 
 function renderTrain(key,d){
  const dep=key==="out"?ui.outDeparture:ui.backDeparture, st=key==="out"?ui.outStatus:ui.backStatus,
+ punct=key==="out"?ui.outPunctuality:ui.backPunctuality,
  inf=key==="out"?ui.outInfo:ui.backInfo, live=key==="out"?ui.outLive:ui.backLive;
  if(d?.departureScheduled)dep.textContent=d.departureScheduled;
  let cls="neutral",txt="IN ORARIO";
@@ -225,6 +231,15 @@ function renderTrain(key,d){
    txt="IN ORARIO";cls="ok";
  }
  st.textContent=txt;statusClass(st,cls);
+
+ const stationLabel=key==="out"?"A FIGLINE":"AD AREZZO";
+ let pTxt="IN ORARIO",pCls="ok";
+ if(d?.cancelled){pTxt="SOPPRESSO";pCls="bad"}
+ else if(boardingDelay>0){pTxt=`+ ${Math.round(boardingDelay)} MIN`;pCls="late"}
+ else if(boardingDelay<0){pTxt=`− ${Math.abs(Math.round(boardingDelay))} MIN`;pCls="early"}
+ punct.textContent=`${stationLabel} · ${pTxt}`;
+ punct.className="punctuality "+pCls;
+
  const depExp=d?.departureExpected||d?.departureScheduled||"--:--";
  const arr=d?.arrivalExpected||d?.arrivalScheduled||"--:--";
  const bin=d?.platform?` · Binario ${d.platform}`:"";
