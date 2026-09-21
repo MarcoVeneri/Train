@@ -8,9 +8,9 @@ on:
       - "scripts/update_trains.py"
       - ".github/workflows/update-trains.yml"
   schedule:
-    # Copre sia ora solare sia ora legale in Italia:
-    # controllo reale ogni 5 minuti nelle finestre mattina/sera del pendolarismo.
-    - cron: "*/5 4-8,15-20 * * *"
+    # Avvia una sessione ogni 30 minuti; dentro la sessione il controllo
+    # ViaggiaTreno viene eseguito ogni 5 minuti reali.
+    - cron: "2,32 4-8,15-20 * * *"
 
 permissions:
   contents: write
@@ -22,7 +22,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 32
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,18 +32,26 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Aggiorna ViaggiaTreno
-        run: python scripts/update_trains.py
-
-      - name: Pubblica dati aggiornati
+      - name: Controllo live ogni 5 minuti
         shell: bash
         run: |
-          if git diff --quiet -- data/trains.json; then
-            echo "Nessuna modifica da pubblicare."
-            exit 0
-          fi
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/trains.json
-          git commit -m "Aggiorna dati live treni"
-          git push
+
+          for i in 1 2 3 4 5 6; do
+            echo "Controllo $i/6 - $(date -u)"
+            python scripts/update_trains.py
+
+            if ! git diff --quiet -- data/trains.json; then
+              git add data/trains.json
+              git commit -m "Aggiorna dati live treni"
+              git push
+            else
+              echo "Nessuna modifica da pubblicare."
+            fi
+
+            if [ "$i" -lt 6 ]; then
+              sleep 300
+            fi
+          done
