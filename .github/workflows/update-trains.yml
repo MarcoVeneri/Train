@@ -8,51 +8,50 @@ on:
       - "scripts/update_trains.py"
       - ".github/workflows/update-trains.yml"
   schedule:
-    # Dalle 06:02 alle 22:57 circa in ora legale italiana
-    # (05:02-21:57 in ora solare): una sessione ogni 30 minuti;
-    # dentro la sessione ViaggiaTreno viene controllato ogni 5 minuti reali.
-    - cron: "2,32 4-20 * * *"
+    # Ogni 5 minuti dalle 06:02 alle 22:57 circa in ora legale italiana.
+    # GitHub Actions può ritardare di qualche minuto l'avvio del cron.
+    - cron: "2,7,12,17,22,27,32,37,42,47,52,57 4-20 * * *"
 
 permissions:
   contents: write
 
 concurrency:
   group: update-trains
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 32
+    timeout-minutes: 5
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Controllo live ogni 5 minuti
+      - name: Aggiorna dati live
         shell: bash
         run: |
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          for i in 1 2 3 4 5 6; do
-            echo "Controllo $i/6 - $(date -u)"
-            python scripts/update_trains.py
+          python scripts/update_trains.py
 
-            if ! git diff --quiet -- data/trains.json; then
-              git add data/trains.json
-              git commit -m "Aggiorna dati live treni"
-              git push
-            else
-              echo "Nessuna modifica da pubblicare."
-            fi
+          if git diff --quiet -- data/trains.json; then
+            echo "Nessuna modifica da pubblicare."
+            exit 0
+          fi
 
-            if [ "$i" -lt 6 ]; then
-              sleep 300
-            fi
-          done
+          git add data/trains.json
+          git commit -m "Aggiorna dati live treni"
+
+          # Se nel frattempo il repository è cambiato (es. aggiornamento PWA),
+          # integra prima le modifiche remote invece di far fallire il push.
+          git pull --rebase origin main
+          git push origin main
