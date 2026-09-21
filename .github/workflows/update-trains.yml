@@ -8,9 +8,10 @@ on:
       - "scripts/update_trains.py"
       - ".github/workflows/update-trains.yml"
   schedule:
-    # Avvia una sessione ogni 30 minuti; dentro la sessione il controllo
-    # ViaggiaTreno viene eseguito ogni 5 minuti reali.
-    - cron: "2,32 4-8,15-20 * * *"
+    # Dalle 06:02 alle 22:57 circa in ora legale italiana
+    # (05:02-21:57 in ora solare): una sessione ogni 30 minuti;
+    # dentro la sessione ViaggiaTreno viene controllato ogni 5 minuti reali.
+    - cron: "2,32 4-20 * * *"
 
 permissions:
   contents: write
