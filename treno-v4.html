@@ -125,7 +125,7 @@
 <script>
 (function(){
   try{
-    const UI_BUILD="46";
+    const UI_BUILD="47";
     const u=new URL(location.href);
     if(u.searchParams.get("build")!==UI_BUILD){
       u.searchParams.set("build",UI_BUILD);
@@ -156,7 +156,7 @@
     <div class="topline">
       <div>
         <div class="route-mini">Figline Valdarno → Arezzo</div>
-        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4.6 · Figline ↔ Arezzo</div>
+        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4.7 · Figline ↔ Arezzo</div>
         <div id="refreshMeta" class="refresh-meta">Caricamento dati…</div>
       </div>
       <div class="actions"><button id="refreshBtn" class="circle" type="button" aria-label="Aggiorna">↻</button></div>
@@ -212,7 +212,7 @@
 <script>
 (()=>{
 "use strict";
-const VERSION="4.5-github-only";
+const VERSION="4.7-github-only";
 const FIGLINE={lat:43.6198,lon:11.4719}, AREZZO={lat:43.4633,lon:11.8796};
 const $=s=>document.querySelector(s);
 const ui={
@@ -230,6 +230,31 @@ function todayRome(){const p=romeDateParts();return `${p.year}-${p.month}-${p.da
 function clock(date=new Date()){const p=romeDateParts(date);return `${p.hour}:${p.minute}`}
 function setGreeting(){const h=Number(romeDateParts().hour);ui.greeting.textContent=h<12?"Buongiorno":h<18?"Buon pomeriggio":"Buonasera"}
 function statusClass(el,c){el.className="status-pill "+c}
+
+function resetForNewDay(){
+ ui.outDeparture.textContent="07:00";
+ ui.backDeparture.textContent="18:08";
+
+ ui.outStatus.textContent="IN ATTESA"; statusClass(ui.outStatus,"neutral");
+ ui.backStatus.textContent="IN ATTESA"; statusClass(ui.backStatus,"neutral");
+
+ ui.outPunctuality.textContent="A FIGLINE · ATTESA DATI";
+ ui.outPunctuality.className="punctuality neutral";
+ ui.backPunctuality.textContent="AD AREZZO · ATTESA DATI";
+ ui.backPunctuality.className="punctuality neutral";
+
+ ui.outBoardTime.textContent="07:00";
+ ui.outDestTime.textContent="07:36";
+ ui.backBoardTime.textContent="18:08";
+ ui.backDestTime.textContent="18:48";
+
+ for(const el of [ui.outBoardDelta,ui.outDestDelta,ui.backBoardDelta,ui.backDestDelta]){
+   el.textContent="attesa dati";
+   el.className="timing-delta";
+ }
+ ui.outLive.textContent="In attesa del primo controllo ViaggiaTreno di oggi";
+ ui.backLive.textContent="In attesa del primo controllo ViaggiaTreno di oggi";
+}
 
 function dataAgeMinutes(iso){
  if(!iso)return Infinity;
@@ -317,15 +342,22 @@ async function loadTrains(){
  const r=await fetch(`./data/trains.json?v=${Date.now()}`,{cache:"no-store"});
  if(!r.ok)throw new Error("Dati ferroviari non disponibili");
  const data=await r.json();
- renderTrain("out",data?.trains?.["4099"]);renderTrain("back",data?.trains?.["18774"]);
  const staleDay=data?.dataDate && data.dataDate!==todayRome();
- const age=dataAgeMinutes(data?.generatedAt);
- if(staleDay || age>25){
-   ui.notice.textContent=staleDay
-     ?"ATTENZIONE: i dati ferroviari non sono quelli di oggi."
-     :`ATTENZIONE: ultimo controllo ferroviario ${Math.round(age)} minuti fa.`;
+
+ // A mezzanotte non mostriamo più ritardi/stati del giorno precedente.
+ // Restiamo in attesa finché il backend non pubblica il primo dato del nuovo giorno.
+ if(staleDay){
+   resetForNewDay();
+   ui.notice.textContent="Nuovo giorno · in attesa dei dati live di oggi.";
    ui.notice.classList.add("show");
-   // Evita di far credere che "PROGRAMMATO" sia uno stato live quando il backend è fermo.
+   return data;
+ }
+
+ renderTrain("out",data?.trains?.["4099"]);renderTrain("back",data?.trains?.["18774"]);
+ const age=dataAgeMinutes(data?.generatedAt);
+ if(age>25){
+   ui.notice.textContent=`ATTENZIONE: ultimo controllo ferroviario ${Math.round(age)} minuti fa.`;
+   ui.notice.classList.add("show");
    for(const el of [ui.outStatus,ui.backStatus]){
      if(el.textContent==="IN ORARIO"){el.textContent="DATI NON LIVE";statusClass(el,"delay")}
    }
@@ -344,7 +376,24 @@ async function refreshAll(){
 }
 ui.refresh.addEventListener("click",refreshAll);
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refreshAll()});
-setGreeting();setInterval(setGreeting,60000);refreshAll();setInterval(refreshAll,120000);
+
+let activeDay=todayRome();
+function watchDayChange(){
+ const nowDay=todayRome();
+ if(nowDay!==activeDay){
+   activeDay=nowDay;
+   resetForNewDay();
+   ui.notice.textContent="Nuovo giorno · in attesa dei dati live di oggi.";
+   ui.notice.classList.add("show");
+   refreshAll();
+ }
+}
+
+setGreeting();
+setInterval(setGreeting,60000);
+setInterval(watchDayChange,15000);
+refreshAll();
+setInterval(refreshAll,120000);
 })();
 </script>
 </body></html>
