@@ -11,7 +11,7 @@
       "trainStarted": true,
       "delayMinutes": 1,
       "boardingDelayMinutes": 1,
-      "destinationDelayMinutes": -1,
+      "destinationDelayMinutes": 0,
       "departureScheduled": "07:00",
       "departureExpected": "07:00",
       "departureActual": "07:00",
@@ -19,11 +19,11 @@
       "boardingArrivalExpected": "06:58",
       "boardingArrivalActual": "06:58",
       "arrivalScheduled": "07:36",
-      "arrivalExpected": "07:35",
-      "arrivalActual": null,
+      "arrivalExpected": "07:36",
+      "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "SEGNALE DI CONFINE 2 BV AR. NORD (PARI)",
-      "sourceTimestamp": 1789968690000,
+      "lastDetection": "CAMUCIA CORTONA",
+      "sourceTimestamp": 1789970550000,
       "dataDate": "2026-09-21",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-21T07:31:53+02:00"
+  "generatedAt": "2026-09-21T08:02:51+02:00"
 }
