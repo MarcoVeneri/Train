@@ -105,7 +105,14 @@ def train_data(number, from_name, to_name):
     # Ritardo riferito alla stazione dove Marco sale.
     # Se ViaggiaTreno non fornisce ancora il ritardo specifico della fermata,
     # usiamo il ritardo corrente del convoglio come migliore stima disponibile.
-    candidates = [fr.get("ritardoPartenza"), fr.get("ritardo"), detail.get("ritardo")]
+    # Prima che il treno lasci la stazione di salita, il dato più utile è il
+    # ritardo corrente del convoglio: è la migliore stima di come arriverà a
+    # Figline/Arezzo. Dopo la partenza dalla stazione usiamo invece il ritardo
+    # specifico registrato a quella fermata.
+    if departure_actual:
+        candidates = [fr.get("ritardoPartenza"), fr.get("ritardo"), detail.get("ritardo")]
+    else:
+        candidates = [detail.get("ritardo"), fr.get("ritardo"), fr.get("ritardoPartenza")]
     delay = next((float(v) for v in candidates if isinstance(v,(int,float)) or (isinstance(v,str) and re.fullmatch(r"-?\d+(\.\d+)?",v))), 0.0)
     delay = max(0, delay)
 
