@@ -1,12 +1,12 @@
 {
-  "name": "Treni Figline Arezzo v4",
+  "name": "Treni Figline Arezzo v4.6",
   "short_name": "Treni",
-  "start_url": "./treno-v4.html?build=45",
+  "start_url": "./treno-v4.html?build=46",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f4f6fa",
   "theme_color": "#f4f6fa",
-  "description": "Dashboard automatica per i treni 18739 e 18776 tra Figline Valdarno e Arezzo.",
+  "description": "Dashboard automatica per i treni 4099 e 18774 tra Figline Valdarno e Arezzo.",
   "icons": [
     {
       "src": "./icon.svg",
