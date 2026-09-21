@@ -102,18 +102,23 @@ def train_data(number, from_name, to_name):
     departure_actual = hhmm(fr.get("partenzaReale") or fr.get("effettiva"))
     arrival_actual = hhmm(to.get("arrivoReale") or to.get("effettiva"))
 
+    # Ritardo riferito alla stazione dove Marco sale.
+    # Se ViaggiaTreno non fornisce ancora il ritardo specifico della fermata,
+    # usiamo il ritardo corrente del convoglio come migliore stima disponibile.
     candidates = [fr.get("ritardoPartenza"), fr.get("ritardo"), detail.get("ritardo")]
     delay = next((float(v) for v in candidates if isinstance(v,(int,float)) or (isinstance(v,str) and re.fullmatch(r"-?\d+(\.\d+)?",v))), 0.0)
+    delay = max(0, delay)
+
     cancelled = detail.get("tipoTreno") == "ST" or fr.get("actualFermataType") == 3 or to.get("actualFermataType") == 3
-    started = bool(departure_actual or detail.get("oraUltimoRilevamento"))
+    train_started = bool(detail.get("oraUltimoRilevamento"))
+    departed_from_boarding = bool(departure_actual)
 
     if cancelled: status = "CANCELLED"
-    elif arrival_actual: status = "ARRIVED"
-    elif started and delay > 0: status = "DELAYED"
-    elif started: status = "ON_TIME"
+    elif departed_from_boarding: status = "DEPARTED"
     elif delay > 0: status = "DELAYED"
-    else: status = "NOT_STARTED"
+    else: status = "ON_TIME"
 
+    departure_expected = departure_actual or add_minutes(departure_scheduled, delay)
     expected = arrival_actual or add_minutes(arrival_scheduled, delay)
     _, today_iso = today_strings()
     return {
@@ -122,9 +127,12 @@ def train_data(number, from_name, to_name):
         "to": to.get("stazione") or to_name,
         "status": status,
         "cancelled": bool(cancelled),
-        "started": bool(started),
+        "started": bool(departed_from_boarding),
+        "trainStarted": bool(train_started),
         "delayMinutes": max(0, round(delay)),
+        "boardingDelayMinutes": max(0, round(delay)),
         "departureScheduled": departure_scheduled,
+        "departureExpected": departure_expected,
         "departureActual": departure_actual,
         "arrivalScheduled": arrival_scheduled,
         "arrivalExpected": expected,
@@ -170,9 +178,10 @@ def main():
                 current["trains"][number] = old
             else:
                 current["trains"][number] = {
-                    "number":number,"from":fr,"to":to,"status":"NOT_STARTED","cancelled":False,"started":False,
-                    "delayMinutes":0,
+                    "number":number,"from":fr,"to":to,"status":"ON_TIME","cancelled":False,"started":False,"trainStarted":False,
+                    "delayMinutes":0,"boardingDelayMinutes":0,
                     "departureScheduled":"07:00" if number=="4099" else "18:08",
+                    "departureExpected":"07:00" if number=="4099" else "18:08",
                     "arrivalScheduled":"07:36" if number=="4099" else "18:48",
                     "arrivalExpected":"07:36" if number=="4099" else "18:48",
                     "platform":None,"dataDate":today_strings()[1],"fetchError":str(e),"source":"ViaggiaTreno"
