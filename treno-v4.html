@@ -84,7 +84,7 @@
     .timing-cell:last-child{background:rgba(52,120,246,.055)}
     .timing-cell+.timing-cell{border-left:3px solid rgba(92,104,132,.28)}
     .timing-label{font-size:10px;font-weight:850;letter-spacing:.045em;color:var(--muted);text-transform:uppercase;white-space:nowrap}
-    .timing-time{font-size:27px;font-weight:850;letter-spacing:-.045em;margin-top:3px;line-height:1}
+    .timing-time{font-size:52px;font-weight:900;letter-spacing:-.06em;margin-top:4px;line-height:.95;white-space:nowrap}
     .timing-delta{font-size:11px;font-weight:850;margin-top:4px;color:var(--muted)}
     .timing-delta.late{color:#d6373e}.timing-delta.early{color:#246de4}.timing-delta.ok{color:#179650}
     .subinfo{font-size:14px;color:#4e5a75;margin-top:7px;min-height:19px}
@@ -105,7 +105,7 @@
       .app{padding-top:max(8px,env(safe-area-inset-top))}.hero{min-height:128px}.hero:after{top:44px}
       h1{font-size:37px;margin:4px 0 6px}.route-mini{margin-top:2px;font-size:13px}.refresh-meta{font-size:11px}
       .circle{width:42px;height:42px;font-size:18px}.cards{gap:9px}.train-card{min-height:0;padding:14px 15px 12px;border-radius:25px}
-      .trip-pill{padding:5px 10px;font-size:11px}.route-line{font-size:16px;margin-top:8px}.train-number{font-size:26px;margin-top:5px}
+      .trip-pill{padding:5px 10px;font-size:11px}.route-line{font-size:16px;margin-top:8px}.train-number{font-size:26px;margin-top:5px}.timing-time{font-size:48px!important}
       .train-glyph{font-size:21px}.departure{font-size:55px}.status-pill{padding:9px 11px;min-width:111px;font-size:13px}
       .subinfo{font-size:12px;margin-top:4px}.live-note{font-size:9px}.divider{margin:9px 0 6px}
       .weather-ico{font-size:22px}.weather-temp{font-size:17px}.weather-city{font-size:11px}
@@ -113,7 +113,7 @@
     }
     @media(min-width:700px){
       .app{width:min(100%,980px);padding:24px}.hero{min-height:160px;padding-inline:14px}.cards{grid-template-columns:1fr 1fr}
-      .scooter{grid-column:1/-1}.train-card{min-height:360px}.departure{font-size:76px}
+      .scooter{grid-column:1/-1}.train-card{min-height:360px}.departure{font-size:76px}.timing-time{font-size:58px}
     }
     @media(prefers-color-scheme:dark){
       :root{--bg:#080a0f;--text:#f5f7ff;--muted:#9aa5bd;--border:rgba(255,255,255,.13);--shadow:0 18px 60px rgba(0,0,0,.26)}
@@ -125,7 +125,7 @@
 <script>
 (function(){
   try{
-    const UI_BUILD="45";
+    const UI_BUILD="46";
     const u=new URL(location.href);
     if(u.searchParams.get("build")!==UI_BUILD){
       u.searchParams.set("build",UI_BUILD);
@@ -156,7 +156,7 @@
     <div class="topline">
       <div>
         <div class="route-mini">Figline Valdarno → Arezzo</div>
-        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4.5 · Figline ↔ Arezzo</div>
+        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4.6 · Figline ↔ Arezzo</div>
         <div id="refreshMeta" class="refresh-meta">Caricamento dati…</div>
       </div>
       <div class="actions"><button id="refreshBtn" class="circle" type="button" aria-label="Aggiorna">↻</button></div>
