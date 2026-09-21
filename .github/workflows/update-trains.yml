@@ -1,0 +1,44 @@
+name: Aggiorna dati treni
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Copre sia ora solare sia ora legale in Italia:
+    # mattina intorno al 4099 delle 07:00 e sera intorno al 18774 delle 18:08.
+    - cron: "*/5 4-8,15-20 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-trains
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Aggiorna ViaggiaTreno
+        run: python scripts/update_trains.py
+
+      - name: Pubblica dati aggiornati
+        shell: bash
+        run: |
+          if git diff --quiet -- data/trains.json; then
+            echo "Nessuna modifica da pubblicare."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/trains.json
+          git commit -m "Aggiorna dati live treni"
+          git push
