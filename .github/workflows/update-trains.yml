@@ -2,6 +2,11 @@ name: Aggiorna dati treni
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/update_trains.py"
+      - ".github/workflows/update-trains.yml"
   schedule:
     # Copre sia ora solare sia ora legale in Italia:
     # mattina intorno al 4099 delle 07:00 e sera intorno al 18774 delle 18:08.
