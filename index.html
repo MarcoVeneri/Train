@@ -125,7 +125,7 @@
 <script>
 (function(){
   try{
-    const UI_BUILD="48";
+    const UI_BUILD="49";
     const u=new URL(location.href);
     if(u.searchParams.get("build")!==UI_BUILD){
       u.searchParams.set("build",UI_BUILD);
@@ -156,7 +156,7 @@
     <div class="topline">
       <div>
         <div class="route-mini">Figline Valdarno → Arezzo</div>
-        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4.8 · Figline ↔ Arezzo</div>
+        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4.9 · Figline ↔ Arezzo</div>
         <div id="refreshMeta" class="refresh-meta">Caricamento dati…</div>
       </div>
       <div class="actions"><button id="refreshBtn" class="circle" type="button" aria-label="Aggiorna">↻</button></div>
@@ -212,7 +212,7 @@
 <script>
 (()=>{
 "use strict";
-const VERSION="4.8-persistent-live";
+const VERSION="4.9-live-data-branch";
 const FIGLINE={lat:43.6198,lon:11.4719}, AREZZO={lat:43.4633,lon:11.8796};
 const $=s=>document.querySelector(s);
 const ui={
@@ -344,7 +344,7 @@ async function loadWeather(){
  }catch(e){ui.scooter.textContent="Meteo momentaneamente non disponibile"}
 }
 async function loadTrains(){
- const r=await fetch(`./data/trains.json?v=${Date.now()}`,{cache:"no-store"});
+ const r=await fetch(`https://raw.githubusercontent.com/MarcoVeneri/Train/live-data/data/trains.json?v=${Date.now()}`,{cache:"no-store",mode:"cors"});
  if(!r.ok)throw new Error("Dati ferroviari non disponibili");
  const data=await r.json();
  lastTrainGeneratedAt=data?.generatedAt||null;
