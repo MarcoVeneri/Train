@@ -15,7 +15,7 @@ permissions:
   actions: write
 
 concurrency:
-  group: train-live-v2
+  group: train-live-v3
   cancel-in-progress: false
 
 jobs:
@@ -68,7 +68,24 @@ jobs:
             if ! git diff --quiet -- data/trains.json; then
               git add data/trains.json
               git commit -m "Aggiorna dati live treni"
-              git push origin HEAD:live-data
+
+              pushed=0
+              for attempt in 1 2 3; do
+                if git push origin HEAD:live-data; then
+                  pushed=1
+                  break
+                fi
+                echo "Conflitto live-data: riallineo e ritento ($attempt/3)"
+                git fetch origin live-data
+                git reset --hard origin/live-data
+                python scripts/update_trains.py || true
+                git add data/trains.json
+                git commit -m "Aggiorna dati live treni" || true
+                sleep 3
+              done
+              if [ "$pushed" -ne 1 ]; then
+                echo "Aggiornamento saltato; ritento al ciclo successivo."
+              fi
             fi
 
             if [ "$cycle" -lt 69 ]; then
