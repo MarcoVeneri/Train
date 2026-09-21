@@ -132,7 +132,7 @@
     <div class="topline">
       <div>
         <div class="route-mini">Figline Valdarno → Arezzo</div>
-        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4 · Figline ↔ Arezzo</div>
+        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4.1 · Figline ↔ Arezzo</div>
         <div id="refreshMeta" class="refresh-meta">Caricamento dati…</div>
       </div>
       <div class="actions"><button id="refreshBtn" class="circle" type="button" aria-label="Aggiorna">↻</button></div>
@@ -182,7 +182,7 @@
 <script>
 (()=>{
 "use strict";
-const VERSION="4.0-github-only";
+const VERSION="4.1-github-only";
 const FIGLINE={lat:43.6198,lon:11.4719}, AREZZO={lat:43.4633,lon:11.8796};
 const $=s=>document.querySelector(s);
 const ui={
@@ -211,21 +211,28 @@ function renderTrain(key,d){
  const dep=key==="out"?ui.outDeparture:ui.backDeparture, st=key==="out"?ui.outStatus:ui.backStatus,
  inf=key==="out"?ui.outInfo:ui.backInfo, live=key==="out"?ui.outLive:ui.backLive;
  if(d?.departureScheduled)dep.textContent=d.departureScheduled;
- let cls="neutral",txt="PROGRAMMATO";
+ let cls="neutral",txt="IN ORARIO";
+ const boardingDelay=Number(d?.boardingDelayMinutes ?? d?.delayMinutes ?? 0);
  if(d?.cancelled){txt="SOPPRESSO";cls="bad"}
- else if(d?.status==="ARRIVED" || d?.arrivalActual){txt="ARRIVATO";cls="ok"}
- else if(d?.started){
-   if(Number(d?.delayMinutes)>0){txt=`+ ${Math.round(d.delayMinutes)} MIN`;cls=Number(d.delayMinutes)>=15?"bad":"delay"}
-   else{txt="PARTITO";cls="ok"}
+ else if(d?.departureActual){
+   txt=boardingDelay>0?`PARTITO +${Math.round(boardingDelay)}`:"PARTITO";
+   cls=boardingDelay>=15?"bad":boardingDelay>0?"delay":"ok";
  }
- else if(Number(d?.delayMinutes)>0){txt=`+ ${Math.round(d.delayMinutes)} MIN`;cls=Number(d.delayMinutes)>=15?"bad":"delay"}
+ else if(boardingDelay>0){
+   txt=`+ ${Math.round(boardingDelay)} MIN`;
+   cls=boardingDelay>=15?"bad":"delay";
+ }else{
+   txt="IN ORARIO";cls="ok";
+ }
  st.textContent=txt;statusClass(st,cls);
+ const depExp=d?.departureExpected||d?.departureScheduled||"--:--";
  const arr=d?.arrivalExpected||d?.arrivalScheduled||"--:--";
  const bin=d?.platform?` · Binario ${d.platform}`:"";
- inf.textContent=`Arrivo previsto ${arr}${bin}`;
+ inf.textContent=`Partenza prevista ${depExp} · Arrivo previsto ${arr}${bin}`;
  let bits=[];
  if(d?.departureActual)bits.push(`Partenza effettiva ${d.departureActual}`);
- if(d?.lastDetection)bits.push(`Ultimo rilevamento: ${d.lastDetection}`);
+ else if(d?.trainStarted && d?.lastDetection)bits.push(`Treno in viaggio · ultimo rilevamento: ${d.lastDetection}`);
+ else if(d?.lastDetection && d.lastDetection!=="--")bits.push(`Ultimo rilevamento: ${d.lastDetection}`);
  if(d?.dataDate && d.dataDate!==todayRome())bits.push("dato non odierno");
  if(d?.fetchError)bits.push("ultimo aggiornamento live non riuscito");
  live.textContent=bits.length?bits.join(" · "):"Stato live ViaggiaTreno";
@@ -268,7 +275,7 @@ async function loadTrains(){
    ui.notice.classList.add("show");
    // Evita di far credere che "PROGRAMMATO" sia uno stato live quando il backend è fermo.
    for(const el of [ui.outStatus,ui.backStatus]){
-     if(el.textContent==="PROGRAMMATO"){el.textContent="DATI NON LIVE";statusClass(el,"delay")}
+     if(el.textContent==="IN ORARIO"){el.textContent="DATI NON LIVE";statusClass(el,"delay")}
    }
  }else{ui.notice.classList.remove("show")}
  return data;
