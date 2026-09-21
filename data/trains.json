@@ -48,11 +48,11 @@
       "arrivalExpected": "18:52",
       "arrivalActual": "18:52",
       "platform": "5",
-      "lastDetection": "S.ELLERO",
-      "sourceTimestamp": 1790010720000,
+      "lastDetection": "PONTASSIEVE",
+      "sourceTimestamp": 1790010960000,
       "dataDate": "2026-09-21",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-21T19:12:30+02:00"
+  "generatedAt": "2026-09-21T19:17:33+02:00"
 }
