@@ -8,9 +8,9 @@ on:
       - "scripts/update_trains.py"
       - ".github/workflows/update-trains.yml"
   schedule:
-    # Ogni 5 minuti dalle 06:02 alle 22:57 circa in ora legale italiana.
+    # Sempre attivo: un controllo ogni 5 minuti, 24 ore su 24.
     # GitHub Actions può ritardare di qualche minuto l'avvio del cron.
-    - cron: "2,7,12,17,22,27,32,37,42,47,52,57 4-20 * * *"
+    - cron: "*/5 * * * *"
 
 permissions:
   contents: write
@@ -53,5 +53,14 @@ jobs:
 
           # Se nel frattempo il repository è cambiato (es. aggiornamento PWA),
           # integra prima le modifiche remote invece di far fallire il push.
-          git pull --rebase origin main
-          git push origin main
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin main; then
+              exit 0
+            fi
+            echo "Push non riuscito, ritento tra 10 secondi ($attempt/3)..."
+            sleep 10
+          done
+
+          echo "Impossibile pubblicare l'aggiornamento dopo 3 tentativi."
+          exit 1
