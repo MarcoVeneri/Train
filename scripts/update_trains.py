@@ -98,9 +98,11 @@ def train_data(number, from_name, to_name):
         raise RuntimeError(f"Fermate non trovate per {number}")
 
     departure_scheduled = hhmm(fr.get("partenza_teorica") or fr.get("programmata"))
-    arrival_scheduled = hhmm(to.get("arrivo_teorico") or to.get("programmata"))
+    boarding_arrival_scheduled = hhmm(fr.get("arrivo_teorico") or fr.get("programmata")) or departure_scheduled
+    destination_arrival_scheduled = hhmm(to.get("arrivo_teorico") or to.get("programmata"))
     departure_actual = hhmm(fr.get("partenzaReale") or fr.get("effettiva"))
-    arrival_actual = hhmm(to.get("arrivoReale") or to.get("effettiva"))
+    boarding_arrival_actual = hhmm(fr.get("arrivoReale"))
+    destination_arrival_actual = hhmm(to.get("arrivoReale") or to.get("effettiva"))
 
     # Ritardo riferito alla stazione dove Marco sale.
     # Se ViaggiaTreno non fornisce ancora il ritardo specifico della fermata,
@@ -110,10 +112,18 @@ def train_data(number, from_name, to_name):
     # Figline/Arezzo. Dopo la partenza dalla stazione usiamo invece il ritardo
     # specifico registrato a quella fermata.
     if departure_actual:
-        candidates = [fr.get("ritardoPartenza"), fr.get("ritardo"), detail.get("ritardo")]
+        boarding_candidates = [fr.get("ritardoPartenza"), fr.get("ritardo"), detail.get("ritardo")]
     else:
-        candidates = [detail.get("ritardo"), fr.get("ritardo"), fr.get("ritardoPartenza")]
-    delay = next((float(v) for v in candidates if isinstance(v,(int,float)) or (isinstance(v,str) and re.fullmatch(r"-?\d+(\.\d+)?",v))), 0.0)
+        boarding_candidates = [detail.get("ritardo"), fr.get("ritardo"), fr.get("ritardoPartenza")]
+    boarding_delay = next((float(v) for v in boarding_candidates if isinstance(v,(int,float)) or (isinstance(v,str) and re.fullmatch(r"-?\d+(\.\d+)?",v))), 0.0)
+
+    # Per la destinazione, dopo la salita usiamo il ritardo corrente del convoglio:
+    # può aumentare o diminuire durante il viaggio.
+    if destination_arrival_actual:
+        destination_candidates = [to.get("ritardoArrivo"), to.get("ritardo"), detail.get("ritardo")]
+    else:
+        destination_candidates = [detail.get("ritardo"), to.get("ritardo"), to.get("ritardoArrivo")]
+    destination_delay = next((float(v) for v in destination_candidates if isinstance(v,(int,float)) or (isinstance(v,str) and re.fullmatch(r"-?\d+(\.\d+)?",v))), boarding_delay)
 
     cancelled = detail.get("tipoTreno") == "ST" or fr.get("actualFermataType") == 3 or to.get("actualFermataType") == 3
     train_started = bool(detail.get("oraUltimoRilevamento"))
@@ -121,11 +131,12 @@ def train_data(number, from_name, to_name):
 
     if cancelled: status = "CANCELLED"
     elif departed_from_boarding: status = "DEPARTED"
-    elif delay > 0: status = "DELAYED"
+    elif boarding_delay > 0: status = "DELAYED"
     else: status = "ON_TIME"
 
-    departure_expected = departure_actual or add_minutes(departure_scheduled, delay)
-    expected = arrival_actual or add_minutes(arrival_scheduled, delay)
+    departure_expected = departure_actual or add_minutes(departure_scheduled, boarding_delay)
+    boarding_arrival_expected = boarding_arrival_actual or add_minutes(boarding_arrival_scheduled, boarding_delay)
+    destination_arrival_expected = destination_arrival_actual or add_minutes(destination_arrival_scheduled, destination_delay)
     _, today_iso = today_strings()
     return {
         "number": str(number),
@@ -135,14 +146,18 @@ def train_data(number, from_name, to_name):
         "cancelled": bool(cancelled),
         "started": bool(departed_from_boarding),
         "trainStarted": bool(train_started),
-        "delayMinutes": round(delay),
-        "boardingDelayMinutes": round(delay),
+        "delayMinutes": round(boarding_delay),
+        "boardingDelayMinutes": round(boarding_delay),
+        "destinationDelayMinutes": round(destination_delay),
         "departureScheduled": departure_scheduled,
         "departureExpected": departure_expected,
         "departureActual": departure_actual,
-        "arrivalScheduled": arrival_scheduled,
-        "arrivalExpected": expected,
-        "arrivalActual": arrival_actual,
+        "boardingArrivalScheduled": boarding_arrival_scheduled,
+        "boardingArrivalExpected": boarding_arrival_expected,
+        "boardingArrivalActual": boarding_arrival_actual,
+        "arrivalScheduled": destination_arrival_scheduled,
+        "arrivalExpected": destination_arrival_expected,
+        "arrivalActual": destination_arrival_actual,
         "platform": pick_platform(fr),
         "lastDetection": detail.get("stazioneUltimoRilevamento"),
         "sourceTimestamp": detail.get("oraUltimoRilevamento"),
@@ -188,28 +203,17 @@ def main():
                     "delayMinutes":0,"boardingDelayMinutes":0,
                     "departureScheduled":"07:00" if number=="4099" else "18:08",
                     "departureExpected":"07:00" if number=="4099" else "18:08",
+                    "boardingArrivalScheduled":"07:00" if number=="4099" else "18:08",
+                    "boardingArrivalExpected":"07:00" if number=="4099" else "18:08",
+                    "destinationDelayMinutes":0,
                     "arrivalScheduled":"07:36" if number=="4099" else "18:48",
                     "arrivalExpected":"07:36" if number=="4099" else "18:48",
                     "platform":None,"dataDate":today_strings()[1],"fetchError":str(e),"source":"ViaggiaTreno"
                 }
 
     now = datetime.now(ROME)
-    unchanged = stable_payload(current) == stable_payload(previous) and previous.get("dataDate") == current.get("dataDate")
-
-    # Anche se lo stato non cambia, pubblica un heartbeat circa ogni 15 minuti.
-    # Così la PWA sa distinguere "treno programmato e appena controllato" da "dati vecchi".
-    if unchanged:
-        prev_ts = previous.get("generatedAt")
-        try:
-            prev_dt = datetime.fromisoformat(prev_ts) if prev_ts else None
-            if prev_dt and prev_dt.tzinfo is None:
-                prev_dt = prev_dt.replace(tzinfo=ROME)
-        except Exception:
-            prev_dt = None
-        if prev_dt and (now - prev_dt).total_seconds() < 15 * 60:
-            print("Nessuna variazione e heartbeat recente: file invariato.")
-            return 0
-
+    # Ogni esecuzione schedulata produce un heartbeat reale.
+    # Il workflow gira ogni 5 minuti nelle finestre di pendolarismo.
     current["generatedAt"] = now.isoformat(timespec="seconds")
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(current, ensure_ascii=False, indent=2) + "\n", "utf-8")
