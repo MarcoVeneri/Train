@@ -25,8 +25,7 @@
       "lastDetection": "ROMA TIBURTINA",
       "sourceTimestamp": 1789980390000,
       "dataDate": "2026-09-21",
-      "source": "ViaggiaTreno",
-      "fetchError": "timed out"
+      "source": "ViaggiaTreno"
     },
     "18774": {
       "number": "18774",
@@ -55,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-21T17:41:33+02:00"
+  "generatedAt": "2026-09-21T17:46:36+02:00"
 }
