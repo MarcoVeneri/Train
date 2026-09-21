@@ -73,11 +73,11 @@
     .status-pill.delay{background:linear-gradient(135deg,#ff9f43,#ff7b20);color:#fff}
     .status-pill.bad{background:linear-gradient(135deg,#ff625f,#eb3438);color:#fff}
     .status-pill.neutral{background:rgba(119,130,151,.13);color:var(--muted);box-shadow:none}
-    .punctuality{display:inline-flex;align-items:center;gap:7px;margin-top:9px;padding:7px 11px;border-radius:999px;font-size:12px;font-weight:850;letter-spacing:.02em;border:1px solid transparent}
-    .punctuality.ok{color:#13884a;background:rgba(40,200,102,.11);border-color:rgba(40,200,102,.22)}
-    .punctuality.late{color:#c92f35;background:rgba(255,77,79,.12);border-color:rgba(255,77,79,.24)}
-    .punctuality.early{color:#246de4;background:rgba(52,120,246,.11);border-color:rgba(52,120,246,.22)}
-    .punctuality.bad{color:#fff;background:linear-gradient(135deg,#ff625f,#eb3438);border-color:rgba(255,77,79,.35)}
+    .punctuality{display:flex;align-items:center;justify-content:center;width:100%;margin-top:12px;padding:11px 14px;border-radius:16px;font-size:15px;font-weight:900;letter-spacing:.015em;border:1px solid transparent;box-shadow:0 8px 22px rgba(0,0,0,.06)}
+    .punctuality.ok{color:#0d7a3d;background:linear-gradient(135deg,rgba(40,200,102,.18),rgba(40,200,102,.09));border-color:rgba(40,200,102,.32)}
+    .punctuality.late{color:#fff;background:linear-gradient(135deg,#ff625f,#e73a40);border-color:rgba(255,77,79,.45);box-shadow:0 10px 24px rgba(231,58,64,.20)}
+    .punctuality.early{color:#1e63c9;background:linear-gradient(135deg,rgba(52,120,246,.18),rgba(52,120,246,.09));border-color:rgba(52,120,246,.30)}
+    .punctuality.bad{color:#fff;background:linear-gradient(135deg,#ff3b30,#c71f2a);border-color:rgba(255,59,48,.48);box-shadow:0 10px 24px rgba(199,31,42,.22)}
     .subinfo{font-size:14px;color:#4e5a75;margin-top:7px;min-height:19px}
     .live-note{font-size:10px;color:#8791a7;margin-top:5px;min-height:14px}
     .divider{height:1px;background:var(--border);margin:13px 0 10px}
@@ -116,6 +116,16 @@
 <script>
 (function(){
   try{
+    const UI_BUILD="42";
+    const u=new URL(location.href);
+    if(u.searchParams.get("build")!==UI_BUILD){
+      u.searchParams.set("build",UI_BUILD);
+      location.replace(u.toString());
+      return;
+    }
+  }catch(e){}
+
+  try{
     if("serviceWorker" in navigator){
       navigator.serviceWorker.getRegistrations().then(function(rs){
         return Promise.all(rs.map(function(r){return r.unregister();}));
@@ -137,7 +147,7 @@
     <div class="topline">
       <div>
         <div class="route-mini">Figline Valdarno → Arezzo</div>
-        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4.2 · Figline ↔ Arezzo</div>
+        <h1 id="greeting">Buongiorno</h1><div style="font-size:9px;color:var(--muted);margin-top:4px">TRENI v4.3 · Figline ↔ Arezzo</div>
         <div id="refreshMeta" class="refresh-meta">Caricamento dati…</div>
       </div>
       <div class="actions"><button id="refreshBtn" class="circle" type="button" aria-label="Aggiorna">↻</button></div>
@@ -187,7 +197,7 @@
 <script>
 (()=>{
 "use strict";
-const VERSION="4.2-github-only";
+const VERSION="4.3-github-only";
 const FIGLINE={lat:43.6198,lon:11.4719}, AREZZO={lat:43.4633,lon:11.8796};
 const $=s=>document.querySelector(s);
 const ui={
