@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "AREZZO",
-      "sourceTimestamp": 1790055510000,
+      "lastDetection": "PM RIGUTINO FRASSINETO",
+      "sourceTimestamp": 1790055870000,
       "dataDate": "2026-09-22",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-22T07:40:11+02:00"
+  "generatedAt": "2026-09-22T07:45:14+02:00"
 }
