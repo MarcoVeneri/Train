@@ -23,7 +23,7 @@
       "arrivalActual": "07:36",
       "platform": "4",
       "lastDetection": "MONTEROTONDO-MENTANA",
-      "sourceTimestamp": 1790065440000,
+      "sourceTimestamp": 1790065650000,
       "dataDate": "2026-09-22",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-22T10:27:13+02:00"
+  "generatedAt": "2026-09-22T10:32:15+02:00"
 }
