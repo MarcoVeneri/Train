@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "MONTEROTONDO-MENTANA",
-      "sourceTimestamp": 1790065650000,
+      "lastDetection": "SETTEBAGNI",
+      "sourceTimestamp": 1790066130000,
       "dataDate": "2026-09-22",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-22T10:32:15+02:00"
+  "generatedAt": "2026-09-22T10:37:18+02:00"
 }
