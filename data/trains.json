@@ -49,10 +49,10 @@
       "arrivalActual": null,
       "platform": "1",
       "lastDetection": "PONTICINO",
-      "sourceTimestamp": 1790094090000,
+      "sourceTimestamp": 1790094150000,
       "dataDate": "2026-09-22",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-22T18:22:00+02:00"
+  "generatedAt": "2026-09-22T18:27:03+02:00"
 }
