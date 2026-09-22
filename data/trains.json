@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "2`BIVIO ORTE NORD",
-      "sourceTimestamp": 1790062050000,
+      "lastDetection": "ORTE",
+      "sourceTimestamp": 1790062350000,
       "dataDate": "2026-09-22",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-22T09:31:23+02:00"
+  "generatedAt": "2026-09-22T09:36:27+02:00"
 }
