@@ -51,8 +51,9 @@
       "lastDetection": "FIRENZE SANTA MARIA NOVELLA",
       "sourceTimestamp": 1790098560000,
       "dataDate": "2026-09-22",
-      "source": "ViaggiaTreno"
+      "source": "ViaggiaTreno",
+      "fetchError": "timed out"
     }
   },
-  "generatedAt": "2026-09-22T22:55:15+02:00"
+  "generatedAt": "2026-09-22T23:00:39+02:00"
 }
