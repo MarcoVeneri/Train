@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "ORTE",
-      "sourceTimestamp": 1790062890000,
+      "lastDetection": "CIVITA CASTELLANA-MAGLIANO",
+      "sourceTimestamp": 1790063460000,
       "dataDate": "2026-09-22",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-22T09:46:33+02:00"
+  "generatedAt": "2026-09-22T09:51:36+02:00"
 }
