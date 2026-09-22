@@ -9,21 +9,21 @@
       "cancelled": false,
       "started": false,
       "trainStarted": true,
-      "delayMinutes": 0,
-      "boardingDelayMinutes": 0,
-      "destinationDelayMinutes": 0,
+      "delayMinutes": -1,
+      "boardingDelayMinutes": -1,
+      "destinationDelayMinutes": -1,
       "departureScheduled": "07:00",
-      "departureExpected": "07:00",
+      "departureExpected": "06:59",
       "departureActual": null,
       "boardingArrivalScheduled": "06:59",
-      "boardingArrivalExpected": "06:59",
+      "boardingArrivalExpected": "06:58",
       "boardingArrivalActual": null,
       "arrivalScheduled": "07:36",
-      "arrivalExpected": "07:36",
+      "arrivalExpected": "07:35",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "SEGNALE DI CONFINE PM ROVEZZANO",
-      "sourceTimestamp": 1790052450000,
+      "lastDetection": "PC S.DONATO",
+      "sourceTimestamp": 1790052720000,
       "dataDate": "2026-09-22",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-22T06:49:39+02:00"
+  "generatedAt": "2026-09-22T06:54:42+02:00"
 }
