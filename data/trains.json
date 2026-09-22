@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "SEGNALE DI CONFINE 2^BV ORV. NORD (PARI)",
-      "sourceTimestamp": 1790060070000,
+      "lastDetection": "2`BIVIO ORVIETO SUD",
+      "sourceTimestamp": 1790060340000,
       "dataDate": "2026-09-22",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-22T08:56:00+02:00"
+  "generatedAt": "2026-09-22T09:01:03+02:00"
 }
