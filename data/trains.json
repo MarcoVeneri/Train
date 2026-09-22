@@ -5,25 +5,25 @@
       "number": "4099",
       "from": "FIGLINE VALDARNO",
       "to": "AREZZO",
-      "status": "DELAYED",
+      "status": "ON_TIME",
       "cancelled": false,
       "started": false,
       "trainStarted": true,
-      "delayMinutes": 1,
-      "boardingDelayMinutes": 1,
-      "destinationDelayMinutes": 1,
+      "delayMinutes": 0,
+      "boardingDelayMinutes": 0,
+      "destinationDelayMinutes": 0,
       "departureScheduled": "07:00",
-      "departureExpected": "07:01",
+      "departureExpected": "07:00",
       "departureActual": null,
       "boardingArrivalScheduled": "06:59",
-      "boardingArrivalExpected": "07:00",
+      "boardingArrivalExpected": "06:59",
       "boardingArrivalActual": null,
       "arrivalScheduled": "07:36",
-      "arrivalExpected": "07:37",
+      "arrivalExpected": "07:36",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "FIRENZE CAMPO MARTE",
-      "sourceTimestamp": 1790052120000,
+      "lastDetection": "SEGNALE DI CONFINE PM ROVEZZANO",
+      "sourceTimestamp": 1790052450000,
       "dataDate": "2026-09-22",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-22T06:44:35+02:00"
+  "generatedAt": "2026-09-22T06:49:39+02:00"
 }
