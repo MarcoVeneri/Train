@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "CIVITA CASTELLANA-MAGLIANO",
-      "sourceTimestamp": 1790063460000,
+      "lastDetection": "GAVIGNANO SABINO",
+      "sourceTimestamp": 1790064060000,
       "dataDate": "2026-09-22",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-22T09:56:40+02:00"
+  "generatedAt": "2026-09-22T10:01:44+02:00"
 }
