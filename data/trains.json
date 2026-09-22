@@ -48,11 +48,11 @@
       "arrivalExpected": "18:50",
       "arrivalActual": null,
       "platform": "1",
-      "lastDetection": "2°BIVIO VALDARNO SUD",
-      "sourceTimestamp": 1790094930000,
+      "lastDetection": "MONTEVARCHI TERRANUOVA",
+      "sourceTimestamp": 1790095170000,
       "dataDate": "2026-09-22",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-22T18:37:09+02:00"
+  "generatedAt": "2026-09-22T18:42:13+02:00"
 }
