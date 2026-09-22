@@ -23,7 +23,7 @@
       "arrivalActual": "07:36",
       "platform": "4",
       "lastDetection": "CASTIGLION FIORENTINO",
-      "sourceTimestamp": 1790056050000,
+      "sourceTimestamp": 1790056380000,
       "dataDate": "2026-09-22",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-22T07:50:17+02:00"
+  "generatedAt": "2026-09-22T07:55:21+02:00"
 }
