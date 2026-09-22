@@ -37,7 +37,7 @@
       "trainStarted": true,
       "delayMinutes": 1,
       "boardingDelayMinutes": 1,
-      "destinationDelayMinutes": 1,
+      "destinationDelayMinutes": 2,
       "departureScheduled": "18:08",
       "departureExpected": "18:09",
       "departureActual": "18:09",
@@ -45,14 +45,14 @@
       "boardingArrivalExpected": "17:41",
       "boardingArrivalActual": "17:41",
       "arrivalScheduled": "18:48",
-      "arrivalExpected": "18:49",
+      "arrivalExpected": "18:50",
       "arrivalActual": null,
       "platform": "1",
-      "lastDetection": "BUCINE",
-      "sourceTimestamp": 1790094630000,
+      "lastDetection": "2°BIVIO VALDARNO SUD",
+      "sourceTimestamp": 1790094930000,
       "dataDate": "2026-09-22",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-22T18:32:06+02:00"
+  "generatedAt": "2026-09-22T18:37:09+02:00"
 }
