@@ -11,7 +11,7 @@
       "trainStarted": true,
       "delayMinutes": 1,
       "boardingDelayMinutes": 1,
-      "destinationDelayMinutes": 1,
+      "destinationDelayMinutes": 2,
       "departureScheduled": "07:00",
       "departureExpected": "07:00",
       "departureActual": "07:00",
@@ -19,11 +19,11 @@
       "boardingArrivalExpected": "06:57",
       "boardingArrivalActual": "06:57",
       "arrivalScheduled": "07:36",
-      "arrivalExpected": "07:37",
+      "arrivalExpected": "07:38",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "FIGLINE VALDARNO",
-      "sourceTimestamp": 1790053230000,
+      "lastDetection": "S.GIOVANNI VALDARNO",
+      "sourceTimestamp": 1790053680000,
       "dataDate": "2026-09-22",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-22T07:04:48+02:00"
+  "generatedAt": "2026-09-22T07:09:51+02:00"
 }
