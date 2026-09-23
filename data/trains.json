@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "CAMUCIA CORTONA",
-      "sourceTimestamp": 1790143320000,
+      "lastDetection": "TERONTOLA CORTONA",
+      "sourceTimestamp": 1790143590000,
       "dataDate": "2026-09-23",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-23T08:06:10+02:00"
+  "generatedAt": "2026-09-23T08:11:12+02:00"
 }
