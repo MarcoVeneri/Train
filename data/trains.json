@@ -37,7 +37,7 @@
       "trainStarted": true,
       "delayMinutes": 2,
       "boardingDelayMinutes": 2,
-      "destinationDelayMinutes": 3,
+      "destinationDelayMinutes": 1,
       "departureScheduled": "18:08",
       "departureExpected": "18:10",
       "departureActual": "18:10",
@@ -45,14 +45,14 @@
       "boardingArrivalExpected": "18:10",
       "boardingArrivalActual": null,
       "arrivalScheduled": "18:48",
-      "arrivalExpected": "18:51",
+      "arrivalExpected": "18:49",
       "arrivalActual": null,
       "platform": "5",
-      "lastDetection": "LATERINA",
-      "sourceTimestamp": 1790180820000,
+      "lastDetection": "BUCINE",
+      "sourceTimestamp": 1790181060000,
       "dataDate": "2026-09-23",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-23T18:28:04+02:00"
+  "generatedAt": "2026-09-23T18:33:07+02:00"
 }
