@@ -48,11 +48,11 @@
       "arrivalExpected": "18:49",
       "arrivalActual": "18:49",
       "platform": "5",
-      "lastDetection": "COMPIOBBI",
-      "sourceTimestamp": 1790270250000,
+      "lastDetection": "PM ROVEZZANO",
+      "sourceTimestamp": 1790270550000,
       "dataDate": "2026-09-24",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-24T19:19:30+02:00"
+  "generatedAt": "2026-09-24T19:24:33+02:00"
 }
