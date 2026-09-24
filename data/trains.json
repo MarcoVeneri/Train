@@ -22,8 +22,8 @@
       "arrivalExpected": "07:39",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "BUCINE",
-      "sourceTimestamp": 1790227260000,
+      "lastDetection": "LATERINA",
+      "sourceTimestamp": 1790227410000,
       "dataDate": "2026-09-24",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-24T07:21:23+02:00"
+  "generatedAt": "2026-09-24T07:26:26+02:00"
 }
