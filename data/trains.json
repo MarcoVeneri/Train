@@ -11,7 +11,7 @@
       "trainStarted": true,
       "delayMinutes": 1,
       "boardingDelayMinutes": 1,
-      "destinationDelayMinutes": 2,
+      "destinationDelayMinutes": 3,
       "departureScheduled": "07:00",
       "departureExpected": "07:00",
       "departureActual": "07:00",
@@ -19,11 +19,11 @@
       "boardingArrivalExpected": "06:56",
       "boardingArrivalActual": "06:56",
       "arrivalScheduled": "07:36",
-      "arrivalExpected": "07:38",
+      "arrivalExpected": "07:39",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "MONTEVARCHI TERRANUOVA",
-      "sourceTimestamp": 1790226810000,
+      "lastDetection": "BUCINE",
+      "sourceTimestamp": 1790227260000,
       "dataDate": "2026-09-24",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-24T07:16:21+02:00"
+  "generatedAt": "2026-09-24T07:21:23+02:00"
 }
