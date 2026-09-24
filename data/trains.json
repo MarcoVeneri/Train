@@ -22,8 +22,8 @@
       "arrivalExpected": "07:37",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "FIRENZE STATUTO INTERCONNESSIONE",
-      "sourceTimestamp": 1790224680000,
+      "lastDetection": "FIRENZE ROVEZZANO",
+      "sourceTimestamp": 1790225130000,
       "dataDate": "2026-09-24",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-24T06:41:01+02:00"
+  "generatedAt": "2026-09-24T06:46:04+02:00"
 }
