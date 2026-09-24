@@ -22,8 +22,8 @@
       "arrivalExpected": "07:35",
       "arrivalActual": "07:35",
       "platform": "4",
-      "lastDetection": "FARA SABINA-MONTELIBRETTI",
-      "sourceTimestamp": 1790237340000,
+      "lastDetection": "PIANA BELLA DI MONTELIBRETTI",
+      "sourceTimestamp": 1790237760000,
       "dataDate": "2026-09-24",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-24T10:13:20+02:00"
+  "generatedAt": "2026-09-24T10:18:23+02:00"
 }
