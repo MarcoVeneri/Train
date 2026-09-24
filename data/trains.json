@@ -22,8 +22,8 @@
       "arrivalExpected": "07:35",
       "arrivalActual": "07:35",
       "platform": "4",
-      "lastDetection": "POGGIO MIRTETO",
-      "sourceTimestamp": 1790236830000,
+      "lastDetection": "FARA SABINA-MONTELIBRETTI",
+      "sourceTimestamp": 1790237250000,
       "dataDate": "2026-09-24",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-24T10:03:14+02:00"
+  "generatedAt": "2026-09-24T10:08:17+02:00"
 }
