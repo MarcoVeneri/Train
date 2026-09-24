@@ -22,8 +22,8 @@
       "arrivalExpected": "07:35",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "SEGNALE DI CONFINE PM ROVEZZANO",
-      "sourceTimestamp": 1790225220000,
+      "lastDetection": "SEGNALE DI CONFINE FIGLINE (DISPARI)",
+      "sourceTimestamp": 1790225730000,
       "dataDate": "2026-09-24",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-24T06:51:07+02:00"
+  "generatedAt": "2026-09-24T06:56:10+02:00"
 }
