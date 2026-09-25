@@ -47,12 +47,12 @@
       "arrivalScheduled": "18:48",
       "arrivalExpected": "18:48",
       "arrivalActual": null,
-      "platform": "5",
+      "platform": "2",
       "lastDetection": "--",
       "sourceTimestamp": null,
       "dataDate": "2026-09-25",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-25T17:59:36+02:00"
+  "generatedAt": "2026-09-25T18:04:39+02:00"
 }
