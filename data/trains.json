@@ -23,7 +23,7 @@
       "arrivalActual": "07:34",
       "platform": "4",
       "lastDetection": "CAMUCIA CORTONA",
-      "sourceTimestamp": 1790315850000,
+      "sourceTimestamp": 1790316150000,
       "dataDate": "2026-09-25",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-25T07:58:11+02:00"
+  "generatedAt": "2026-09-25T08:03:13+02:00"
 }
