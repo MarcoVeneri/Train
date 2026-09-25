@@ -22,8 +22,8 @@
       "arrivalExpected": "07:34",
       "arrivalActual": "07:34",
       "platform": "4",
-      "lastDetection": "POSTO MOVIMENTO SALARIO RM SMISTAMENTO",
-      "sourceTimestamp": 1790325750000,
+      "lastDetection": "ROMA NOMENTANA LL",
+      "sourceTimestamp": 1790325960000,
       "dataDate": "2026-09-25",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-25T10:44:43+02:00"
+  "generatedAt": "2026-09-25T10:49:46+02:00"
 }
