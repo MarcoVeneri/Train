@@ -48,11 +48,11 @@
       "arrivalExpected": "18:55",
       "arrivalActual": "18:55",
       "platform": "2",
-      "lastDetection": "FIGLINE VALDARNO",
-      "sourceTimestamp": 1790355300000,
+      "lastDetection": "SEGNALE DI CONFINE FIGLINE (PARI)",
+      "sourceTimestamp": 1790355510000,
       "dataDate": "2026-09-25",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-25T18:55:29+02:00"
+  "generatedAt": "2026-09-25T19:00:32+02:00"
 }
