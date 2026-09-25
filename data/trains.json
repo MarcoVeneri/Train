@@ -23,7 +23,7 @@
       "arrivalActual": "07:34",
       "platform": "4",
       "lastDetection": "ROMA NOMENTANA LL",
-      "sourceTimestamp": 1790325960000,
+      "sourceTimestamp": 1790326440000,
       "dataDate": "2026-09-25",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-25T10:49:46+02:00"
+  "generatedAt": "2026-09-25T10:54:49+02:00"
 }
