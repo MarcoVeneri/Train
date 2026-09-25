@@ -46,13 +46,13 @@
       "boardingArrivalActual": null,
       "arrivalScheduled": "18:48",
       "arrivalExpected": "18:55",
-      "arrivalActual": null,
+      "arrivalActual": "18:55",
       "platform": "2",
-      "lastDetection": "S.GIOVANNI VALDARNO",
-      "sourceTimestamp": 1790354910000,
+      "lastDetection": "FIGLINE VALDARNO",
+      "sourceTimestamp": 1790355300000,
       "dataDate": "2026-09-25",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-25T18:50:25+02:00"
+  "generatedAt": "2026-09-25T18:55:29+02:00"
 }
