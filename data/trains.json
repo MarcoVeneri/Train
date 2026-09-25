@@ -37,7 +37,7 @@
       "trainStarted": true,
       "delayMinutes": 9,
       "boardingDelayMinutes": 9,
-      "destinationDelayMinutes": 8,
+      "destinationDelayMinutes": 7,
       "departureScheduled": "18:08",
       "departureExpected": "18:16",
       "departureActual": "18:16",
@@ -45,14 +45,14 @@
       "boardingArrivalExpected": "18:17",
       "boardingArrivalActual": null,
       "arrivalScheduled": "18:48",
-      "arrivalExpected": "18:56",
+      "arrivalExpected": "18:55",
       "arrivalActual": null,
       "platform": "2",
-      "lastDetection": "MONTEVARCHI TERRANUOVA",
-      "sourceTimestamp": 1790354670000,
+      "lastDetection": "S.GIOVANNI VALDARNO",
+      "sourceTimestamp": 1790354910000,
       "dataDate": "2026-09-25",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-25T18:45:22+02:00"
+  "generatedAt": "2026-09-25T18:50:25+02:00"
 }
