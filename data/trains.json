@@ -22,8 +22,8 @@
       "arrivalExpected": "07:34",
       "arrivalActual": "07:34",
       "platform": "4",
-      "lastDetection": "SEGNALE DI CONFINE 2BV AREZZO SUD (DISP)",
-      "sourceTimestamp": 1790314950000,
+      "lastDetection": "CASTIGLION FIORENTINO",
+      "sourceTimestamp": 1790315220000,
       "dataDate": "2026-09-25",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-25T07:43:02+02:00"
+  "generatedAt": "2026-09-25T07:48:05+02:00"
 }
