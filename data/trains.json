@@ -5,25 +5,25 @@
       "number": "4099",
       "from": "FIGLINE VALDARNO",
       "to": "AREZZO",
-      "status": "DELAYED",
+      "status": "DEPARTED",
       "cancelled": false,
-      "started": false,
+      "started": true,
       "trainStarted": true,
       "delayMinutes": 3,
       "boardingDelayMinutes": 3,
       "destinationDelayMinutes": 3,
       "departureScheduled": "07:00",
-      "departureExpected": "07:03",
-      "departureActual": null,
+      "departureExpected": "07:02",
+      "departureActual": "07:02",
       "boardingArrivalScheduled": "06:59",
-      "boardingArrivalExpected": "07:02",
-      "boardingArrivalActual": null,
+      "boardingArrivalExpected": "07:00",
+      "boardingArrivalActual": "07:00",
       "arrivalScheduled": "07:36",
       "arrivalExpected": "07:39",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "SEGNALE DI CONFINE FIGLINE (DISPARI)",
-      "sourceTimestamp": 1790398710000,
+      "lastDetection": "FIGLINE VALDARNO",
+      "sourceTimestamp": 1790398950000,
       "dataDate": "2026-09-26",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-26T06:59:14+02:00"
+  "generatedAt": "2026-09-26T07:04:17+02:00"
 }
