@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "AREZZO",
-      "sourceTimestamp": 1790400960000,
+      "lastDetection": "SEGNALE DI CONFINE 2BV AREZZO SUD (DISP)",
+      "sourceTimestamp": 1790401440000,
       "dataDate": "2026-09-26",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-26T07:39:37+02:00"
+  "generatedAt": "2026-09-26T07:44:40+02:00"
 }
