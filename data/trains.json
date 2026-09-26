@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "CITTA` DELLA PIEVE",
-      "sourceTimestamp": 1790404500000,
+      "lastDetection": "FABRO-FICULLE",
+      "sourceTimestamp": 1790404770000,
       "dataDate": "2026-09-26",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-26T08:35:09+02:00"
+  "generatedAt": "2026-09-26T08:40:12+02:00"
 }
