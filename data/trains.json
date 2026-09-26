@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "CASTIGLION DEL LAGO",
-      "sourceTimestamp": 1790403240000,
+      "lastDetection": "PM PANICALE SANFATUCCHIO",
+      "sourceTimestamp": 1790403570000,
       "dataDate": "2026-09-26",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-26T08:14:57+02:00"
+  "generatedAt": "2026-09-26T08:20:00+02:00"
 }
