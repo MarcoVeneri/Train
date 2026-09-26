@@ -23,7 +23,7 @@
       "arrivalActual": "07:36",
       "platform": "4",
       "lastDetection": "PM PANICALE SANFATUCCHIO",
-      "sourceTimestamp": 1790403570000,
+      "sourceTimestamp": 1790403600000,
       "dataDate": "2026-09-26",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-26T08:20:00+02:00"
+  "generatedAt": "2026-09-26T08:25:03+02:00"
 }
