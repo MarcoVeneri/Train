@@ -22,8 +22,8 @@
       "arrivalExpected": "07:39",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "SEGNALE DI CONFINE 2 BV VALDA. SUD DISP",
-      "sourceTimestamp": 1790399850000,
+      "lastDetection": "LATERINA",
+      "sourceTimestamp": 1790400240000,
       "dataDate": "2026-09-26",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-26T07:19:26+02:00"
+  "generatedAt": "2026-09-26T07:24:29+02:00"
 }
