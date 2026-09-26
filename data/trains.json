@@ -23,7 +23,7 @@
       "arrivalActual": "07:36",
       "platform": "4",
       "lastDetection": "FABRO-FICULLE",
-      "sourceTimestamp": 1790404770000,
+      "sourceTimestamp": 1790404920000,
       "dataDate": "2026-09-26",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-26T08:40:12+02:00"
+  "generatedAt": "2026-09-26T08:45:15+02:00"
 }
