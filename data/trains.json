@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "ALLERONA-CASTEL VISCARDO",
-      "sourceTimestamp": 1790405310000,
+      "lastDetection": "SEGNALE DI CONFINE 2^BV ORV. NORD (PARI)",
+      "sourceTimestamp": 1790405640000,
       "dataDate": "2026-09-26",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-26T08:50:17+02:00"
+  "generatedAt": "2026-09-26T08:55:20+02:00"
 }
