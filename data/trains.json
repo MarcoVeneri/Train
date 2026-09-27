@@ -48,11 +48,11 @@
       "arrivalExpected": "18:48",
       "arrivalActual": "18:48",
       "platform": "5",
-      "lastDetection": "SIECI",
-      "sourceTimestamp": 1790529750000,
+      "lastDetection": "COMPIOBBI",
+      "sourceTimestamp": 1790530050000,
       "dataDate": "2026-09-27",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-27T19:23:50+02:00"
+  "generatedAt": "2026-09-27T19:28:52+02:00"
 }
