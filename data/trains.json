@@ -22,8 +22,8 @@
       "arrivalExpected": "07:38",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "FIRENZE CAMPO MARTE",
-      "sourceTimestamp": 1790570580000,
+      "lastDetection": "SEGNALE DI CONFINE PM ROVEZZANO",
+      "sourceTimestamp": 1790570970000,
       "dataDate": "2026-09-28",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-28T06:46:14+02:00"
+  "generatedAt": "2026-09-28T06:51:18+02:00"
 }
