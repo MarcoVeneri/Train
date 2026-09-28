@@ -48,11 +48,11 @@
       "arrivalExpected": "18:50",
       "arrivalActual": "18:50",
       "platform": "6",
-      "lastDetection": "DEV. ESTR. LL PM ROVEZZANO",
-      "sourceTimestamp": 1790616330000,
+      "lastDetection": "FIRENZE CAMPO MARTE",
+      "sourceTimestamp": 1790616600000,
       "dataDate": "2026-09-28",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-28T19:26:12+02:00"
+  "generatedAt": "2026-09-28T19:31:15+02:00"
 }
