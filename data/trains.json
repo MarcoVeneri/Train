@@ -11,7 +11,7 @@
       "trainStarted": true,
       "delayMinutes": 2,
       "boardingDelayMinutes": 2,
-      "destinationDelayMinutes": 3,
+      "destinationDelayMinutes": 4,
       "departureScheduled": "07:00",
       "departureExpected": "07:02",
       "departureActual": "07:02",
@@ -19,11 +19,11 @@
       "boardingArrivalExpected": "06:58",
       "boardingArrivalActual": "06:58",
       "arrivalScheduled": "07:36",
-      "arrivalExpected": "07:39",
+      "arrivalExpected": "07:40",
       "arrivalActual": null,
       "platform": "3",
-      "lastDetection": "SEGNALE DI CONFINE 2 BV VALDA. SUD DISP",
-      "sourceTimestamp": 1790572650000,
+      "lastDetection": "LATERINA",
+      "sourceTimestamp": 1790573070000,
       "dataDate": "2026-09-28",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-28T07:21:38+02:00"
+  "generatedAt": "2026-09-28T07:26:41+02:00"
 }
