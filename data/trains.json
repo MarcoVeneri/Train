@@ -45,14 +45,14 @@
       "boardingArrivalExpected": "18:11",
       "boardingArrivalActual": null,
       "arrivalScheduled": "18:48",
-      "arrivalExpected": "18:51",
-      "arrivalActual": null,
+      "arrivalExpected": "18:50",
+      "arrivalActual": "18:50",
       "platform": "6",
-      "lastDetection": "S.GIOVANNI VALDARNO",
-      "sourceTimestamp": 1790613960000,
+      "lastDetection": "INCISA",
+      "sourceTimestamp": 1790614500000,
       "dataDate": "2026-09-28",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-28T18:50:48+02:00"
+  "generatedAt": "2026-09-28T18:55:51+02:00"
 }
