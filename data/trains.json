@@ -9,21 +9,21 @@
       "cancelled": false,
       "started": true,
       "trainStarted": true,
-      "delayMinutes": 0,
-      "boardingDelayMinutes": 0,
-      "destinationDelayMinutes": -1,
+      "delayMinutes": 2,
+      "boardingDelayMinutes": 2,
+      "destinationDelayMinutes": 2,
       "departureScheduled": "07:00",
-      "departureExpected": "06:58",
-      "departureActual": "06:58",
+      "departureExpected": "07:02",
+      "departureActual": "07:02",
       "boardingArrivalScheduled": "06:59",
       "boardingArrivalExpected": "06:58",
       "boardingArrivalActual": "06:58",
       "arrivalScheduled": "07:36",
-      "arrivalExpected": "07:35",
+      "arrivalExpected": "07:38",
       "arrivalActual": null,
-      "platform": "4",
+      "platform": "3",
       "lastDetection": "FIGLINE VALDARNO",
-      "sourceTimestamp": 1790571510000,
+      "sourceTimestamp": 1790571720000,
       "dataDate": "2026-09-28",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-28T07:01:24+02:00"
+  "generatedAt": "2026-09-28T07:06:28+02:00"
 }
