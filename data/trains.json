@@ -11,7 +11,7 @@
       "trainStarted": true,
       "delayMinutes": 2,
       "boardingDelayMinutes": 2,
-      "destinationDelayMinutes": 2,
+      "destinationDelayMinutes": 1,
       "departureScheduled": "07:00",
       "departureExpected": "07:02",
       "departureActual": "07:02",
@@ -19,11 +19,11 @@
       "boardingArrivalExpected": "06:58",
       "boardingArrivalActual": "06:58",
       "arrivalScheduled": "07:36",
-      "arrivalExpected": "07:38",
-      "arrivalActual": null,
+      "arrivalExpected": "07:37",
+      "arrivalActual": "07:37",
       "platform": "3",
-      "lastDetection": "SEGNALE DI CONFINE 2 BV AR. NORD (PARI)",
-      "sourceTimestamp": 1790573640000,
+      "lastDetection": "AREZZO",
+      "sourceTimestamp": 1790574000000,
       "dataDate": "2026-09-28",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-28T07:36:48+02:00"
+  "generatedAt": "2026-09-28T07:41:59+02:00"
 }
