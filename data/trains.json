@@ -22,8 +22,8 @@
       "arrivalExpected": "07:38",
       "arrivalActual": null,
       "platform": "3",
-      "lastDetection": "FIGLINE VALDARNO",
-      "sourceTimestamp": 1790571720000,
+      "lastDetection": "S.GIOVANNI VALDARNO",
+      "sourceTimestamp": 1790572080000,
       "dataDate": "2026-09-28",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-28T07:06:28+02:00"
+  "generatedAt": "2026-09-28T07:11:31+02:00"
 }
