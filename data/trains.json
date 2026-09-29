@@ -11,7 +11,7 @@
       "trainStarted": true,
       "delayMinutes": 9,
       "boardingDelayMinutes": 9,
-      "destinationDelayMinutes": 8,
+      "destinationDelayMinutes": 7,
       "departureScheduled": "07:00",
       "departureExpected": "07:08",
       "departureActual": "07:08",
@@ -19,11 +19,11 @@
       "boardingArrivalExpected": "07:07",
       "boardingArrivalActual": "07:07",
       "arrivalScheduled": "07:36",
-      "arrivalExpected": "07:44",
-      "arrivalActual": null,
+      "arrivalExpected": "07:42",
+      "arrivalActual": "07:42",
       "platform": "4",
-      "lastDetection": "PONTICINO",
-      "sourceTimestamp": 1790659950000,
+      "lastDetection": "AREZZO",
+      "sourceTimestamp": 1790660550000,
       "dataDate": "2026-09-29",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-29T07:39:44+02:00"
+  "generatedAt": "2026-09-29T07:44:47+02:00"
 }
