@@ -22,8 +22,8 @@
       "arrivalExpected": "07:42",
       "arrivalActual": "07:42",
       "platform": "4",
-      "lastDetection": "CASTIGLION FIORENTINO",
-      "sourceTimestamp": 1790661390000,
+      "lastDetection": "CAMUCIA CORTONA",
+      "sourceTimestamp": 1790661870000,
       "dataDate": "2026-09-29",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-29T07:59:56+02:00"
+  "generatedAt": "2026-09-29T08:04:59+02:00"
 }
