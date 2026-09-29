@@ -9,21 +9,21 @@
       "cancelled": false,
       "started": false,
       "trainStarted": true,
-      "delayMinutes": 3,
-      "boardingDelayMinutes": 3,
-      "destinationDelayMinutes": 3,
+      "delayMinutes": 9,
+      "boardingDelayMinutes": 9,
+      "destinationDelayMinutes": 9,
       "departureScheduled": "07:00",
-      "departureExpected": "07:03",
+      "departureExpected": "07:09",
       "departureActual": null,
       "boardingArrivalScheduled": "06:59",
-      "boardingArrivalExpected": "07:02",
+      "boardingArrivalExpected": "07:08",
       "boardingArrivalActual": null,
       "arrivalScheduled": "07:36",
-      "arrivalExpected": "07:39",
+      "arrivalExpected": "07:45",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "FIRENZE CAMPO MARTE",
-      "sourceTimestamp": 1790657010000,
+      "lastDetection": "FIRENZE ROVEZZANO",
+      "sourceTimestamp": 1790657610000,
       "dataDate": "2026-09-29",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-29T06:49:06+02:00"
+  "generatedAt": "2026-09-29T06:54:09+02:00"
 }
