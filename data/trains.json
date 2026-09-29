@@ -22,8 +22,8 @@
       "arrivalExpected": "07:42",
       "arrivalActual": "07:42",
       "platform": "4",
-      "lastDetection": "POGGIO MIRTETO",
-      "sourceTimestamp": 1790670000000,
+      "lastDetection": "PIANA BELLA DI MONTELIBRETTI",
+      "sourceTimestamp": 1790670690000,
       "dataDate": "2026-09-29",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-29T10:26:41+02:00"
+  "generatedAt": "2026-09-29T10:31:44+02:00"
 }
