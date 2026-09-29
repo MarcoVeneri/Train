@@ -22,8 +22,8 @@
       "arrivalExpected": "07:45",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "SEGNALE DI CONFINE PM ROVEZZANO",
-      "sourceTimestamp": 1790657760000,
+      "lastDetection": "1°BIVIO VALDARNO NORD",
+      "sourceTimestamp": 1790658210000,
       "dataDate": "2026-09-29",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-29T06:59:12+02:00"
+  "generatedAt": "2026-09-29T07:04:15+02:00"
 }
