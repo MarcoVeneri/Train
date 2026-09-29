@@ -48,11 +48,11 @@
       "arrivalExpected": "18:52",
       "arrivalActual": null,
       "platform": "1",
-      "lastDetection": "SEGNALE DI CONFINE 2 BV AR. NORD (PARI)",
-      "sourceTimestamp": 1790698470000,
+      "lastDetection": "PONTICINO",
+      "sourceTimestamp": 1790698890000,
       "dataDate": "2026-09-29",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-29T18:17:35+02:00"
+  "generatedAt": "2026-09-29T18:22:38+02:00"
 }
