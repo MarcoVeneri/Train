@@ -22,8 +22,8 @@
       "arrivalExpected": "07:42",
       "arrivalActual": "07:42",
       "platform": "4",
-      "lastDetection": "MONTEROTONDO-MENTANA",
-      "sourceTimestamp": 1790671350000,
+      "lastDetection": "POSTO MOVIMENTO NORD RM SMISTAMENTO",
+      "sourceTimestamp": 1790671920000,
       "dataDate": "2026-09-29",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-29T10:46:53+02:00"
+  "generatedAt": "2026-09-29T10:51:55+02:00"
 }
