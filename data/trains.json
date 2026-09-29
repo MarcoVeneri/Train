@@ -48,11 +48,11 @@
       "arrivalExpected": "18:52",
       "arrivalActual": "18:52",
       "platform": "1",
-      "lastDetection": "FIGLINE VALDARNO",
-      "sourceTimestamp": 1790700750000,
+      "lastDetection": "INCISA",
+      "sourceTimestamp": 1790701020000,
       "dataDate": "2026-09-29",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-29T18:52:57+02:00"
+  "generatedAt": "2026-09-29T18:58:00+02:00"
 }
