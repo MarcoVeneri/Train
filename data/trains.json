@@ -22,8 +22,8 @@
       "arrivalExpected": "07:42",
       "arrivalActual": "07:42",
       "platform": "4",
-      "lastDetection": "ORTE",
-      "sourceTimestamp": 1790668740000,
+      "lastDetection": "GALLESE IN TEVERINA",
+      "sourceTimestamp": 1790669070000,
       "dataDate": "2026-09-29",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-29T10:01:27+02:00"
+  "generatedAt": "2026-09-29T10:06:30+02:00"
 }
