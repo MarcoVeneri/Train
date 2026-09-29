@@ -22,8 +22,8 @@
       "arrivalExpected": "07:42",
       "arrivalActual": "07:42",
       "platform": "4",
-      "lastDetection": "P.M.OLMO",
-      "sourceTimestamp": 1790660940000,
+      "lastDetection": "CASTIGLION FIORENTINO",
+      "sourceTimestamp": 1790661270000,
       "dataDate": "2026-09-29",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-29T07:49:50+02:00"
+  "generatedAt": "2026-09-29T07:54:53+02:00"
 }
