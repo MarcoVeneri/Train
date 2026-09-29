@@ -22,8 +22,8 @@
       "arrivalExpected": "07:42",
       "arrivalActual": "07:42",
       "platform": "4",
-      "lastDetection": "CIVITA CASTELLANA-MAGLIANO",
-      "sourceTimestamp": 1790669220000,
+      "lastDetection": "STIMIGLIANO",
+      "sourceTimestamp": 1790669700000,
       "dataDate": "2026-09-29",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-29T10:11:32+02:00"
+  "generatedAt": "2026-09-29T10:16:35+02:00"
 }
