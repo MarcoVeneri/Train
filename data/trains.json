@@ -8,7 +8,7 @@
       "status": "ON_TIME",
       "cancelled": false,
       "started": false,
-      "trainStarted": false,
+      "trainStarted": true,
       "delayMinutes": 0,
       "boardingDelayMinutes": 0,
       "destinationDelayMinutes": 0,
@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "--",
-      "sourceTimestamp": null,
+      "lastDetection": "DEV. ESTR. FIRENZE STATUTO",
+      "sourceTimestamp": 1790743110000,
       "dataDate": "2026-09-30",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-30T06:36:41+02:00"
+  "generatedAt": "2026-09-30T06:41:45+02:00"
 }
