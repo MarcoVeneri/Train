@@ -22,8 +22,8 @@
       "arrivalExpected": "07:35",
       "arrivalActual": "07:35",
       "platform": "4",
-      "lastDetection": "ATTIGLIANO-BOMARZO",
-      "sourceTimestamp": 1790752950000,
+      "lastDetection": "2`BIVIO ORTE NORD",
+      "sourceTimestamp": 1790753250000,
       "dataDate": "2026-09-30",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-30T09:23:53+02:00"
+  "generatedAt": "2026-09-30T09:28:56+02:00"
 }
