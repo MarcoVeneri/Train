@@ -48,11 +48,11 @@
       "arrivalExpected": "18:48",
       "arrivalActual": "18:48",
       "platform": "5",
-      "lastDetection": "PM ROVEZZANO",
-      "sourceTimestamp": 1790789010000,
+      "lastDetection": "FIRENZE ROVEZZANO",
+      "sourceTimestamp": 1790789280000,
       "dataDate": "2026-09-30",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-30T19:25:31+02:00"
+  "generatedAt": "2026-09-30T19:30:33+02:00"
 }
