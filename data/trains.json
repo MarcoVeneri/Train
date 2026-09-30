@@ -22,8 +22,8 @@
       "arrivalExpected": "07:35",
       "arrivalActual": "07:35",
       "platform": "4",
-      "lastDetection": "COLLEVECCHIO-POGGIO SOMMAVILLA",
-      "sourceTimestamp": 1790754960000,
+      "lastDetection": "POGGIO MIRTETO",
+      "sourceTimestamp": 1790755440000,
       "dataDate": "2026-09-30",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-30T09:59:15+02:00"
+  "generatedAt": "2026-09-30T10:04:17+02:00"
 }
