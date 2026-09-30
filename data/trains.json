@@ -51,9 +51,8 @@
       "lastDetection": "--",
       "sourceTimestamp": null,
       "dataDate": "2026-09-30",
-      "source": "ViaggiaTreno",
-      "fetchError": "timed out"
+      "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-30T11:40:34+02:00"
+  "generatedAt": "2026-09-30T11:45:37+02:00"
 }
