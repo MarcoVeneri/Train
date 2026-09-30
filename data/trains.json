@@ -11,7 +11,7 @@
       "trainStarted": true,
       "delayMinutes": 1,
       "boardingDelayMinutes": 1,
-      "destinationDelayMinutes": 0,
+      "destinationDelayMinutes": -2,
       "departureScheduled": "07:00",
       "departureExpected": "07:00",
       "departureActual": "07:00",
@@ -19,11 +19,11 @@
       "boardingArrivalExpected": "06:57",
       "boardingArrivalActual": "06:57",
       "arrivalScheduled": "07:36",
-      "arrivalExpected": "07:36",
+      "arrivalExpected": "07:34",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "PONTICINO",
-      "sourceTimestamp": 1790745900000,
+      "lastDetection": "SEGNALE DI CONFINE 2 BV AR. NORD (PARI)",
+      "sourceTimestamp": 1790746260000,
       "dataDate": "2026-09-30",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-30T07:27:16+02:00"
+  "generatedAt": "2026-09-30T07:32:20+02:00"
 }
