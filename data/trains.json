@@ -22,8 +22,8 @@
       "arrivalExpected": "07:35",
       "arrivalActual": "07:35",
       "platform": "4",
-      "lastDetection": "SETTEBAGNI",
-      "sourceTimestamp": 1790756940000,
+      "lastDetection": "FIDENE",
+      "sourceTimestamp": 1790757240000,
       "dataDate": "2026-09-30",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-30T10:29:32+02:00"
+  "generatedAt": "2026-09-30T10:34:36+02:00"
 }
