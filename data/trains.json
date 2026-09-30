@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "DEV. ESTR. FIRENZE STATUTO",
-      "sourceTimestamp": 1790743110000,
+      "lastDetection": "PM ROVEZZANO",
+      "sourceTimestamp": 1790743560000,
       "dataDate": "2026-09-30",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-09-30T06:41:45+02:00"
+  "generatedAt": "2026-09-30T06:46:48+02:00"
 }
