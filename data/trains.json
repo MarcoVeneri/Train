@@ -22,8 +22,8 @@
       "arrivalExpected": "07:37",
       "arrivalActual": "07:37",
       "platform": "4",
-      "lastDetection": "MONTEROTONDO-MENTANA",
-      "sourceTimestamp": 1790843460000,
+      "lastDetection": "FIDENE",
+      "sourceTimestamp": 1790843970000,
       "dataDate": "2026-10-01",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-01T10:34:56+02:00"
+  "generatedAt": "2026-10-01T10:39:59+02:00"
 }
