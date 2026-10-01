@@ -22,8 +22,8 @@
       "arrivalExpected": "07:37",
       "arrivalActual": "07:37",
       "platform": "4",
-      "lastDetection": "COLLEVECCHIO-POGGIO SOMMAVILLA",
-      "sourceTimestamp": 1790841210000,
+      "lastDetection": "GAVIGNANO SABINO",
+      "sourceTimestamp": 1790841480000,
       "dataDate": "2026-10-01",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-01T09:54:35+02:00"
+  "generatedAt": "2026-10-01T09:59:37+02:00"
 }
