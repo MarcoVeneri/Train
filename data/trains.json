@@ -22,8 +22,8 @@
       "arrivalExpected": "07:37",
       "arrivalActual": "07:37",
       "platform": "4",
-      "lastDetection": "NUOVO SALARIO",
-      "sourceTimestamp": 1790844120000,
+      "lastDetection": "ROMA TIBURTINA",
+      "sourceTimestamp": 1790844570000,
       "dataDate": "2026-10-01",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-01T10:50:04+02:00"
+  "generatedAt": "2026-10-01T10:55:06+02:00"
 }
