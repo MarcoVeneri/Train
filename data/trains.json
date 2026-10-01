@@ -23,7 +23,7 @@
       "arrivalActual": "07:37",
       "platform": "4",
       "lastDetection": "ORTE",
-      "sourceTimestamp": 1790840100000,
+      "sourceTimestamp": 1790840490000,
       "dataDate": "2026-10-01",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-01T09:39:28+02:00"
+  "generatedAt": "2026-10-01T09:44:30+02:00"
 }
