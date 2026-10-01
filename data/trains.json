@@ -48,11 +48,11 @@
       "arrivalExpected": "18:52",
       "arrivalActual": null,
       "platform": "1",
-      "lastDetection": "PONTICINO",
-      "sourceTimestamp": 1790871690000,
+      "lastDetection": "LATERINA",
+      "sourceTimestamp": 1790872050000,
       "dataDate": "2026-10-01",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-01T18:24:08+02:00"
+  "generatedAt": "2026-10-01T18:29:11+02:00"
 }
