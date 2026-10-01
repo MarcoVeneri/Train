@@ -22,8 +22,8 @@
       "arrivalExpected": "07:37",
       "arrivalActual": "07:37",
       "platform": "4",
-      "lastDetection": "PM PANICALE SANFATUCCHIO",
-      "sourceTimestamp": 1790835660000,
+      "lastDetection": "CHIUSI-CHIANCIANO TERME",
+      "sourceTimestamp": 1790836170000,
       "dataDate": "2026-10-01",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-01T08:28:30+02:00"
+  "generatedAt": "2026-10-01T08:33:33+02:00"
 }
