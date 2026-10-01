@@ -22,8 +22,8 @@
       "arrivalExpected": "07:37",
       "arrivalActual": "07:37",
       "platform": "4",
-      "lastDetection": "GAVIGNANO SABINO",
-      "sourceTimestamp": 1790841480000,
+      "lastDetection": "POGGIO MIRTETO",
+      "sourceTimestamp": 1790841630000,
       "dataDate": "2026-10-01",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-01T09:59:37+02:00"
+  "generatedAt": "2026-10-01T10:04:39+02:00"
 }
