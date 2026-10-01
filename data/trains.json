@@ -48,11 +48,11 @@
       "arrivalExpected": "18:52",
       "arrivalActual": "18:52",
       "platform": "1",
-      "lastDetection": "FIRENZE ROVEZZANO",
-      "sourceTimestamp": 1790875980000,
+      "lastDetection": "FIRENZE CAMPO MARTE",
+      "sourceTimestamp": 1790876310000,
       "dataDate": "2026-10-01",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-01T19:34:44+02:00"
+  "generatedAt": "2026-10-01T19:39:47+02:00"
 }
