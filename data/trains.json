@@ -22,8 +22,8 @@
       "arrivalExpected": "07:37",
       "arrivalActual": "07:37",
       "platform": "4",
-      "lastDetection": "FABRO-FICULLE",
-      "sourceTimestamp": 1790837460000,
+      "lastDetection": "ALLERONA-CASTEL VISCARDO",
+      "sourceTimestamp": 1790837850000,
       "dataDate": "2026-10-01",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-01T08:53:45+02:00"
+  "generatedAt": "2026-10-01T08:58:48+02:00"
 }
