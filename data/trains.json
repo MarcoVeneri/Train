@@ -46,13 +46,13 @@
       "boardingArrivalActual": null,
       "arrivalScheduled": "18:48",
       "arrivalExpected": "18:56",
-      "arrivalActual": null,
+      "arrivalActual": "18:56",
       "platform": "1",
-      "lastDetection": "S.GIOVANNI VALDARNO",
-      "sourceTimestamp": 1790959830000,
+      "lastDetection": "SEGNALE DI CONFINE FIGLINE (PARI)",
+      "sourceTimestamp": 1790960250000,
       "dataDate": "2026-10-02",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-02T18:54:33+02:00"
+  "generatedAt": "2026-10-02T18:59:36+02:00"
 }
