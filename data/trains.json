@@ -48,11 +48,11 @@
       "arrivalExpected": "18:56",
       "arrivalActual": "18:56",
       "platform": "1",
-      "lastDetection": "COMPIOBBI",
-      "sourceTimestamp": 1790961870000,
+      "lastDetection": "FIRENZE ROVEZZANO",
+      "sourceTimestamp": 1790962140000,
       "dataDate": "2026-10-02",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-02T19:24:49+02:00"
+  "generatedAt": "2026-10-02T19:29:51+02:00"
 }
