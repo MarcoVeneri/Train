@@ -22,8 +22,8 @@
       "arrivalExpected": "07:33",
       "arrivalActual": "07:33",
       "platform": "4",
-      "lastDetection": "ATTIGLIANO-BOMARZO",
-      "sourceTimestamp": 1790925840000,
+      "lastDetection": "ORTE",
+      "sourceTimestamp": 1790926440000,
       "dataDate": "2026-10-02",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-02T09:29:26+02:00"
+  "generatedAt": "2026-10-02T09:34:29+02:00"
 }
