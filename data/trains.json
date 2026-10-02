@@ -48,11 +48,11 @@
       "arrivalExpected": "18:56",
       "arrivalActual": "18:56",
       "platform": "1",
-      "lastDetection": "FIRENZE CAMPO MARTE",
-      "sourceTimestamp": 1790962410000,
+      "lastDetection": "FIRENZE SANTA MARIA NOVELLA",
+      "sourceTimestamp": 1790962590000,
       "dataDate": "2026-10-02",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-02T19:34:54+02:00"
+  "generatedAt": "2026-10-02T19:39:56+02:00"
 }
