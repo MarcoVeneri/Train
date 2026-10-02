@@ -37,7 +37,7 @@
       "trainStarted": true,
       "delayMinutes": 2,
       "boardingDelayMinutes": 2,
-      "destinationDelayMinutes": 6,
+      "destinationDelayMinutes": 9,
       "departureScheduled": "18:08",
       "departureExpected": "18:09",
       "departureActual": "18:09",
@@ -45,14 +45,14 @@
       "boardingArrivalExpected": "18:10",
       "boardingArrivalActual": null,
       "arrivalScheduled": "18:48",
-      "arrivalExpected": "18:54",
+      "arrivalExpected": "18:57",
       "arrivalActual": null,
       "platform": "1",
-      "lastDetection": "PONTICINO",
-      "sourceTimestamp": 1790958270000,
+      "lastDetection": "BUCINE",
+      "sourceTimestamp": 1790959140000,
       "dataDate": "2026-10-02",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-02T18:34:23+02:00"
+  "generatedAt": "2026-10-02T18:39:26+02:00"
 }
