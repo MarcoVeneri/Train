@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "ORVIETO",
-      "sourceTimestamp": 1791010590000,
+      "lastDetection": "2`BIVIO ORVIETO SUD",
+      "sourceTimestamp": 1791010800000,
       "dataDate": "2026-10-03",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-03T08:58:13+02:00"
+  "generatedAt": "2026-10-03T09:03:15+02:00"
 }
