@@ -48,11 +48,11 @@
       "arrivalExpected": "18:50",
       "arrivalActual": "18:50",
       "platform": "1",
-      "lastDetection": "INCISA",
-      "sourceTimestamp": 1791046650000,
+      "lastDetection": "RIGNANO SULL'ARNO REGGELLO",
+      "sourceTimestamp": 1791046920000,
       "dataDate": "2026-10-03",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-03T18:59:15+02:00"
+  "generatedAt": "2026-10-03T19:04:17+02:00"
 }
