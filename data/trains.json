@@ -9,21 +9,21 @@
       "cancelled": false,
       "started": false,
       "trainStarted": true,
-      "delayMinutes": 2,
-      "boardingDelayMinutes": 2,
-      "destinationDelayMinutes": 2,
+      "delayMinutes": 1,
+      "boardingDelayMinutes": 1,
+      "destinationDelayMinutes": 1,
       "departureScheduled": "07:00",
-      "departureExpected": "07:02",
+      "departureExpected": "07:01",
       "departureActual": null,
       "boardingArrivalScheduled": "06:59",
-      "boardingArrivalExpected": "07:01",
+      "boardingArrivalExpected": "07:00",
       "boardingArrivalActual": null,
       "arrivalScheduled": "07:36",
-      "arrivalExpected": "07:38",
+      "arrivalExpected": "07:37",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "SEGNALE DI CONFINE PM ROVEZZANO",
-      "sourceTimestamp": 1791002940000,
+      "lastDetection": "1°BIVIO VALDARNO NORD",
+      "sourceTimestamp": 1791003330000,
       "dataDate": "2026-10-03",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-03T06:51:59+02:00"
+  "generatedAt": "2026-10-03T06:57:01+02:00"
 }
