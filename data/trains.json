@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "CIVITA CASTELLANA-MAGLIANO",
-      "sourceTimestamp": 1791014400000,
+      "lastDetection": "COLLEVECCHIO-POGGIO SOMMAVILLA",
+      "sourceTimestamp": 1791014730000,
       "dataDate": "2026-10-03",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-03T10:03:45+02:00"
+  "generatedAt": "2026-10-03T10:08:47+02:00"
 }
