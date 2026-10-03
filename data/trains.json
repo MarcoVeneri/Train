@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "CASTIGLIONE IN TEVERINA",
-      "sourceTimestamp": 1791011160000,
+      "lastDetection": "ALVIANO",
+      "sourceTimestamp": 1791011790000,
       "dataDate": "2026-10-03",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-03T09:13:20+02:00"
+  "generatedAt": "2026-10-03T09:18:23+02:00"
 }
