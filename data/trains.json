@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": "07:36",
       "platform": "4",
-      "lastDetection": "PIANA BELLA DI MONTELIBRETTI",
-      "sourceTimestamp": 1791015780000,
+      "lastDetection": "MONTEROTONDO-MENTANA",
+      "sourceTimestamp": 1791016020000,
       "dataDate": "2026-10-03",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-03T10:23:55+02:00"
+  "generatedAt": "2026-10-03T10:28:57+02:00"
 }
