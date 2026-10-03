@@ -23,7 +23,7 @@
       "arrivalActual": "07:36",
       "platform": "4",
       "lastDetection": "TERONTOLA CORTONA",
-      "sourceTimestamp": 1791007620000,
+      "sourceTimestamp": 1791007770000,
       "dataDate": "2026-10-03",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-03T08:07:48+02:00"
+  "generatedAt": "2026-10-03T08:12:51+02:00"
 }
