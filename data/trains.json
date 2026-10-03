@@ -37,7 +37,7 @@
       "trainStarted": true,
       "delayMinutes": 1,
       "boardingDelayMinutes": 1,
-      "destinationDelayMinutes": 4,
+      "destinationDelayMinutes": 3,
       "departureScheduled": "18:08",
       "departureExpected": "18:08",
       "departureActual": "18:08",
@@ -45,14 +45,14 @@
       "boardingArrivalExpected": "18:09",
       "boardingArrivalActual": null,
       "arrivalScheduled": "18:48",
-      "arrivalExpected": "18:52",
+      "arrivalExpected": "18:51",
       "arrivalActual": null,
       "platform": "1",
-      "lastDetection": "PONTICINO",
-      "sourceTimestamp": 1791044550000,
+      "lastDetection": "LATERINA",
+      "sourceTimestamp": 1791044850000,
       "dataDate": "2026-10-03",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-03T18:23:39+02:00"
+  "generatedAt": "2026-10-03T18:28:42+02:00"
 }
