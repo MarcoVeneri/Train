@@ -23,7 +23,7 @@
       "arrivalActual": "07:36",
       "platform": "4",
       "lastDetection": "CHIUSI-CHIANCIANO TERME",
-      "sourceTimestamp": 1791008850000,
+      "sourceTimestamp": 1791009060000,
       "dataDate": "2026-10-03",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-03T08:27:58+02:00"
+  "generatedAt": "2026-10-03T08:33:00+02:00"
 }
