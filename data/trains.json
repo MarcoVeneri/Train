@@ -48,11 +48,11 @@
       "arrivalExpected": "18:49",
       "arrivalActual": null,
       "platform": "5",
-      "lastDetection": "BUCINE",
-      "sourceTimestamp": 1791131430000,
+      "lastDetection": "MONTEVARCHI TERRANUOVA",
+      "sourceTimestamp": 1791131880000,
       "dataDate": "2026-10-04",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-04T18:33:54+02:00"
+  "generatedAt": "2026-10-04T18:38:57+02:00"
 }
