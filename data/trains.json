@@ -5,25 +5,25 @@
       "number": "4099",
       "from": "FIGLINE VALDARNO",
       "to": "AREZZO",
-      "status": "DELAYED",
+      "status": "DEPARTED",
       "cancelled": false,
-      "started": false,
+      "started": true,
       "trainStarted": true,
       "delayMinutes": 1,
       "boardingDelayMinutes": 1,
       "destinationDelayMinutes": 1,
       "departureScheduled": "07:00",
       "departureExpected": "07:01",
-      "departureActual": null,
+      "departureActual": "07:01",
       "boardingArrivalScheduled": "06:59",
-      "boardingArrivalExpected": "07:00",
-      "boardingArrivalActual": null,
+      "boardingArrivalExpected": "06:59",
+      "boardingArrivalActual": "06:59",
       "arrivalScheduled": "07:36",
       "arrivalExpected": "07:37",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "1°BIVIO VALDARNO NORD",
-      "sourceTimestamp": 1791089760000,
+      "lastDetection": "FIGLINE VALDARNO",
+      "sourceTimestamp": 1791090060000,
       "dataDate": "2026-10-04",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-04T06:56:55+02:00"
+  "generatedAt": "2026-10-04T07:01:58+02:00"
 }
