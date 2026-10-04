@@ -22,8 +22,8 @@
       "arrivalExpected": "07:39",
       "arrivalActual": "07:39",
       "platform": "4",
-      "lastDetection": "2`BIVIO ORVIETO SUD",
-      "sourceTimestamp": 1791097380000,
+      "lastDetection": "CASTIGLIONE IN TEVERINA",
+      "sourceTimestamp": 1791097740000,
       "dataDate": "2026-10-04",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-04T09:08:08+02:00"
+  "generatedAt": "2026-10-04T09:13:11+02:00"
 }
