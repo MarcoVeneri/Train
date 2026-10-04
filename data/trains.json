@@ -22,8 +22,8 @@
       "arrivalExpected": "07:39",
       "arrivalActual": "07:39",
       "platform": "4",
-      "lastDetection": "CHIUSI-CHIANCIANO TERME",
-      "sourceTimestamp": 1791095700000,
+      "lastDetection": "CITTA` DELLA PIEVE",
+      "sourceTimestamp": 1791096000000,
       "dataDate": "2026-10-04",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-04T08:37:52+02:00"
+  "generatedAt": "2026-10-04T08:42:54+02:00"
 }
