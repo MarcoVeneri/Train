@@ -48,11 +48,11 @@
       "arrivalExpected": "18:48",
       "arrivalActual": "18:48",
       "platform": "5",
-      "lastDetection": "SIECI",
-      "sourceTimestamp": 1791134340000,
+      "lastDetection": "DEV. ESTR. LL PM ROVEZZANO",
+      "sourceTimestamp": 1791134640000,
       "dataDate": "2026-10-04",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-04T19:19:23+02:00"
+  "generatedAt": "2026-10-04T19:24:27+02:00"
 }
