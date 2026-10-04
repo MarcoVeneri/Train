@@ -22,8 +22,8 @@
       "arrivalExpected": "07:39",
       "arrivalActual": "07:39",
       "platform": "4",
-      "lastDetection": "STIMIGLIANO",
-      "sourceTimestamp": 1791100620000,
+      "lastDetection": "POGGIO MIRTETO",
+      "sourceTimestamp": 1791100920000,
       "dataDate": "2026-10-04",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-04T09:58:38+02:00"
+  "generatedAt": "2026-10-04T10:03:41+02:00"
 }
