@@ -22,8 +22,8 @@
       "arrivalExpected": "07:39",
       "arrivalActual": "07:39",
       "platform": "4",
-      "lastDetection": "FABRO-FICULLE",
-      "sourceTimestamp": 1791096360000,
+      "lastDetection": "2`BIVIO ORVIETO NORD",
+      "sourceTimestamp": 1791096900000,
       "dataDate": "2026-10-04",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-04T08:53:00+02:00"
+  "generatedAt": "2026-10-04T08:58:03+02:00"
 }
