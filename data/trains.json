@@ -22,8 +22,8 @@
       "arrivalExpected": "07:39",
       "arrivalActual": "07:39",
       "platform": "4",
-      "lastDetection": "GALLESE IN TEVERINA",
-      "sourceTimestamp": 1791100020000,
+      "lastDetection": "CIVITA CASTELLANA-MAGLIANO",
+      "sourceTimestamp": 1791100170000,
       "dataDate": "2026-10-04",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-04T09:48:32+02:00"
+  "generatedAt": "2026-10-04T09:53:35+02:00"
 }
