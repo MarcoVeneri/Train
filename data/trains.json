@@ -48,11 +48,11 @@
       "arrivalExpected": "18:48",
       "arrivalActual": "18:48",
       "platform": "5",
-      "lastDetection": "RIGNANO SULL'ARNO REGGELLO",
-      "sourceTimestamp": 1791133290000,
+      "lastDetection": "S.ELLERO",
+      "sourceTimestamp": 1791133590000,
       "dataDate": "2026-10-04",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-04T19:04:14+02:00"
+  "generatedAt": "2026-10-04T19:09:17+02:00"
 }
