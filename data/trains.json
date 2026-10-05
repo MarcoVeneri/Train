@@ -23,7 +23,7 @@
       "arrivalActual": "07:34",
       "platform": "4",
       "lastDetection": "ATTIGLIANO-BOMARZO",
-      "sourceTimestamp": 1791184890000,
+      "sourceTimestamp": 1791184980000,
       "dataDate": "2026-10-05",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-05T09:23:17+02:00"
+  "generatedAt": "2026-10-05T09:28:20+02:00"
 }
