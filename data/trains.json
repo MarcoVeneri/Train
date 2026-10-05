@@ -25,7 +25,8 @@
       "lastDetection": "ROMA TIBURTINA",
       "sourceTimestamp": 1791190140000,
       "dataDate": "2026-10-05",
-      "source": "ViaggiaTreno"
+      "source": "ViaggiaTreno",
+      "fetchError": "timed out"
     },
     "18774": {
       "number": "18774",
@@ -48,11 +49,11 @@
       "arrivalExpected": "18:50",
       "arrivalActual": "18:50",
       "platform": "5",
-      "lastDetection": "COMPIOBBI",
-      "sourceTimestamp": 1791221100000,
+      "lastDetection": "FIRENZE ROVEZZANO",
+      "sourceTimestamp": 1791221370000,
       "dataDate": "2026-10-05",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-05T19:25:37+02:00"
+  "generatedAt": "2026-10-05T19:31:00+02:00"
 }
