@@ -23,7 +23,7 @@
       "arrivalActual": "07:34",
       "platform": "4",
       "lastDetection": "AREZZO",
-      "sourceTimestamp": 1791178440000,
+      "sourceTimestamp": 1791178710000,
       "dataDate": "2026-10-05",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-05T07:37:08+02:00"
+  "generatedAt": "2026-10-05T07:42:11+02:00"
 }
