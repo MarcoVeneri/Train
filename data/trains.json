@@ -48,11 +48,11 @@
       "arrivalExpected": "18:50",
       "arrivalActual": null,
       "platform": "5",
-      "lastDetection": "MONTEVARCHI TERRANUOVA",
-      "sourceTimestamp": 1791218310000,
+      "lastDetection": "S.GIOVANNI VALDARNO",
+      "sourceTimestamp": 1791218610000,
       "dataDate": "2026-10-05",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-05T18:40:07+02:00"
+  "generatedAt": "2026-10-05T18:45:10+02:00"
 }
