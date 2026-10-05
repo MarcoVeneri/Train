@@ -48,11 +48,11 @@
       "arrivalExpected": "18:50",
       "arrivalActual": "18:50",
       "platform": "5",
-      "lastDetection": "PONTASSIEVE",
-      "sourceTimestamp": 1791220530000,
+      "lastDetection": "COMPIOBBI",
+      "sourceTimestamp": 1791221100000,
       "dataDate": "2026-10-05",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-05T19:20:33+02:00"
+  "generatedAt": "2026-10-05T19:25:37+02:00"
 }
