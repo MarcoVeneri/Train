@@ -22,8 +22,8 @@
       "arrivalExpected": "07:34",
       "arrivalActual": "07:34",
       "platform": "4",
-      "lastDetection": "PM RIGUTINO FRASSINETO",
-      "sourceTimestamp": 1791179100000,
+      "lastDetection": "CASTIGLION FIORENTINO",
+      "sourceTimestamp": 1791179250000,
       "dataDate": "2026-10-05",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-05T07:47:15+02:00"
+  "generatedAt": "2026-10-05T07:52:18+02:00"
 }
