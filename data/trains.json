@@ -22,8 +22,8 @@
       "arrivalExpected": "07:34",
       "arrivalActual": "07:34",
       "platform": "4",
-      "lastDetection": "ROMA NOMENTANA LL",
-      "sourceTimestamp": 1791189960000,
+      "lastDetection": "ROMA TIBURTINA",
+      "sourceTimestamp": 1791190140000,
       "dataDate": "2026-10-05",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-05T10:49:13+02:00"
+  "generatedAt": "2026-10-05T10:54:16+02:00"
 }
