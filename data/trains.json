@@ -25,7 +25,8 @@
       "lastDetection": "ORTE",
       "sourceTimestamp": 1791271950000,
       "dataDate": "2026-10-06",
-      "source": "ViaggiaTreno"
+      "source": "ViaggiaTreno",
+      "fetchError": "HTTP Error 403: Forbidden"
     },
     "18774": {
       "number": "18774",
@@ -51,8 +52,9 @@
       "lastDetection": "--",
       "sourceTimestamp": null,
       "dataDate": "2026-10-06",
-      "source": "ViaggiaTreno"
+      "source": "ViaggiaTreno",
+      "fetchError": "HTTP Error 403: Forbidden"
     }
   },
-  "generatedAt": "2026-10-06T09:40:47+02:00"
+  "generatedAt": "2026-10-06T09:45:49+02:00"
 }
