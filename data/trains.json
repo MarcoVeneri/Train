@@ -1,5 +1,5 @@
 {
-  "dataDate": "2026-10-06",
+  "dataDate": "2026-10-07",
   "trains": {
     "4099": {
       "number": "4099",
@@ -56,5 +56,5 @@
       "fetchError": "HTTP Error 403: Forbidden"
     }
   },
-  "generatedAt": "2026-10-06T23:57:54+02:00"
+  "generatedAt": "2026-10-07T00:02:55+02:00"
 }
