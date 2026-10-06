@@ -8,7 +8,7 @@
       "status": "ON_TIME",
       "cancelled": false,
       "started": false,
-      "trainStarted": false,
+      "trainStarted": true,
       "delayMinutes": 0,
       "boardingDelayMinutes": 0,
       "destinationDelayMinutes": 0,
@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "--",
-      "sourceTimestamp": null,
+      "lastDetection": "FIRENZE STATUTO INTERCONNESSIONE",
+      "sourceTimestamp": 1791261450000,
       "dataDate": "2026-10-06",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-06T06:33:51+02:00"
+  "generatedAt": "2026-10-06T06:38:54+02:00"
 }
