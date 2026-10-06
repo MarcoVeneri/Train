@@ -22,8 +22,8 @@
       "arrivalExpected": "07:34",
       "arrivalActual": "07:34",
       "platform": "4",
-      "lastDetection": "TERONTOLA CORTONA",
-      "sourceTimestamp": 1791266970000,
+      "lastDetection": "CASTIGLION DEL LAGO",
+      "sourceTimestamp": 1791267480000,
       "dataDate": "2026-10-06",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-06T08:14:52+02:00"
+  "generatedAt": "2026-10-06T08:19:56+02:00"
 }
