@@ -22,8 +22,8 @@
       "arrivalExpected": "07:36",
       "arrivalActual": null,
       "platform": "4",
-      "lastDetection": "FIRENZE STATUTO INTERCONNESSIONE",
-      "sourceTimestamp": 1791261450000,
+      "lastDetection": "FIRENZE CAMPO MARTE",
+      "sourceTimestamp": 1791261660000,
       "dataDate": "2026-10-06",
       "source": "ViaggiaTreno"
     },
@@ -54,5 +54,5 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-06T06:38:54+02:00"
+  "generatedAt": "2026-10-06T06:43:57+02:00"
 }
