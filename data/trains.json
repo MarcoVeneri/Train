@@ -53,8 +53,8 @@
       "sourceTimestamp": null,
       "dataDate": "2026-10-06",
       "source": "ViaggiaTreno",
-      "fetchError": "HTTP Error 403: Forbidden"
+      "fetchError": "timed out"
     }
   },
-  "generatedAt": "2026-10-08T17:49:36+02:00"
+  "generatedAt": "2026-10-08T17:54:59+02:00"
 }
