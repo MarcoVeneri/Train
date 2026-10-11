@@ -5,6 +5,8 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 BASES = [
+    "https://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno",
+    "https://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno",
     "http://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno",
     "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno",
 ]
@@ -20,21 +22,28 @@ SCHEDULE = {
 }
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/154 Safari/537.36",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/154 Safari/537.36",
     "Accept": "application/json,text/plain,*/*",
     "Accept-Language": "it-IT,it;q=0.9,en;q=0.7",
-    "Referer": "http://www.viaggiatreno.it/infomobilita/index.jsp",
+    "Referer": "https://www.viaggiatreno.it/infomobilita/index.jsp",
+    "Origin": "https://www.viaggiatreno.it",
+    "Cache-Control": "no-cache",
     "Connection": "close",
 }
 
+def now_iso():
+    return datetime.now(ROME).isoformat(timespec="seconds")
+
 def _curl_text(url):
     cmd = [
-        "curl", "--http1.1", "--fail", "--silent", "--show-error", "--location",
+        "curl", "--http1.1", "--fail", "--silent", "--show-error", "--location", "--compressed",
         "--connect-timeout", "10", "--max-time", "22", "--retry", "2", "--retry-delay", "1",
         "-A", HEADERS["User-Agent"],
         "-H", f"Accept: {HEADERS['Accept']}",
         "-H", f"Accept-Language: {HEADERS['Accept-Language']}",
         "-H", f"Referer: {HEADERS['Referer']}",
+        "-H", f"Origin: {HEADERS['Origin']}",
+        "-H", f"Cache-Control: {HEADERS['Cache-Control']}",
         url,
     ]
     p = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
@@ -204,7 +213,7 @@ def train_data(number, from_name, to_name):
     return {
         "number": str(number), "from": fr.get("stazione") or from_name, "to": to.get("stazione") or to_name,
         "status": status, "cancelled": bool(cancelled), "started": bool(departed_from_boarding),
-        "trainStarted": bool(train_started), "liveAvailable": True,
+        "trainStarted": bool(train_started), "liveAvailable": True, "staleLive": False,
         "delayMinutes": round(boarding_delay), "boardingDelayMinutes": round(boarding_delay),
         "destinationDelayMinutes": round(destination_delay),
         "departureScheduled": departure_scheduled, "departureExpected": departure_expected,
@@ -213,7 +222,7 @@ def train_data(number, from_name, to_name):
         "arrivalScheduled": destination_arrival_scheduled, "arrivalExpected": destination_arrival_expected,
         "arrivalActual": destination_arrival_actual, "platform": pick_platform(fr),
         "lastDetection": detail.get("stazioneUltimoRilevamento"), "sourceTimestamp": detail.get("oraUltimoRilevamento"),
-        "dataDate": today_iso, "source": "ViaggiaTreno"
+        "dataDate": today_iso, "verifiedAt": now_iso(), "source": "ViaggiaTreno"
     }
 
 def load_previous():
@@ -222,23 +231,45 @@ def load_previous():
     except Exception:
         return {"trains": {}}
 
+def has_verified_snapshot(old, today_iso):
+    if not old or old.get("dataDate") != today_iso or old.get("liveAvailable") is not True:
+        return False
+    return bool(
+        old.get("verifiedAt")
+        or old.get("sourceTimestamp")
+        or old.get("departureActual")
+        or old.get("arrivalActual")
+    )
+
 def unavailable_payload(number, fr, to, error, old=None):
     _, today_iso = today_strings()
     sched = SCHEDULE[number]
     old = old or {}
-    # Manteniamo solo gli orari programmati utili. Mai riciclare un vecchio "IN ORARIO" come dato live.
+
+    # Se abbiamo già un dato realmente verificato oggi, non lo distruggiamo per
+    # un errore temporaneo della sorgente: lo manteniamo chiaramente marcato come snapshot.
+    if has_verified_snapshot(old, today_iso):
+        kept = dict(old)
+        kept["liveAvailable"] = True
+        kept["staleLive"] = True
+        kept["fetchError"] = str(error)
+        kept["lastAttemptAt"] = now_iso()
+        kept["source"] = "ViaggiaTreno · ultimo dato verificato"
+        return kept
+
     dep = old.get("departureScheduled") or sched["departure"]
     arr = old.get("arrivalScheduled") or sched["arrival"]
     board = old.get("boardingArrivalScheduled") or dep
     return {
         "number": number, "from": fr, "to": to, "status": "UNAVAILABLE",
         "cancelled": False, "started": False, "trainStarted": False, "liveAvailable": False,
+        "staleLive": False,
         "delayMinutes": None, "boardingDelayMinutes": None, "destinationDelayMinutes": None,
         "departureScheduled": dep, "departureExpected": dep, "departureActual": None,
         "boardingArrivalScheduled": board, "boardingArrivalExpected": board, "boardingArrivalActual": None,
         "arrivalScheduled": arr, "arrivalExpected": arr, "arrivalActual": None,
         "platform": None, "lastDetection": None, "sourceTimestamp": None,
-        "dataDate": today_iso, "fetchError": str(error), "source": "ViaggiaTreno"
+        "dataDate": today_iso, "fetchError": str(error), "lastAttemptAt": now_iso(), "source": "ViaggiaTreno"
     }
 
 def main():
@@ -246,6 +277,7 @@ def main():
     _, today_iso = today_strings()
     current = {"dataDate": today_iso, "trains": {}}
     successes = 0
+    retained = 0
 
     for number, (fr, to) in TRAINS.items():
         try:
@@ -255,16 +287,20 @@ def main():
         except Exception as e:
             print(f"{number}: LIVE NON DISPONIBILE: {e}", file=sys.stderr)
             old = (previous.get("trains") or {}).get(number)
-            current["trains"][number] = unavailable_payload(number, fr, to, e, old)
+            payload = unavailable_payload(number, fr, to, e, old)
+            current["trains"][number] = payload
+            if payload.get("staleLive"):
+                retained += 1
 
     now = datetime.now(ROME)
     current["generatedAt"] = now.isoformat(timespec="seconds")
     current["liveSuccessCount"] = successes
+    current["retainedVerifiedCount"] = retained
     current["liveComplete"] = successes == len(TRAINS)
     current["monitorWeekendEnabled"] = True
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(current, ensure_ascii=False, indent=2) + "\n", "utf-8")
-    print(f"Aggiornato {OUT}: {successes}/{len(TRAINS)} treni live")
+    print(f"Aggiornato {OUT}: {successes}/{len(TRAINS)} live, {retained} snapshot verificati mantenuti")
     return 0
 
 if __name__ == "__main__":
