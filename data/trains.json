@@ -28,7 +28,7 @@
       "sourceTimestamp": null,
       "dataDate": "2026-10-12",
       "fetchError": "risposta vuota",
-      "lastAttemptAt": "2026-10-12T00:22:17+02:00",
+      "lastAttemptAt": "2026-10-12T00:25:55+02:00",
       "source": "ViaggiaTreno"
     },
     "18774": {
@@ -57,11 +57,11 @@
       "lastDetection": "--",
       "sourceTimestamp": null,
       "dataDate": "2026-10-12",
-      "verifiedAt": "2026-10-12T00:22:18+02:00",
+      "verifiedAt": "2026-10-12T00:25:56+02:00",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-12T00:22:18+02:00",
+  "generatedAt": "2026-10-12T00:25:56+02:00",
   "liveSuccessCount": 1,
   "retainedVerifiedCount": 0,
   "liveComplete": false,
