@@ -17,40 +17,26 @@ permissions:
   actions: write
 
 concurrency:
-  group: train-live-v5
-  cancel-in-progress: false
+  group: train-live-current
+  cancel-in-progress: true
 
 jobs:
   update:
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
-      - name: Ferma monitor precedenti
+      - name: Ferma vecchio monitor legacy
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
-          CURRENT_RUN: ${{ github.run_id }}
         run: |
-          curl -sS -L \
+          # Il vecchio run 121 usava lo script copiato sul ramo live-data e poteva
+          # continuare a sovrascrivere i dati nuovi. Lo fermiamo esplicitamente.
+          curl -sS -L -X POST \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $GH_TOKEN" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${{ github.repository }}/actions/runs?per_page=100&status=in_progress" \
-          | jq -r --argjson current "$CURRENT_RUN" '
-              .workflow_runs[]
-              | select(.name == "Aggiorna dati treni")
-              | select(.id != $current)
-              | .id
-            ' \
-          | while read -r RUN_ID; do
-              [ -z "$RUN_ID" ] && continue
-              echo "Cancello vecchio monitor $RUN_ID"
-              curl -sS -L -X POST \
-                -H "Accept: application/vnd.github+json" \
-                -H "Authorization: Bearer $GH_TOKEN" \
-                -H "X-GitHub-Api-Version: 2022-11-28" \
-                "https://api.github.com/repos/${{ github.repository }}/actions/runs/$RUN_ID/cancel" || true
-            done
+            "https://api.github.com/repos/${{ github.repository }}/actions/runs/38177633812/cancel" || true
 
       - name: Checkout ramo dati live
         uses: actions/checkout@v4
@@ -75,7 +61,7 @@ jobs:
             git fetch origin main live-data
             git reset --hard origin/live-data
 
-            # Usa SEMPRE lo script più recente del ramo main.
+            # Usa sempre il monitor più recente dal ramo main.
             git show origin/main:scripts/update_trains.py > /tmp/update_trains.py
             cp /tmp/update_trains.py scripts/update_trains.py
 
