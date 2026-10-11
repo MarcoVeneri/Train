@@ -14,7 +14,7 @@
   <meta name="format-detection" content="telephone=no">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
-  <title>Treni Figline ↔ Arezzo v4</title>
+  <title>Train</title>
   <style>
     :root{
       color-scheme:light dark;
@@ -125,7 +125,7 @@
 <script>
 (function(){
   try{
-    const UI_BUILD="49";
+    const UI_BUILD="50";
     const u=new URL(location.href);
     if(u.searchParams.get("build")!==UI_BUILD){
       u.searchParams.set("build",UI_BUILD);
@@ -149,6 +149,7 @@
 })();
 </script>
 
+  <link rel="stylesheet" href="./train-ios27.css?v=50">
 </head>
 <body>
 <main class="app">
@@ -272,6 +273,23 @@ function renderTrain(key,d){
  punct=key==="out"?ui.outPunctuality:ui.backPunctuality,
  inf=key==="out"?ui.outInfo:ui.backInfo, live=key==="out"?ui.outLive:ui.backLive;
  if(d?.departureScheduled)dep.textContent=d.departureScheduled;
+ const staleSource=!!d?.fetchError || d?.liveAvailable===false || (d?.dataDate && d.dataDate!==todayRome());
+ if(staleSource){
+   st.textContent="DATI NON LIVE";statusClass(st,"delay");
+   const stationLabel=key==="out"?"A FIGLINE":"AD AREZZO";
+   punct.textContent=`${stationLabel} · VERIFICA NON DISPONIBILE`;
+   punct.className="punctuality neutral";
+   const boardTimeEl=key==="out"?ui.outBoardTime:ui.backBoardTime;
+   const boardDeltaEl=key==="out"?ui.outBoardDelta:ui.backBoardDelta;
+   const destTimeEl=key==="out"?ui.outDestTime:ui.backDestTime;
+   const destDeltaEl=key==="out"?ui.outDestDelta:ui.backDestDelta;
+   boardTimeEl.textContent=d?.boardingArrivalScheduled||d?.departureScheduled||"--:--";
+   destTimeEl.textContent=d?.arrivalScheduled||"--:--";
+   boardDeltaEl.textContent="non verificato";boardDeltaEl.className="timing-delta";
+   destDeltaEl.textContent="non verificato";destDeltaEl.className="timing-delta";
+   live.textContent="Controllo live non riuscito · nuovo tentativo automatico";
+   return;
+ }
  let cls="neutral",txt="IN ORARIO";
  const boardingDelay=Number(d?.boardingDelayMinutes ?? d?.delayMinutes ?? 0);
  if(d?.cancelled){txt="SOPPRESSO";cls="bad"}
@@ -361,7 +379,11 @@ async function loadTrains(){
 
  renderTrain("out",data?.trains?.["4099"]);renderTrain("back",data?.trains?.["18774"]);
  const age=dataAgeMinutes(data?.generatedAt);
- if(age>25){
+ const sourceFailed=Object.values(data?.trains||{}).some(x=>x?.fetchError || x?.liveAvailable===false || (x?.dataDate && x.dataDate!==todayRome()));
+ if(sourceFailed){
+   ui.notice.textContent="Controllo live ViaggiaTreno non riuscito: non mostro più ‘in orario’ se il dato non è verificato. Riprovo automaticamente ogni 5 minuti.";
+   ui.notice.classList.add("show");
+ }else if(age>25){
    ui.notice.textContent=`ATTENZIONE: ultimo controllo ferroviario ${Math.round(age)} minuti fa.`;
    ui.notice.classList.add("show");
    for(const el of [ui.outStatus,ui.backStatus]){
