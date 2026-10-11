@@ -13,7 +13,7 @@ html,body{background:radial-gradient(circle at 14% 3%,rgba(111,174,231,.22),tran
 .route-mini{font-size:12px!important;font-weight:700!important;margin-top:2px!important}
 h1{font-size:clamp(38px,6vw,54px)!important;line-height:.95!important;margin:5px 0 7px!important;font-weight:820!important;letter-spacing:-.058em!important}
 .actions{gap:8px!important}.circle{width:46px!important;height:46px!important;background:rgba(255,255,255,.60)!important;border:1px solid var(--t-edge)!important;box-shadow:0 8px 22px rgba(48,78,108,.10),inset 0 1px 0 rgba(255,255,255,.78)!important;backdrop-filter:blur(24px) saturate(160%)!important;-webkit-backdrop-filter:blur(24px) saturate(160%)!important}
-.notice{border-radius:18px!important;margin-bottom:10px!important}
+.notice{display:none!important;border-radius:18px!important;margin-bottom:10px!important}
 .cards{display:grid!important;grid-template-columns:1fr!important;gap:10px!important}
 .train-card{min-height:0!important;border-radius:26px!important;padding:16px!important;background:var(--t-glass)!important;border:1px solid var(--t-edge)!important;box-shadow:var(--t-shadow-soft)!important;backdrop-filter:blur(28px) saturate(155%)!important;-webkit-backdrop-filter:blur(28px) saturate(155%)!important}
 .train-card:after{display:none!important}
