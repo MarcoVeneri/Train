@@ -1,0 +1,37 @@
+/* Train · iOS 27 inspired redesign */
+:root{
+  --t-bg:#edf4fb;--t-bg2:#dce9f6;--t-text:#17263a;--t-muted:#68798c;
+  --t-glass:rgba(255,255,255,.68);--t-edge:rgba(255,255,255,.78);--t-line:rgba(51,84,120,.12);
+  --t-shadow:0 16px 42px rgba(52,79,108,.12);--t-shadow-soft:0 8px 22px rgba(52,79,108,.09);
+  --t-blue:#4b98ee;--t-green:#4ab77d;--t-red:#e06269;--t-amber:#dfa34d;
+}
+html,body{background:radial-gradient(circle at 14% 3%,rgba(111,174,231,.22),transparent 30%),radial-gradient(circle at 88% 9%,rgba(191,217,240,.30),transparent 31%),linear-gradient(155deg,var(--t-bg),var(--t-bg2))!important;color:var(--t-text)!important}
+.app{width:min(100%,900px)!important;padding:max(18px,env(safe-area-inset-top)) 14px max(22px,env(safe-area-inset-bottom))!important}
+.hero{min-height:0!important;padding:4px 2px 18px!important;border-radius:0!important;overflow:visible!important}
+.hero:before,.hero:after{display:none!important}
+.route-mini,.refresh-meta{color:var(--t-muted)!important}
+.route-mini{font-size:12px!important;font-weight:700!important;margin-top:2px!important}
+h1{font-size:clamp(38px,6vw,54px)!important;line-height:.95!important;margin:5px 0 7px!important;font-weight:820!important;letter-spacing:-.058em!important}
+.actions{gap:8px!important}.circle{width:46px!important;height:46px!important;background:rgba(255,255,255,.60)!important;border:1px solid var(--t-edge)!important;box-shadow:0 8px 22px rgba(48,78,108,.10),inset 0 1px 0 rgba(255,255,255,.78)!important;backdrop-filter:blur(24px) saturate(160%)!important;-webkit-backdrop-filter:blur(24px) saturate(160%)!important}
+.notice{border-radius:18px!important;margin-bottom:10px!important}
+.cards{display:grid!important;grid-template-columns:1fr!important;gap:10px!important}
+.train-card{min-height:0!important;border-radius:26px!important;padding:16px!important;background:var(--t-glass)!important;border:1px solid var(--t-edge)!important;box-shadow:var(--t-shadow-soft)!important;backdrop-filter:blur(28px) saturate(155%)!important;-webkit-backdrop-filter:blur(28px) saturate(155%)!important}
+.train-card:after{display:none!important}
+.card-head{align-items:center!important}.trip-pill{padding:6px 10px!important;font-size:11px!important;border-radius:999px!important}.brand{font-size:9px!important}
+.route-line{font-size:14px!important;color:var(--t-muted)!important;margin-top:10px!important;font-weight:650!important}
+.train-number{font-size:22px!important;margin-top:5px!important;gap:7px!important}.train-glyph{font-size:22px!important}
+.main-row{align-items:center!important;margin-top:5px!important}.departure{font-size:clamp(58px,15vw,76px)!important;line-height:.9!important;font-weight:850!important}
+.status-pill{min-width:0!important;padding:9px 11px!important;font-size:11px!important;box-shadow:none!important}
+.status-pill.ok{background:rgba(74,183,125,.14)!important;color:#23885a!important}.status-pill.delay{background:rgba(223,163,77,.16)!important;color:#aa6f19!important}.status-pill.bad{background:rgba(224,98,105,.15)!important;color:#b84249!important}.status-pill.neutral{background:rgba(104,121,140,.10)!important;color:var(--t-muted)!important}
+.punctuality{margin-top:10px!important;padding:9px 11px!important;border-radius:15px!important;font-size:12px!important;box-shadow:none!important}
+.punctuality.ok{background:rgba(74,183,125,.11)!important;color:#23885a!important;border-color:rgba(74,183,125,.18)!important}.punctuality.late,.punctuality.bad{background:rgba(224,98,105,.13)!important;color:#b84249!important;border-color:rgba(224,98,105,.20)!important}.punctuality.early{background:rgba(75,152,238,.12)!important;color:#337dca!important;border-color:rgba(75,152,238,.20)!important}.punctuality.neutral{background:rgba(104,121,140,.09)!important;color:var(--t-muted)!important}
+.timing-split{margin-top:10px!important;border-radius:18px!important;background:rgba(255,255,255,.34)!important;border:1px solid var(--t-line)!important;box-shadow:none!important}
+.timing-cell{padding:10px 8px!important}.timing-cell:first-child,.timing-cell:last-child{background:transparent!important}.timing-cell+.timing-cell{border-left:1px solid var(--t-line)!important}
+.timing-label{font-size:9px!important;color:var(--t-muted)!important}.timing-time{font-size:clamp(38px,10vw,50px)!important;color:var(--t-text)!important}.timing-delta{font-size:10px!important}
+.live-note{color:var(--t-muted)!important;margin-top:7px!important}.divider{margin:11px 0 8px!important;background:var(--t-line)!important}
+.weather-strip{border:0!important}.weather-item{padding:3px 5px!important}.weather-city{font-size:11px!important;color:var(--t-muted)!important}.weather-ico{font-size:23px!important}.weather-temp{font-size:17px!important}
+.scooter{border-radius:20px!important;margin-top:2px!important;padding:11px 13px!important;background:rgba(255,255,255,.52)!important;border:1px solid var(--t-edge)!important;box-shadow:var(--t-shadow-soft)!important}.scooter-icon{width:42px!important;height:42px!important;border-radius:14px!important;background:rgba(75,152,238,.11)!important}.scooter-title{font-size:14px!important}.scooter-sub{font-size:10px!important}
+.footer{display:none!important}
+@media(min-width:760px){.cards{grid-template-columns:1fr 1fr!important}.scooter{grid-column:1/-1!important}.train-card{padding:20px!important}.departure{font-size:72px!important}.timing-time{font-size:50px!important}}
+@media(max-width:759px){.app{padding:max(14px,env(safe-area-inset-top)) 8px max(14px,env(safe-area-inset-bottom))!important}.hero{padding:2px 3px 14px!important}h1{font-size:36px!important}.circle{width:43px!important;height:43px!important}.train-card{border-radius:23px!important;padding:13px!important}.departure{font-size:60px!important}.timing-time{font-size:39px!important}.status-pill{font-size:10px!important;padding:8px 9px!important}}
+@media(prefers-color-scheme:dark){:root{--t-bg:#191e24;--t-bg2:#252c34;--t-text:#f2f5f8;--t-muted:#a8b1bb;--t-glass:rgba(37,44,52,.76);--t-edge:rgba(255,255,255,.09);--t-line:rgba(255,255,255,.08);--t-shadow:0 18px 46px rgba(0,0,0,.28);--t-shadow-soft:0 9px 24px rgba(0,0,0,.18)}html,body{background:radial-gradient(circle at 15% 2%,rgba(76,126,174,.18),transparent 30%),radial-gradient(circle at 90% 8%,rgba(94,111,128,.13),transparent 28%),linear-gradient(155deg,#191e24,#252c34)!important}.circle,.scooter{background:rgba(40,47,56,.76)!important;border-color:rgba(255,255,255,.09)!important}.train-card{background:rgba(37,44,52,.76)!important;border-color:rgba(255,255,255,.09)!important}.timing-split{background:rgba(255,255,255,.035)!important}.status-pill.ok,.punctuality.ok{color:#7ad5a5!important}.status-pill.delay{color:#efbd73!important}.status-pill.bad,.punctuality.late,.punctuality.bad{color:#ff858b!important}.punctuality.early{color:#8fb8ff!important}}
