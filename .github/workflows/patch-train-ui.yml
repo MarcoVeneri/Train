@@ -1,0 +1,89 @@
+name: Patch Train UI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/patch-train-ui.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch index
+        shell: python
+        run: |
+          from pathlib import Path
+          p=Path("index.html")
+          s=p.read_text(encoding="utf-8")
+
+          s=s.replace('<title>Treni Figline ↔ Arezzo v4</title>','<title>Train</title>')
+          s=s.replace('const UI_BUILD="49";','const UI_BUILD="50";')
+          if 'train-ios27.css?v=50' not in s:
+              s=s.replace('</head>','  <link rel="stylesheet" href="./train-ios27.css?v=50">\n</head>',1)
+
+          needle=''' if(d?.departureScheduled)dep.textContent=d.departureScheduled;\n let cls="neutral",txt="IN ORARIO";'''
+          replacement=''' if(d?.departureScheduled)dep.textContent=d.departureScheduled;
+ const staleSource=!!d?.fetchError || d?.liveAvailable===false || (d?.dataDate && d.dataDate!==todayRome());
+ if(staleSource){
+   st.textContent="DATI NON LIVE";statusClass(st,"delay");
+   const stationLabel=key==="out"?"A FIGLINE":"AD AREZZO";
+   punct.textContent=`${stationLabel} · VERIFICA NON DISPONIBILE`;
+   punct.className="punctuality neutral";
+   const boardTimeEl=key==="out"?ui.outBoardTime:ui.backBoardTime;
+   const boardDeltaEl=key==="out"?ui.outBoardDelta:ui.backBoardDelta;
+   const destTimeEl=key==="out"?ui.outDestTime:ui.backDestTime;
+   const destDeltaEl=key==="out"?ui.outDestDelta:ui.backDestDelta;
+   boardTimeEl.textContent=d?.boardingArrivalScheduled||d?.departureScheduled||"--:--";
+   destTimeEl.textContent=d?.arrivalScheduled||"--:--";
+   boardDeltaEl.textContent="non verificato";boardDeltaEl.className="timing-delta";
+   destDeltaEl.textContent="non verificato";destDeltaEl.className="timing-delta";
+   live.textContent="Controllo live non riuscito · nuovo tentativo automatico";
+   return;
+ }
+ let cls="neutral",txt="IN ORARIO";'''
+          if needle in s:
+              s=s.replace(needle,replacement,1)
+          else:
+              raise SystemExit("renderTrain patch point not found")
+
+          old=''' renderTrain("out",data?.trains?.["4099"]);renderTrain("back",data?.trains?.["18774"]);
+ const age=dataAgeMinutes(data?.generatedAt);
+ if(age>25){
+   ui.notice.textContent=`ATTENZIONE: ultimo controllo ferroviario ${Math.round(age)} minuti fa.`;
+   ui.notice.classList.add("show");
+   for(const el of [ui.outStatus,ui.backStatus]){
+     if(el.textContent==="IN ORARIO"){el.textContent="DATI NON LIVE";statusClass(el,"delay")}
+   }
+ }else{ui.notice.classList.remove("show")}'''
+          new=''' renderTrain("out",data?.trains?.["4099"]);renderTrain("back",data?.trains?.["18774"]);
+ const age=dataAgeMinutes(data?.generatedAt);
+ const sourceFailed=Object.values(data?.trains||{}).some(x=>x?.fetchError || x?.liveAvailable===false || (x?.dataDate && x.dataDate!==todayRome()));
+ if(sourceFailed){
+   ui.notice.textContent="Controllo live ViaggiaTreno non riuscito: non mostro più ‘in orario’ se il dato non è verificato. Riprovo automaticamente ogni 5 minuti.";
+   ui.notice.classList.add("show");
+ }else if(age>25){
+   ui.notice.textContent=`ATTENZIONE: ultimo controllo ferroviario ${Math.round(age)} minuti fa.`;
+   ui.notice.classList.add("show");
+   for(const el of [ui.outStatus,ui.backStatus]){
+     if(el.textContent==="IN ORARIO"){el.textContent="DATI NON LIVE";statusClass(el,"delay")}
+   }
+ }else{ui.notice.classList.remove("show")}'''
+          if old in s:
+              s=s.replace(old,new,1)
+          else:
+              raise SystemExit("loadTrains patch point not found")
+
+          p.write_text(s,encoding="utf-8")
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Apply iOS 27 Train UI and fix stale return status"
+          git push
