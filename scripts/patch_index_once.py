@@ -2,51 +2,42 @@ from pathlib import Path
 
 p=Path('index.html')
 s=p.read_text(encoding='utf-8')
-s=s.replace('<title>Treni Figline ↔ Arezzo v4</title>','<title>Train</title>')
-s=s.replace('const UI_BUILD="49";','const UI_BUILD="50";')
-if 'train-ios27.css?v=50' not in s:
-    s=s.replace('</head>','  <link rel="stylesheet" href="./train-ios27.css?v=50">\n</head>',1)
 
-needle=' if(d?.departureScheduled)dep.textContent=d.departureScheduled;\n let cls="neutral",txt="IN ORARIO";'
-replacement=''' if(d?.departureScheduled)dep.textContent=d.departureScheduled;
- const staleSource=!!d?.fetchError || d?.liveAvailable===false || (d?.dataDate && d.dataDate!==todayRome());
- if(staleSource){
-   st.textContent="DATI NON LIVE";statusClass(st,"delay");
-   const stationLabel=key==="out"?"A FIGLINE":"AD AREZZO";
-   punct.textContent=`${stationLabel} · VERIFICA NON DISPONIBILE`;
-   punct.className="punctuality neutral";
-   const boardTimeEl=key==="out"?ui.outBoardTime:ui.backBoardTime;
-   const boardDeltaEl=key==="out"?ui.outBoardDelta:ui.backBoardDelta;
-   const destTimeEl=key==="out"?ui.outDestTime:ui.backDestTime;
-   const destDeltaEl=key==="out"?ui.outDestDelta:ui.backDestDelta;
-   boardTimeEl.textContent=d?.boardingArrivalScheduled||d?.departureScheduled||"--:--";
-   destTimeEl.textContent=d?.arrivalScheduled||"--:--";
-   boardDeltaEl.textContent="non verificato";boardDeltaEl.className="timing-delta";
-   destDeltaEl.textContent="non verificato";destDeltaEl.className="timing-delta";
-   live.textContent="Controllo live non riuscito · nuovo tentativo automatico";
-   return;
- }
- let cls="neutral",txt="IN ORARIO";'''
-if needle in s:
-    s=s.replace(needle,replacement,1)
+# Forza il nuovo frontend sull'iPhone/PWA.
+s=s.replace('const UI_BUILD="50";','const UI_BUILD="51";')
 
-old=''' renderTrain("out",data?.trains?.["4099"]);renderTrain("back",data?.trains?.["18774"]);
- const age=dataAgeMinutes(data?.generatedAt);
- if(age>25){
+# Un errore temporaneo dell'ultimo tentativo non invalida uno snapshot live già
+# verificato oggi. Il dato diventa davvero non-live solo se liveAvailable è false
+# oppure appartiene a un altro giorno.
+s=s.replace(
+    'const staleSource=!!d?.fetchError || d?.liveAvailable===false || (d?.dataDate && d.dataDate!==todayRome());',
+    'const staleSource=d?.liveAvailable===false || (d?.dataDate && d.dataDate!==todayRome());'
+)
+
+# Sostituisce il messaggio tecnico/alarmistico sulla singola card con una nota
+# breve quando viene mantenuto l’ultimo dato verificato.
+s=s.replace(
+    'if(d?.fetchError)bits.push("ultimo aggiornamento live non riuscito");',
+    'if(d?.staleLive||d?.fetchError)bits.push("ultimo dato verificato mantenuto · nuovo controllo in corso");'
+)
+
+old=''' const sourceFailed=Object.values(data?.trains||{}).some(x=>x?.fetchError || x?.liveAvailable===false || (x?.dataDate && x.dataDate!==todayRome()));
+ if(sourceFailed){
+   ui.notice.textContent="Controllo live ViaggiaTreno non riuscito: non mostro più ‘in orario’ se il dato non è verificato. Riprovo automaticamente ogni 5 minuti.";
+   ui.notice.classList.add("show");
+ }else if(age>25){
    ui.notice.textContent=`ATTENZIONE: ultimo controllo ferroviario ${Math.round(age)} minuti fa.`;
    ui.notice.classList.add("show");
    for(const el of [ui.outStatus,ui.backStatus]){
      if(el.textContent==="IN ORARIO"){el.textContent="DATI NON LIVE";statusClass(el,"delay")}
    }
  }else{ui.notice.classList.remove("show")}'''
-new=''' renderTrain("out",data?.trains?.["4099"]);renderTrain("back",data?.trains?.["18774"]);
- const age=dataAgeMinutes(data?.generatedAt);
- const sourceFailed=Object.values(data?.trains||{}).some(x=>x?.fetchError || x?.liveAvailable===false || (x?.dataDate && x.dataDate!==todayRome()));
- if(sourceFailed){
-   ui.notice.textContent="Controllo live ViaggiaTreno non riuscito: non mostro più ‘in orario’ se il dato non è verificato. Riprovo automaticamente ogni 5 minuti.";
+new=''' const hardSourceFailed=Object.values(data?.trains||{}).some(x=>x?.liveAvailable===false || (x?.dataDate && x.dataDate!==todayRome()));
+ if(hardSourceFailed){
+   ui.notice.textContent="Dati live momentaneamente non disponibili.";
    ui.notice.classList.add("show");
  }else if(age>25){
-   ui.notice.textContent=`ATTENZIONE: ultimo controllo ferroviario ${Math.round(age)} minuti fa.`;
+   ui.notice.textContent=`Ultimo controllo ferroviario ${Math.round(age)} minuti fa.`;
    ui.notice.classList.add("show");
    for(const el of [ui.outStatus,ui.backStatus]){
      if(el.textContent==="IN ORARIO"){el.textContent="DATI NON LIVE";statusClass(el,"delay")}
