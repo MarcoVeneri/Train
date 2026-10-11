@@ -26,8 +26,7 @@
       "lastDetection": "ROMA TIBURTINA",
       "sourceTimestamp": 1791708210000,
       "dataDate": "2026-10-11",
-      "source": "ViaggiaTreno",
-      "fetchError": "HTTP Error 403: Forbidden"
+      "source": "ViaggiaTreno"
     },
     "18774": {
       "number": "18774",
@@ -54,9 +53,11 @@
       "lastDetection": "FIRENZE SANTA MARIA NOVELLA",
       "sourceTimestamp": 1791740130000,
       "dataDate": "2026-10-11",
-      "source": "ViaggiaTreno",
-      "fetchError": "HTTP Error 403: Forbidden"
+      "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-11T23:47:26+02:00"
+  "generatedAt": "2026-10-11T23:48:49+02:00",
+  "liveSuccessCount": 2,
+  "liveComplete": true,
+  "monitorWeekendEnabled": true
 }
