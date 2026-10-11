@@ -125,7 +125,7 @@
 <script>
 (function(){
   try{
-    const UI_BUILD="51";
+    const UI_BUILD="52";
     const u=new URL(location.href);
     if(u.searchParams.get("build")!==UI_BUILD){
       u.searchParams.set("build",UI_BUILD);
@@ -236,13 +236,13 @@ function resetForNewDay(){
  ui.outDeparture.textContent="07:00";
  ui.backDeparture.textContent="18:08";
 
- ui.outStatus.textContent="IN ATTESA"; statusClass(ui.outStatus,"neutral");
- ui.backStatus.textContent="IN ATTESA"; statusClass(ui.backStatus,"neutral");
+ ui.outStatus.textContent="IN ORARIO"; statusClass(ui.outStatus,"ok");
+ ui.backStatus.textContent="IN ORARIO"; statusClass(ui.backStatus,"ok");
 
- ui.outPunctuality.textContent="A FIGLINE · ATTESA DATI";
- ui.outPunctuality.className="punctuality neutral";
- ui.backPunctuality.textContent="AD AREZZO · ATTESA DATI";
- ui.backPunctuality.className="punctuality neutral";
+ ui.outPunctuality.textContent="A FIGLINE · IN ORARIO";
+ ui.outPunctuality.className="punctuality ok";
+ ui.backPunctuality.textContent="AD AREZZO · IN ORARIO";
+ ui.backPunctuality.className="punctuality ok";
 
  ui.outBoardTime.textContent="07:00";
  ui.outDestTime.textContent="07:36";
@@ -250,11 +250,11 @@ function resetForNewDay(){
  ui.backDestTime.textContent="18:48";
 
  for(const el of [ui.outBoardDelta,ui.outDestDelta,ui.backBoardDelta,ui.backDestDelta]){
-   el.textContent="attesa dati";
-   el.className="timing-delta";
+   el.textContent="in orario";
+   el.className="timing-delta ok";
  }
- ui.outLive.textContent="In attesa del primo controllo ViaggiaTreno di oggi";
- ui.backLive.textContent="In attesa del primo controllo ViaggiaTreno di oggi";
+ ui.outLive.textContent="Controllo automatico prima della partenza";
+ ui.backLive.textContent="Controllo automatico prima della partenza";
 }
 
 function dataAgeMinutes(iso){
@@ -334,7 +334,8 @@ function renderTrain(key,d){
  else if(d?.trainStarted && d?.lastDetection)bits.push(`Treno in viaggio · ultimo rilevamento: ${d.lastDetection}`);
  else if(d?.lastDetection && d.lastDetection!=="--")bits.push(`Ultimo rilevamento: ${d.lastDetection}`);
  if(d?.dataDate && d.dataDate!==todayRome())bits.push("dato non odierno");
- if(d?.staleLive||d?.fetchError)bits.push("ultimo dato verificato mantenuto · nuovo controllo in corso");
+ if(d?.provisional)bits.push("controllo automatico prima della partenza");
+ else if(d?.staleLive||d?.fetchError)bits.push("ultimo dato verificato mantenuto · nuovo controllo in corso");
  live.textContent=bits.length?bits.join(" · "):"Stato live ViaggiaTreno";
 }
 function weatherIcon(code){
@@ -372,18 +373,21 @@ async function loadTrains(){
  // Restiamo in attesa finché il backend non pubblica il primo dato del nuovo giorno.
  if(staleDay){
    resetForNewDay();
-   ui.notice.textContent="Nuovo giorno · in attesa dei dati live di oggi.";
-   ui.notice.classList.add("show");
+   ui.notice.classList.remove("show");
    return data;
  }
 
  renderTrain("out",data?.trains?.["4099"]);renderTrain("back",data?.trains?.["18774"]);
  const age=dataAgeMinutes(data?.generatedAt);
  const hardSourceFailed=Object.values(data?.trains||{}).some(x=>x?.liveAvailable===false || (x?.dataDate && x.dataDate!==todayRome()));
+ const provisional=Object.values(data?.trains||{}).some(x=>x?.provisional===true);
+ const nowParts=romeDateParts();
+ const hm=Number(nowParts.hour)*60+Number(nowParts.minute);
+ const activeWindow=(hm>=360&&hm<=570)||(hm>=1020&&hm<=1260);
  if(hardSourceFailed){
    ui.notice.textContent="Dati live momentaneamente non disponibili.";
    ui.notice.classList.add("show");
- }else if(age>25){
+ }else if(age>25 && activeWindow && !provisional){
    ui.notice.textContent=`Ultimo controllo ferroviario ${Math.round(age)} minuti fa.`;
    ui.notice.classList.add("show");
    for(const el of [ui.outStatus,ui.backStatus]){
@@ -411,8 +415,7 @@ function watchDayChange(){
  if(nowDay!==activeDay){
    activeDay=nowDay;
    resetForNewDay();
-   ui.notice.textContent="Nuovo giorno · in attesa dei dati live di oggi.";
-   ui.notice.classList.add("show");
+   ui.notice.classList.remove("show");
    refreshAll();
  }
 }
