@@ -61,9 +61,11 @@
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-12T00:25:56+02:00",
-  "liveSuccessCount": 1,
+  "generatedAt": "2026-10-12T00:26:17+02:00",
+  "liveSuccessCount": 0,
   "retainedVerifiedCount": 0,
-  "liveComplete": false,
-  "monitorWeekendEnabled": true
+  "monitoredTrainCount": 0,
+  "liveComplete": true,
+  "monitorWeekendEnabled": true,
+  "monitorMode": "commuter-windows-5min"
 }
