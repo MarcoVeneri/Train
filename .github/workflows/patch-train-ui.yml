@@ -16,18 +16,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Patch index
-        shell: python
+        shell: bash
         run: |
+          python3 <<'PY'
           from pathlib import Path
           p=Path("index.html")
           s=p.read_text(encoding="utf-8")
-
           s=s.replace('<title>Treni Figline ↔ Arezzo v4</title>','<title>Train</title>')
           s=s.replace('const UI_BUILD="49";','const UI_BUILD="50";')
           if 'train-ios27.css?v=50' not in s:
               s=s.replace('</head>','  <link rel="stylesheet" href="./train-ios27.css?v=50">\n</head>',1)
 
-          needle=''' if(d?.departureScheduled)dep.textContent=d.departureScheduled;\n let cls="neutral",txt="IN ORARIO";'''
+          needle=' if(d?.departureScheduled)dep.textContent=d.departureScheduled;\n let cls="neutral",txt="IN ORARIO";'
           replacement=''' if(d?.departureScheduled)dep.textContent=d.departureScheduled;
  const staleSource=!!d?.fetchError || d?.liveAvailable===false || (d?.dataDate && d.dataDate!==todayRome());
  if(staleSource){
@@ -47,10 +47,9 @@ jobs:
    return;
  }
  let cls="neutral",txt="IN ORARIO";'''
-          if needle in s:
-              s=s.replace(needle,replacement,1)
-          else:
+          if needle not in s:
               raise SystemExit("renderTrain patch point not found")
+          s=s.replace(needle,replacement,1)
 
           old=''' renderTrain("out",data?.trains?.["4099"]);renderTrain("back",data?.trains?.["18774"]);
  const age=dataAgeMinutes(data?.generatedAt);
@@ -74,13 +73,13 @@ jobs:
      if(el.textContent==="IN ORARIO"){el.textContent="DATI NON LIVE";statusClass(el,"delay")}
    }
  }else{ui.notice.classList.remove("show")}'''
-          if old in s:
-              s=s.replace(old,new,1)
-          else:
+          if old not in s:
               raise SystemExit("loadTrains patch point not found")
-
+          s=s.replace(old,new,1)
           p.write_text(s,encoding="utf-8")
+          PY
       - name: Commit
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
