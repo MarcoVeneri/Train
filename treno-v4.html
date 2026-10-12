@@ -14,7 +14,7 @@
   <meta name="format-detection" content="telephone=no">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
-  <title>Treni Figline ↔ Arezzo v4</title>
+  <title>Train</title>
   <style>
     :root{
       color-scheme:light dark;
@@ -125,7 +125,7 @@
 <script>
 (function(){
   try{
-    const UI_BUILD="49";
+    const UI_BUILD="53";
     const u=new URL(location.href);
     if(u.searchParams.get("build")!==UI_BUILD){
       u.searchParams.set("build",UI_BUILD);
@@ -149,6 +149,7 @@
 })();
 </script>
 
+  <link rel="stylesheet" href="./train-ios27.css?v=50">
 </head>
 <body>
 <main class="app">
@@ -235,13 +236,13 @@ function resetForNewDay(){
  ui.outDeparture.textContent="07:00";
  ui.backDeparture.textContent="18:08";
 
- ui.outStatus.textContent="IN ATTESA"; statusClass(ui.outStatus,"neutral");
- ui.backStatus.textContent="IN ATTESA"; statusClass(ui.backStatus,"neutral");
+ ui.outStatus.textContent="IN ORARIO"; statusClass(ui.outStatus,"ok");
+ ui.backStatus.textContent="IN ORARIO"; statusClass(ui.backStatus,"ok");
 
- ui.outPunctuality.textContent="A FIGLINE · ATTESA DATI";
- ui.outPunctuality.className="punctuality neutral";
- ui.backPunctuality.textContent="AD AREZZO · ATTESA DATI";
- ui.backPunctuality.className="punctuality neutral";
+ ui.outPunctuality.textContent="A FIGLINE · IN ORARIO";
+ ui.outPunctuality.className="punctuality ok";
+ ui.backPunctuality.textContent="AD AREZZO · IN ORARIO";
+ ui.backPunctuality.className="punctuality ok";
 
  ui.outBoardTime.textContent="07:00";
  ui.outDestTime.textContent="07:36";
@@ -249,11 +250,11 @@ function resetForNewDay(){
  ui.backDestTime.textContent="18:48";
 
  for(const el of [ui.outBoardDelta,ui.outDestDelta,ui.backBoardDelta,ui.backDestDelta]){
-   el.textContent="attesa dati";
-   el.className="timing-delta";
+   el.textContent="in orario";
+   el.className="timing-delta ok";
  }
- ui.outLive.textContent="In attesa del primo controllo ViaggiaTreno di oggi";
- ui.backLive.textContent="In attesa del primo controllo ViaggiaTreno di oggi";
+ ui.outLive.textContent="Controllo automatico prima della partenza";
+ ui.backLive.textContent="Controllo automatico prima della partenza";
 }
 
 function dataAgeMinutes(iso){
@@ -272,10 +273,28 @@ function renderTrain(key,d){
  punct=key==="out"?ui.outPunctuality:ui.backPunctuality,
  inf=key==="out"?ui.outInfo:ui.backInfo, live=key==="out"?ui.outLive:ui.backLive;
  if(d?.departureScheduled)dep.textContent=d.departureScheduled;
+ const staleSource=d?.liveAvailable===false || (d?.dataDate && d.dataDate!==todayRome());
+ const departed=Boolean(d?.departureActual || d?.started===true || d?.status==="DEPARTED");
+ if(staleSource && !departed){
+   st.textContent="DATI NON LIVE";statusClass(st,"delay");
+   const stationLabel=key==="out"?"A FIGLINE":"AD AREZZO";
+   punct.textContent=`${stationLabel} · VERIFICA NON DISPONIBILE`;
+   punct.className="punctuality neutral";
+   const boardTimeEl=key==="out"?ui.outBoardTime:ui.backBoardTime;
+   const boardDeltaEl=key==="out"?ui.outBoardDelta:ui.backBoardDelta;
+   const destTimeEl=key==="out"?ui.outDestTime:ui.backDestTime;
+   const destDeltaEl=key==="out"?ui.outDestDelta:ui.backDestDelta;
+   boardTimeEl.textContent=d?.boardingArrivalScheduled||d?.departureScheduled||"--:--";
+   destTimeEl.textContent=d?.arrivalScheduled||"--:--";
+   boardDeltaEl.textContent="non verificato";boardDeltaEl.className="timing-delta";
+   destDeltaEl.textContent="non verificato";destDeltaEl.className="timing-delta";
+   live.textContent="Controllo live non riuscito · nuovo tentativo automatico";
+   return;
+ }
  let cls="neutral",txt="IN ORARIO";
  const boardingDelay=Number(d?.boardingDelayMinutes ?? d?.delayMinutes ?? 0);
  if(d?.cancelled){txt="SOPPRESSO";cls="bad"}
- else if(d?.departureActual){
+ else if(departed){
    txt=boardingDelay>0?`PARTITO +${Math.round(boardingDelay)}`:"PARTITO";
    cls=boardingDelay>=15?"bad":boardingDelay>0?"delay":"ok";
  }
@@ -313,10 +332,13 @@ function renderTrain(key,d){
  destTimeEl.textContent=destTime; destDeltaEl.textContent=dd.text; destDeltaEl.className="timing-delta "+dd.cls;
  let bits=[];
  if(d?.departureActual)bits.push(`Partenza effettiva ${d.departureActual}`);
+ else if(departed && d?.boardingArrivalActual)bits.push(`Partito · passaggio alla stazione di salita ${d.boardingArrivalActual}`);
+ else if(departed)bits.push("Partito");
  else if(d?.trainStarted && d?.lastDetection)bits.push(`Treno in viaggio · ultimo rilevamento: ${d.lastDetection}`);
  else if(d?.lastDetection && d.lastDetection!=="--")bits.push(`Ultimo rilevamento: ${d.lastDetection}`);
  if(d?.dataDate && d.dataDate!==todayRome())bits.push("dato non odierno");
- if(d?.fetchError)bits.push("ultimo aggiornamento live non riuscito");
+ if(d?.provisional)bits.push("controllo automatico prima della partenza");
+ else if(d?.staleLive||d?.fetchError)bits.push("ultimo dato verificato mantenuto · nuovo controllo in corso");
  live.textContent=bits.length?bits.join(" · "):"Stato live ViaggiaTreno";
 }
 function weatherIcon(code){
@@ -354,15 +376,22 @@ async function loadTrains(){
  // Restiamo in attesa finché il backend non pubblica il primo dato del nuovo giorno.
  if(staleDay){
    resetForNewDay();
-   ui.notice.textContent="Nuovo giorno · in attesa dei dati live di oggi.";
-   ui.notice.classList.add("show");
+   ui.notice.classList.remove("show");
    return data;
  }
 
  renderTrain("out",data?.trains?.["4099"]);renderTrain("back",data?.trains?.["18774"]);
  const age=dataAgeMinutes(data?.generatedAt);
- if(age>25){
-   ui.notice.textContent=`ATTENZIONE: ultimo controllo ferroviario ${Math.round(age)} minuti fa.`;
+ const hardSourceFailed=Object.values(data?.trains||{}).some(x=>x?.liveAvailable===false || (x?.dataDate && x.dataDate!==todayRome()));
+ const provisional=Object.values(data?.trains||{}).some(x=>x?.provisional===true);
+ const nowParts=romeDateParts();
+ const hm=Number(nowParts.hour)*60+Number(nowParts.minute);
+ const activeWindow=(hm>=360&&hm<=570)||(hm>=1020&&hm<=1260);
+ if(hardSourceFailed){
+   ui.notice.textContent="Dati live momentaneamente non disponibili.";
+   ui.notice.classList.add("show");
+ }else if(age>25 && activeWindow && !provisional){
+   ui.notice.textContent=`Ultimo controllo ferroviario ${Math.round(age)} minuti fa.`;
    ui.notice.classList.add("show");
    for(const el of [ui.outStatus,ui.backStatus]){
      if(el.textContent==="IN ORARIO"){el.textContent="DATI NON LIVE";statusClass(el,"delay")}
@@ -389,8 +418,7 @@ function watchDayChange(){
  if(nowDay!==activeDay){
    activeDay=nowDay;
    resetForNewDay();
-   ui.notice.textContent="Nuovo giorno · in attesa dei dati live di oggi.";
-   ui.notice.classList.add("show");
+   ui.notice.classList.remove("show");
    refreshAll();
  }
 }
