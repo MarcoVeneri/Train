@@ -31,7 +31,7 @@
       "verifiedAt": "2026-10-12T18:20:00+02:00",
       "source": "ViaggiaTreno · ultimo dato verificato",
       "fetchError": "Expecting value: line 1 column 1 (char 0)",
-      "lastAttemptAt": "2026-10-12T21:14:55+02:00"
+      "lastAttemptAt": "2026-10-12T21:20:14+02:00"
     },
     "18774": {
       "number": "18774",
@@ -60,11 +60,11 @@
       "lastDetection": "FIRENZE SANTA MARIA NOVELLA",
       "sourceTimestamp": 1791827550000,
       "dataDate": "2026-10-12",
-      "verifiedAt": "2026-10-12T21:14:56+02:00",
+      "verifiedAt": "2026-10-12T21:20:15+02:00",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-12T21:14:56+02:00",
+  "generatedAt": "2026-10-12T21:20:15+02:00",
   "liveSuccessCount": 1,
   "retainedVerifiedCount": 1,
   "monitoredTrainCount": 2,
