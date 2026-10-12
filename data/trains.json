@@ -28,7 +28,8 @@
       "lastDetection": null,
       "sourceTimestamp": null,
       "dataDate": "2026-10-12",
-      "source": "Programma · controllo automatico"
+      "source": "Programma · controllo automatico",
+      "fetchError": "HTTP Error 403: Forbidden"
     },
     "18774": {
       "number": "18774",
@@ -57,14 +58,9 @@
       "lastDetection": null,
       "sourceTimestamp": null,
       "dataDate": "2026-10-12",
-      "source": "Programma · controllo automatico"
+      "source": "Programma · controllo automatico",
+      "fetchError": "HTTP Error 403: Forbidden"
     }
   },
-  "generatedAt": "2026-10-12T13:45:55+02:00",
-  "liveSuccessCount": 0,
-  "retainedVerifiedCount": 0,
-  "monitoredTrainCount": 0,
-  "liveComplete": true,
-  "monitorWeekendEnabled": true,
-  "monitorMode": "commuter-windows-5min"
+  "generatedAt": "2026-10-12T17:48:58+02:00"
 }
