@@ -31,7 +31,7 @@
       "verifiedAt": "2026-10-12T18:20:00+02:00",
       "source": "ViaggiaTreno · ultimo dato verificato",
       "fetchError": "Expecting value: line 1 column 1 (char 0)",
-      "lastAttemptAt": "2026-10-12T18:56:17+02:00"
+      "lastAttemptAt": "2026-10-12T19:01:37+02:00"
     },
     "18774": {
       "number": "18774",
@@ -57,14 +57,14 @@
       "arrivalExpected": "18:52",
       "arrivalActual": "18:52",
       "platform": "1",
-      "lastDetection": "SEGNALE DI CONFINE FIGLINE (PARI)",
-      "sourceTimestamp": 1791824070000,
+      "lastDetection": "INCISA",
+      "sourceTimestamp": 1791824340000,
       "dataDate": "2026-10-12",
-      "verifiedAt": "2026-10-12T18:56:18+02:00",
+      "verifiedAt": "2026-10-12T19:01:38+02:00",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-12T18:56:18+02:00",
+  "generatedAt": "2026-10-12T19:01:38+02:00",
   "liveSuccessCount": 1,
   "retainedVerifiedCount": 1,
   "monitoredTrainCount": 2,
