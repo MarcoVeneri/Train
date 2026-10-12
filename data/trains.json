@@ -31,7 +31,7 @@
       "verifiedAt": "2026-10-12T18:20:00+02:00",
       "source": "ViaggiaTreno · ultimo dato verificato",
       "fetchError": "Expecting value: line 1 column 1 (char 0)",
-      "lastAttemptAt": "2026-10-12T19:06:57+02:00"
+      "lastAttemptAt": "2026-10-12T19:12:16+02:00"
     },
     "18774": {
       "number": "18774",
@@ -60,11 +60,11 @@
       "lastDetection": "RIGNANO SULL'ARNO REGGELLO",
       "sourceTimestamp": 1791824790000,
       "dataDate": "2026-10-12",
-      "verifiedAt": "2026-10-12T19:06:58+02:00",
+      "verifiedAt": "2026-10-12T19:12:17+02:00",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-12T19:06:58+02:00",
+  "generatedAt": "2026-10-12T19:12:17+02:00",
   "liveSuccessCount": 1,
   "retainedVerifiedCount": 1,
   "monitoredTrainCount": 2,
