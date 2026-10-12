@@ -125,7 +125,7 @@
 <script>
 (function(){
   try{
-    const UI_BUILD="52";
+    const UI_BUILD="53";
     const u=new URL(location.href);
     if(u.searchParams.get("build")!==UI_BUILD){
       u.searchParams.set("build",UI_BUILD);
@@ -274,7 +274,8 @@ function renderTrain(key,d){
  inf=key==="out"?ui.outInfo:ui.backInfo, live=key==="out"?ui.outLive:ui.backLive;
  if(d?.departureScheduled)dep.textContent=d.departureScheduled;
  const staleSource=d?.liveAvailable===false || (d?.dataDate && d.dataDate!==todayRome());
- if(staleSource){
+ const departed=Boolean(d?.departureActual || d?.started===true || d?.status==="DEPARTED");
+ if(staleSource && !departed){
    st.textContent="DATI NON LIVE";statusClass(st,"delay");
    const stationLabel=key==="out"?"A FIGLINE":"AD AREZZO";
    punct.textContent=`${stationLabel} · VERIFICA NON DISPONIBILE`;
@@ -293,7 +294,7 @@ function renderTrain(key,d){
  let cls="neutral",txt="IN ORARIO";
  const boardingDelay=Number(d?.boardingDelayMinutes ?? d?.delayMinutes ?? 0);
  if(d?.cancelled){txt="SOPPRESSO";cls="bad"}
- else if(d?.departureActual){
+ else if(departed){
    txt=boardingDelay>0?`PARTITO +${Math.round(boardingDelay)}`:"PARTITO";
    cls=boardingDelay>=15?"bad":boardingDelay>0?"delay":"ok";
  }
@@ -331,6 +332,8 @@ function renderTrain(key,d){
  destTimeEl.textContent=destTime; destDeltaEl.textContent=dd.text; destDeltaEl.className="timing-delta "+dd.cls;
  let bits=[];
  if(d?.departureActual)bits.push(`Partenza effettiva ${d.departureActual}`);
+ else if(departed && d?.boardingArrivalActual)bits.push(`Partito · passaggio alla stazione di salita ${d.boardingArrivalActual}`);
+ else if(departed)bits.push("Partito");
  else if(d?.trainStarted && d?.lastDetection)bits.push(`Treno in viaggio · ultimo rilevamento: ${d.lastDetection}`);
  else if(d?.lastDetection && d.lastDetection!=="--")bits.push(`Ultimo rilevamento: ${d.lastDetection}`);
  if(d?.dataDate && d.dataDate!==todayRome())bits.push("dato non odierno");
