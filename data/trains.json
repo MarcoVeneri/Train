@@ -41,7 +41,7 @@
       "trainStarted": false,
       "liveAvailable": true,
       "staleLive": false,
-      "provisional": true,
+      "provisional": false,
       "delayMinutes": 0,
       "boardingDelayMinutes": 0,
       "destinationDelayMinutes": 0,
@@ -54,13 +54,19 @@
       "arrivalScheduled": "18:48",
       "arrivalExpected": "18:48",
       "arrivalActual": null,
-      "platform": null,
-      "lastDetection": null,
+      "platform": "1",
+      "lastDetection": "--",
       "sourceTimestamp": null,
       "dataDate": "2026-10-12",
-      "source": "Programma · controllo automatico",
-      "fetchError": "HTTP Error 403: Forbidden"
+      "verifiedAt": "2026-10-12T17:50:33+02:00",
+      "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-12T17:48:58+02:00"
+  "generatedAt": "2026-10-12T17:50:33+02:00",
+  "liveSuccessCount": 1,
+  "retainedVerifiedCount": 0,
+  "monitoredTrainCount": 1,
+  "liveComplete": true,
+  "monitorWeekendEnabled": true,
+  "monitorMode": "commuter-windows-5min"
 }
