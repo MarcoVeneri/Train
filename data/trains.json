@@ -10,7 +10,7 @@
       "started": true,
       "trainStarted": true,
       "liveAvailable": true,
-      "staleLive": false,
+      "staleLive": true,
       "provisional": false,
       "delayMinutes": -2,
       "boardingDelayMinutes": -2,
@@ -29,7 +29,9 @@
       "sourceTimestamp": null,
       "dataDate": "2026-10-12",
       "verifiedAt": "2026-10-12T18:20:00+02:00",
-      "source": "ViaggiaTreno mobile · corsa odierna recuperata"
+      "source": "ViaggiaTreno · ultimo dato verificato",
+      "fetchError": "Expecting value: line 1 column 1 (char 0)",
+      "lastAttemptAt": "2026-10-12T18:24:20+02:00"
     },
     "18774": {
       "number": "18774",
@@ -44,7 +46,7 @@
       "provisional": false,
       "delayMinutes": 3,
       "boardingDelayMinutes": 3,
-      "destinationDelayMinutes": 4,
+      "destinationDelayMinutes": 5,
       "departureScheduled": "18:08",
       "departureExpected": "18:10",
       "departureActual": "18:10",
@@ -52,21 +54,21 @@
       "boardingArrivalExpected": "18:11",
       "boardingArrivalActual": null,
       "arrivalScheduled": "18:48",
-      "arrivalExpected": "18:52",
+      "arrivalExpected": "18:53",
       "arrivalActual": null,
       "platform": "1",
-      "lastDetection": "SEGNALE DI CONFINE 2 BV AR. NORD (PARI)",
-      "sourceTimestamp": 1791821700000,
+      "lastDetection": "PONTICINO",
+      "sourceTimestamp": 1791822240000,
       "dataDate": "2026-10-12",
-      "verifiedAt": "2026-10-12T18:19:02+02:00",
+      "verifiedAt": "2026-10-12T18:24:21+02:00",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-12T18:20:00+02:00",
+  "generatedAt": "2026-10-12T18:24:21+02:00",
   "liveSuccessCount": 1,
   "retainedVerifiedCount": 1,
   "monitoredTrainCount": 2,
-  "liveComplete": true,
+  "liveComplete": false,
   "monitorWeekendEnabled": true,
   "monitorMode": "commuter-windows-5min"
 }
