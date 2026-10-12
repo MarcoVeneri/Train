@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - "scripts/update_trains.py"
+      - "scripts/run_live.py"
       - ".github/workflows/update-trains.yml"
   schedule:
     - cron: "17 4 * * *"
@@ -15,7 +16,7 @@ permissions:
   actions: write
 
 concurrency:
-  group: train-live-v4
+  group: train-live-v5
   cancel-in-progress: false
 
 jobs:
@@ -72,10 +73,10 @@ jobs:
           for cycle in $(seq 1 69); do
             git fetch origin main live-data
             git reset --hard origin/live-data
-            git show origin/main:scripts/update_trains.py > /tmp/update_trains.py
-            cp /tmp/update_trains.py scripts/update_trains.py
+            git show origin/main:scripts/update_trains.py > scripts/update_trains.py
+            git show origin/main:scripts/run_live.py > scripts/run_live.py
 
-            python scripts/update_trains.py || true
+            python scripts/run_live.py || true
 
             if ! git diff --quiet -- data/trains.json; then
               git add data/trains.json
@@ -90,9 +91,9 @@ jobs:
                 echo "Conflitto live-data: riallineo e ritento ($attempt/3)"
                 git fetch origin main live-data
                 git reset --hard origin/live-data
-                git show origin/main:scripts/update_trains.py > /tmp/update_trains.py
-                cp /tmp/update_trains.py scripts/update_trains.py
-                python scripts/update_trains.py || true
+                git show origin/main:scripts/update_trains.py > scripts/update_trains.py
+                git show origin/main:scripts/run_live.py > scripts/run_live.py
+                python scripts/run_live.py || true
                 git add data/trains.json
                 git commit -m "Aggiorna dati live treni" || true
                 sleep 3
