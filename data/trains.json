@@ -30,7 +30,7 @@
       "dataDate": "2026-10-13",
       "source": "Programma · dati live non disponibili",
       "fetchError": "Expecting value: line 1 column 1 (char 0)",
-      "lastAttemptAt": "2026-10-13T00:52:43+02:00"
+      "lastAttemptAt": "2026-10-13T00:58:03+02:00"
     },
     "18774": {
       "number": "18774",
@@ -59,11 +59,11 @@
       "lastDetection": "--",
       "sourceTimestamp": null,
       "dataDate": "2026-10-13",
-      "verifiedAt": "2026-10-13T00:52:44+02:00",
+      "verifiedAt": "2026-10-13T00:58:04+02:00",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-13T00:52:44+02:00",
+  "generatedAt": "2026-10-13T00:58:04+02:00",
   "liveSuccessCount": 1,
   "retainedVerifiedCount": 0,
   "monitoredTrainCount": 2,
