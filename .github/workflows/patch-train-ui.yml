@@ -16,16 +16,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Patch index
+      - name: Patch Train pages
         run: python3 scripts/patch_index_once.py
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html
+          git add index.html treno-v4.html manifest.webmanifest
           if git diff --cached --quiet; then
             echo "Nessuna modifica da pubblicare"
             exit 0
           fi
-          git commit -m "Refine retained live train data UI"
+          git commit -m "Show current replacement train in PWA"
           git push
