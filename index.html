@@ -125,7 +125,7 @@
 <script>
 (function(){
   try{
-    const UI_BUILD="53";
+    const UI_BUILD="54";
     const u=new URL(location.href);
     if(u.searchParams.get("build")!==UI_BUILD){
       u.searchParams.set("build",UI_BUILD);
@@ -170,7 +170,7 @@
     <article class="train-card glass">
       <div class="card-head"><span class="trip-pill out"><span class="dot"></span>ANDATA</span><span class="brand">TRENITALIA</span></div>
       <div class="route-line">Figline Valdarno → Arezzo <span style="opacity:.62">· prosegue Roma Tiburtina</span></div>
-      <div class="train-number"><span class="train-glyph">🚆</span><span>4099</span></div>
+      <div class="train-number"><span class="train-glyph">🚆</span><span id="outTrainNumber">4099</span></div>
       <div class="main-row"><div id="outDeparture" class="departure">07:00</div><div id="outStatus" class="status-pill neutral">PROGRAMMATO</div></div>
       <div id="outPunctuality" class="punctuality ok">A FIGLINE · IN ORARIO</div><div id="outInfo" class="timing-split">
         <div class="timing-cell"><div class="timing-label">Arrivo a Figline</div><div id="outBoardTime" class="timing-time">07:00</div><div id="outBoardDelta" class="timing-delta ok">in orario</div></div>
@@ -187,7 +187,7 @@
     <article class="train-card glass">
       <div class="card-head"><span class="trip-pill back"><span class="dot"></span>RITORNO</span><span class="brand">TRENITALIA</span></div>
       <div class="route-line">Arezzo → Figline Valdarno</div>
-      <div class="train-number"><span class="train-glyph">🚆</span><span>18774</span></div>
+      <div class="train-number"><span class="train-glyph">🚆</span><span id="backTrainNumber">18774</span></div>
       <div class="main-row"><div id="backDeparture" class="departure">18:08</div><div id="backStatus" class="status-pill neutral">PROGRAMMATO</div></div>
       <div id="backPunctuality" class="punctuality ok">AD AREZZO · IN ORARIO</div><div id="backInfo" class="timing-split">
         <div class="timing-cell"><div class="timing-label">Arrivo ad Arezzo</div><div id="backBoardTime" class="timing-time">18:08</div><div id="backBoardDelta" class="timing-delta ok">in orario</div></div>
@@ -218,8 +218,8 @@ const FIGLINE={lat:43.6198,lon:11.4719}, AREZZO={lat:43.4633,lon:11.8796};
 const $=s=>document.querySelector(s);
 const ui={
  greeting:$("#greeting"),meta:$("#refreshMeta"),refresh:$("#refreshBtn"),notice:$("#notice"),
- outDeparture:$("#outDeparture"),outStatus:$("#outStatus"),outPunctuality:$("#outPunctuality"),outInfo:$("#outInfo"),outLive:$("#outLive"),outBoardTime:$("#outBoardTime"),outBoardDelta:$("#outBoardDelta"),outDestTime:$("#outDestTime"),outDestDelta:$("#outDestDelta"),
- backDeparture:$("#backDeparture"),backStatus:$("#backStatus"),backPunctuality:$("#backPunctuality"),backInfo:$("#backInfo"),backLive:$("#backLive"),backBoardTime:$("#backBoardTime"),backBoardDelta:$("#backBoardDelta"),backDestTime:$("#backDestTime"),backDestDelta:$("#backDestDelta"),
+ outTrainNumber:$("#outTrainNumber"),outDeparture:$("#outDeparture"),outStatus:$("#outStatus"),outPunctuality:$("#outPunctuality"),outInfo:$("#outInfo"),outLive:$("#outLive"),outBoardTime:$("#outBoardTime"),outBoardDelta:$("#outBoardDelta"),outDestTime:$("#outDestTime"),outDestDelta:$("#outDestDelta"),
+ backTrainNumber:$("#backTrainNumber"),backDeparture:$("#backDeparture"),backStatus:$("#backStatus"),backPunctuality:$("#backPunctuality"),backInfo:$("#backInfo"),backLive:$("#backLive"),backBoardTime:$("#backBoardTime"),backBoardDelta:$("#backBoardDelta"),backDestTime:$("#backDestTime"),backDestDelta:$("#backDestDelta"),
  fmI:$("#fmI"),fmT:$("#fmT"),amI:$("#amI"),amT:$("#amT"),aeI:$("#aeI"),aeT:$("#aeT"),feI:$("#feI"),feT:$("#feT"),
  scooter:$("#scooterNote")
 };
@@ -233,7 +233,11 @@ function setGreeting(){const h=Number(romeDateParts().hour);ui.greeting.textCont
 function statusClass(el,c){el.className="status-pill "+c}
 
 function resetForNewDay(){
- ui.outDeparture.textContent="07:00";
+ const today=todayRome();
+ const replacement=today>="2026-10-12" && today<="2026-12-04";
+ ui.outTrainNumber.textContent=replacement?"34221":"4099";
+ ui.backTrainNumber.textContent="18774";
+ ui.outDeparture.textContent=replacement?"06:55":"07:00";
  ui.backDeparture.textContent="18:08";
 
  ui.outStatus.textContent="IN ORARIO"; statusClass(ui.outStatus,"ok");
@@ -244,8 +248,8 @@ function resetForNewDay(){
  ui.backPunctuality.textContent="AD AREZZO · IN ORARIO";
  ui.backPunctuality.className="punctuality ok";
 
- ui.outBoardTime.textContent="07:00";
- ui.outDestTime.textContent="07:36";
+ ui.outBoardTime.textContent=replacement?"06:55":"07:00";
+ ui.outDestTime.textContent=replacement?"07:31":"07:36";
  ui.backBoardTime.textContent="18:08";
  ui.backDestTime.textContent="18:48";
 
@@ -272,6 +276,8 @@ function renderTrain(key,d){
  const dep=key==="out"?ui.outDeparture:ui.backDeparture, st=key==="out"?ui.outStatus:ui.backStatus,
  punct=key==="out"?ui.outPunctuality:ui.backPunctuality,
  inf=key==="out"?ui.outInfo:ui.backInfo, live=key==="out"?ui.outLive:ui.backLive;
+ const trainNumberEl=key==="out"?ui.outTrainNumber:ui.backTrainNumber;
+ if(d?.number)trainNumberEl.textContent=d.number;
  if(d?.departureScheduled)dep.textContent=d.departureScheduled;
  const staleSource=d?.liveAvailable===false || (d?.dataDate && d.dataDate!==todayRome());
  const departed=Boolean(d?.departureActual || d?.started===true || d?.status==="DEPARTED");
@@ -424,6 +430,7 @@ function watchDayChange(){
 }
 
 setGreeting();
+resetForNewDay();
 setInterval(setGreeting,60000);
 setInterval(watchDayChange,15000);
 refreshAll();
