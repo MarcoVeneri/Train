@@ -28,7 +28,7 @@
       "lastDetection": "MONTEROTONDO-MENTANA",
       "sourceTimestamp": 1792138980000,
       "dataDate": "2026-10-16",
-      "verifiedAt": "2026-10-16T10:25:36+02:00",
+      "verifiedAt": "2026-10-16T10:30:39+02:00",
       "source": "ViaggiaTreno · sostitutivo 34221",
       "logicalNumber": "4099",
       "replacementFor": "4099",
@@ -61,11 +61,11 @@
       "lastDetection": "--",
       "sourceTimestamp": null,
       "dataDate": "2026-10-16",
-      "verifiedAt": "2026-10-16T10:25:37+02:00",
+      "verifiedAt": "2026-10-16T10:30:40+02:00",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-16T10:25:37+02:00",
+  "generatedAt": "2026-10-16T10:30:40+02:00",
   "liveSuccessCount": 2,
   "retainedVerifiedCount": 0,
   "monitoredTrainCount": 2,
