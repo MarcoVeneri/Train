@@ -10,7 +10,7 @@
       "started": false,
       "trainStarted": false,
       "liveAvailable": true,
-      "staleLive": false,
+      "staleLive": true,
       "provisional": false,
       "delayMinutes": 0,
       "boardingDelayMinutes": 0,
@@ -29,10 +29,12 @@
       "sourceTimestamp": null,
       "dataDate": "2026-10-18",
       "verifiedAt": "2026-10-18T00:46:29+02:00",
-      "source": "ViaggiaTreno · sostitutivo 34221",
+      "source": "ViaggiaTreno · ultimo dato verificato",
       "logicalNumber": "4099",
       "replacementFor": "4099",
-      "temporaryReplacement": true
+      "temporaryReplacement": true,
+      "fetchError": "https://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | https://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | http://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden",
+      "lastAttemptAt": "2026-10-18T00:46:57+02:00"
     },
     "18774": {
       "number": "18774",
@@ -43,7 +45,7 @@
       "started": false,
       "trainStarted": false,
       "liveAvailable": true,
-      "staleLive": false,
+      "staleLive": true,
       "provisional": false,
       "delayMinutes": 0,
       "boardingDelayMinutes": 0,
@@ -62,14 +64,16 @@
       "sourceTimestamp": null,
       "dataDate": "2026-10-18",
       "verifiedAt": "2026-10-18T00:46:30+02:00",
-      "source": "ViaggiaTreno"
+      "source": "ViaggiaTreno · ultimo dato verificato",
+      "fetchError": "https://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | https://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | http://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden",
+      "lastAttemptAt": "2026-10-18T00:47:11+02:00"
     }
   },
-  "generatedAt": "2026-10-18T00:46:30+02:00",
-  "liveSuccessCount": 2,
-  "retainedVerifiedCount": 0,
+  "generatedAt": "2026-10-18T00:47:11+02:00",
+  "liveSuccessCount": 0,
+  "retainedVerifiedCount": 2,
   "monitoredTrainCount": 2,
-  "liveComplete": true,
+  "liveComplete": false,
   "monitorWeekendEnabled": true,
   "monitorMode": "commuter-windows-5min"
 }
