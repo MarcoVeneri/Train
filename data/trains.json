@@ -28,7 +28,7 @@
       "lastDetection": "ROMA TIBURTINA",
       "sourceTimestamp": 1792572420000,
       "dataDate": "2026-10-21",
-      "verifiedAt": "2026-10-21T21:49:32+02:00",
+      "verifiedAt": "2026-10-21T21:54:37+02:00",
       "source": "ViaggiaTreno · sostitutivo 34221",
       "logicalNumber": "4099",
       "replacementFor": "4099",
@@ -61,11 +61,11 @@
       "lastDetection": "FIRENZE SANTA MARIA NOVELLA",
       "sourceTimestamp": 1792604370000,
       "dataDate": "2026-10-21",
-      "verifiedAt": "2026-10-21T21:49:34+02:00",
+      "verifiedAt": "2026-10-21T21:54:39+02:00",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-21T21:49:34+02:00",
+  "generatedAt": "2026-10-21T21:54:39+02:00",
   "liveSuccessCount": 2,
   "retainedVerifiedCount": 0,
   "monitoredTrainCount": 2,
