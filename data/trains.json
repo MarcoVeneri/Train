@@ -30,7 +30,7 @@
       "dataDate": "2026-10-23",
       "source": "Programma · sostitutivo 34221 · dati live non disponibili",
       "fetchError": "https://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | https://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | http://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden",
-      "lastAttemptAt": "2026-10-23T01:29:56+02:00",
+      "lastAttemptAt": "2026-10-23T01:35:25+02:00",
       "logicalNumber": "4099",
       "replacementFor": "4099",
       "temporaryReplacement": true
@@ -64,10 +64,10 @@
       "dataDate": "2026-10-23",
       "source": "Programma · dati live non disponibili",
       "fetchError": "https://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | https://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | http://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden",
-      "lastAttemptAt": "2026-10-23T01:30:10+02:00"
+      "lastAttemptAt": "2026-10-23T01:35:39+02:00"
     }
   },
-  "generatedAt": "2026-10-23T01:30:10+02:00",
+  "generatedAt": "2026-10-23T01:35:39+02:00",
   "liveSuccessCount": 0,
   "retainedVerifiedCount": 0,
   "monitoredTrainCount": 2,
