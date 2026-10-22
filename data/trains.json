@@ -34,7 +34,7 @@
       "replacementFor": "4099",
       "temporaryReplacement": true,
       "fetchError": "https://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | https://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | http://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden",
-      "lastAttemptAt": "2026-10-22T23:01:56+02:00"
+      "lastAttemptAt": "2026-10-22T23:07:25+02:00"
     },
     "18774": {
       "number": "18774",
@@ -66,10 +66,10 @@
       "verifiedAt": "2026-10-22T20:00:20+02:00",
       "source": "ViaggiaTreno · ultimo dato verificato",
       "fetchError": "https://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | https://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | http://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden | http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: curl: (22) The requested URL returned error: 403; HTTP Error 403: Forbidden; HTTP Error 403: Forbidden",
-      "lastAttemptAt": "2026-10-22T23:02:10+02:00"
+      "lastAttemptAt": "2026-10-22T23:07:39+02:00"
     }
   },
-  "generatedAt": "2026-10-22T23:02:10+02:00",
+  "generatedAt": "2026-10-22T23:07:39+02:00",
   "liveSuccessCount": 0,
   "retainedVerifiedCount": 2,
   "monitoredTrainCount": 2,
