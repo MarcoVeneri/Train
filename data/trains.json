@@ -1,5 +1,5 @@
 {
-  "dataDate": "2026-10-23",
+  "dataDate": "2026-10-24",
   "trains": {
     "4099": {
       "number": "34221",
@@ -12,8 +12,8 @@
       "liveAvailable": true,
       "staleLive": false,
       "provisional": false,
-      "delayMinutes": 1,
-      "boardingDelayMinutes": 1,
+      "delayMinutes": 0,
+      "boardingDelayMinutes": 0,
       "destinationDelayMinutes": 1,
       "departureScheduled": "06:55",
       "departureExpected": "06:55",
@@ -26,9 +26,9 @@
       "arrivalActual": "07:32",
       "platform": "4",
       "lastDetection": "ROMA TIBURTINA",
-      "sourceTimestamp": 1792745400000,
-      "dataDate": "2026-10-23",
-      "verifiedAt": "2026-10-23T16:13:42+02:00",
+      "sourceTimestamp": 1792831470000,
+      "dataDate": "2026-10-24",
+      "verifiedAt": "2026-10-24T10:53:55+02:00",
       "source": "ViaggiaTreno · sostitutivo 34221",
       "logicalNumber": "4099",
       "replacementFor": "4099",
@@ -60,12 +60,12 @@
       "platform": "5",
       "lastDetection": "--",
       "sourceTimestamp": null,
-      "dataDate": "2026-10-23",
-      "verifiedAt": "2026-10-23T16:13:44+02:00",
+      "dataDate": "2026-10-24",
+      "verifiedAt": "2026-10-24T10:53:56+02:00",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-23T16:13:44+02:00",
+  "generatedAt": "2026-10-24T10:53:56+02:00",
   "liveSuccessCount": 2,
   "retainedVerifiedCount": 0,
   "monitoredTrainCount": 2,
