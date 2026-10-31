@@ -28,7 +28,7 @@
       "lastDetection": "2`BIVIO ORVIETO SUD",
       "sourceTimestamp": 1793433720000,
       "dataDate": "2026-10-31",
-      "verifiedAt": "2026-10-31T09:02:20+01:00",
+      "verifiedAt": "2026-10-31T09:07:24+01:00",
       "source": "ViaggiaTreno · sostitutivo 34221",
       "logicalNumber": "4099",
       "replacementFor": "4099",
@@ -61,11 +61,11 @@
       "lastDetection": "--",
       "sourceTimestamp": null,
       "dataDate": "2026-10-31",
-      "verifiedAt": "2026-10-31T09:02:21+01:00",
+      "verifiedAt": "2026-10-31T09:07:26+01:00",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-10-31T09:02:21+01:00",
+  "generatedAt": "2026-10-31T09:07:26+01:00",
   "liveSuccessCount": 2,
   "retainedVerifiedCount": 0,
   "monitoredTrainCount": 2,
