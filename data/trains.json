@@ -28,7 +28,7 @@
       "lastDetection": "ROMA TIBURTINA",
       "sourceTimestamp": 1793699160000,
       "dataDate": "2026-11-03",
-      "verifiedAt": "2026-11-03T18:16:27+01:00",
+      "verifiedAt": "2026-11-03T18:21:34+01:00",
       "source": "ViaggiaTreno · sostitutivo 34221",
       "logicalNumber": "4099",
       "replacementFor": "4099",
@@ -61,11 +61,11 @@
       "lastDetection": "SEGNALE DI CONFINE 2 BV AR. NORD (PARI)",
       "sourceTimestamp": 1793726010000,
       "dataDate": "2026-11-03",
-      "verifiedAt": "2026-11-03T18:16:28+01:00",
+      "verifiedAt": "2026-11-03T18:21:36+01:00",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-11-03T18:16:28+01:00",
+  "generatedAt": "2026-11-03T18:21:36+01:00",
   "liveSuccessCount": 2,
   "retainedVerifiedCount": 0,
   "monitoredTrainCount": 2,
