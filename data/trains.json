@@ -28,7 +28,7 @@
       "lastDetection": "ROMA TIBURTINA",
       "sourceTimestamp": 1794131250000,
       "dataDate": "2026-11-08",
-      "verifiedAt": "2026-11-08T16:08:36+01:00",
+      "verifiedAt": "2026-11-08T16:13:41+01:00",
       "source": "ViaggiaTreno · sostitutivo 34221",
       "logicalNumber": "4099",
       "replacementFor": "4099",
@@ -61,11 +61,11 @@
       "lastDetection": "--",
       "sourceTimestamp": null,
       "dataDate": "2026-11-08",
-      "verifiedAt": "2026-11-08T16:08:38+01:00",
+      "verifiedAt": "2026-11-08T16:13:42+01:00",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-11-08T16:08:38+01:00",
+  "generatedAt": "2026-11-08T16:13:42+01:00",
   "liveSuccessCount": 2,
   "retainedVerifiedCount": 0,
   "monitoredTrainCount": 2,
