@@ -10,7 +10,7 @@
       "started": true,
       "trainStarted": true,
       "liveAvailable": true,
-      "staleLive": true,
+      "staleLive": false,
       "provisional": false,
       "delayMinutes": 4,
       "boardingDelayMinutes": 4,
@@ -28,13 +28,11 @@
       "lastDetection": "ROMA TIBURTINA",
       "sourceTimestamp": 1794995190000,
       "dataDate": "2026-11-18",
-      "verifiedAt": "2026-11-18T23:10:02+01:00",
-      "source": "ViaggiaTreno · ultimo dato verificato",
+      "verifiedAt": "2026-11-18T23:40:36+01:00",
+      "source": "ViaggiaTreno · sostitutivo 34221",
       "logicalNumber": "4099",
       "replacementFor": "4099",
-      "temporaryReplacement": true,
-      "fetchError": "https://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: Command '['curl', '--http1.1', '--fail', '--silent', '--show-error', '--location', '--compressed', '--connect-timeout', '10', '--max-time', '22', '--retry', '2', '--retry-delay', '1', '-A', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/154 Safari/537.36', '-H', 'Accept: application/json,text/plain,*/*', '-H', 'Accept-Language: it-IT,it;q=0.9,en;q=0.7', '-H', 'Referer: https://www.viaggiatreno.it/infomobilita/index.jsp', '-H', 'Origin: https://www.viaggiatreno.it', '-H', 'Cache-Control: no-cache', 'https://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno/cercaNumeroTrenoTrenoAutocomplete/34221']' timed out after 30 seconds; timed out; timed out | https://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: Command '['curl', '--http1.1', '--fail', '--silent', '--show-error', '--location', '--compressed', '--connect-timeout', '10', '--max-time', '22', '--retry', '2', '--retry-delay', '1', '-A', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/154 Safari/537.36', '-H', 'Accept: application/json,text/plain,*/*', '-H', 'Accept-Language: it-IT,it;q=0.9,en;q=0.7', '-H', 'Referer: https://www.viaggiatreno.it/infomobilita/index.jsp', '-H', 'Origin: https://www.viaggiatreno.it', '-H', 'Cache-Control: no-cache', 'https://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/cercaNumeroTrenoTrenoAutocomplete/34221']' timed out after 30 seconds; timed out; timed out | http://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: Command '['curl', '--http1.1', '--fail', '--silent', '--show-error', '--location', '--compressed', '--connect-timeout', '10', '--max-time', '22', '--retry', '2', '--retry-delay', '1', '-A', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/154 Safari/537.36', '-H', 'Accept: application/json,text/plain,*/*', '-H', 'Accept-Language: it-IT,it;q=0.9,en;q=0.7', '-H', 'Referer: https://www.viaggiatreno.it/infomobilita/index.jsp', '-H', 'Origin: https://www.viaggiatreno.it', '-H', 'Cache-Control: no-cache', 'http://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno/cercaNumeroTrenoTrenoAutocomplete/34221']' timed out after 30 seconds; timed out; timed out | http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: Command '['curl', '--http1.1', '--fail', '--silent', '--show-error', '--location', '--compressed', '--connect-timeout', '10', '--max-time', '22', '--retry', '2', '--retry-delay', '1', '-A', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/154 Safari/537.36', '-H', 'Accept: application/json,text/plain,*/*', '-H', 'Accept-Language: it-IT,it;q=0.9,en;q=0.7', '-H', 'Referer: https://www.viaggiatreno.it/infomobilita/index.jsp', '-H', 'Origin: https://www.viaggiatreno.it', '-H', 'Cache-Control: no-cache', 'http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/cercaNumeroTrenoTrenoAutocomplete/34221']' timed out after 30 seconds; timed out; timed out",
-      "lastAttemptAt": "2026-11-18T23:26:04+01:00"
+      "temporaryReplacement": true
     },
     "18774": {
       "number": "18774",
@@ -45,7 +43,7 @@
       "started": true,
       "trainStarted": true,
       "liveAvailable": true,
-      "staleLive": true,
+      "staleLive": false,
       "provisional": false,
       "delayMinutes": 3,
       "boardingDelayMinutes": 3,
@@ -63,17 +61,15 @@
       "lastDetection": "FIRENZE SANTA MARIA NOVELLA",
       "sourceTimestamp": 1795028250000,
       "dataDate": "2026-11-18",
-      "verifiedAt": "2026-11-18T23:10:04+01:00",
-      "source": "ViaggiaTreno · ultimo dato verificato",
-      "fetchError": "https://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: Command '['curl', '--http1.1', '--fail', '--silent', '--show-error', '--location', '--compressed', '--connect-timeout', '10', '--max-time', '22', '--retry', '2', '--retry-delay', '1', '-A', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/154 Safari/537.36', '-H', 'Accept: application/json,text/plain,*/*', '-H', 'Accept-Language: it-IT,it;q=0.9,en;q=0.7', '-H', 'Referer: https://www.viaggiatreno.it/infomobilita/index.jsp', '-H', 'Origin: https://www.viaggiatreno.it', '-H', 'Cache-Control: no-cache', 'https://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno/cercaNumeroTrenoTrenoAutocomplete/18774']' timed out after 30 seconds; timed out; timed out | https://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: Command '['curl', '--http1.1', '--fail', '--silent', '--show-error', '--location', '--compressed', '--connect-timeout', '10', '--max-time', '22', '--retry', '2', '--retry-delay', '1', '-A', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/154 Safari/537.36', '-H', 'Accept: application/json,text/plain,*/*', '-H', 'Accept-Language: it-IT,it;q=0.9,en;q=0.7', '-H', 'Referer: https://www.viaggiatreno.it/infomobilita/index.jsp', '-H', 'Origin: https://www.viaggiatreno.it', '-H', 'Cache-Control: no-cache', 'https://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/cercaNumeroTrenoTrenoAutocomplete/18774']' timed out after 30 seconds; timed out; timed out | http://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno: Command '['curl', '--http1.1', '--fail', '--silent', '--show-error', '--location', '--compressed', '--connect-timeout', '10', '--max-time', '22', '--retry', '2', '--retry-delay', '1', '-A', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/154 Safari/537.36', '-H', 'Accept: application/json,text/plain,*/*', '-H', 'Accept-Language: it-IT,it;q=0.9,en;q=0.7', '-H', 'Referer: https://www.viaggiatreno.it/infomobilita/index.jsp', '-H', 'Origin: https://www.viaggiatreno.it', '-H', 'Cache-Control: no-cache', 'http://www.viaggiatreno.it/infomobilita/resteasy/viaggiatreno/cercaNumeroTrenoTrenoAutocomplete/18774']' timed out after 30 seconds; timed out; timed out | http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno: Command '['curl', '--http1.1', '--fail', '--silent', '--show-error', '--location', '--compressed', '--connect-timeout', '10', '--max-time', '22', '--retry', '2', '--retry-delay', '1', '-A', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/154 Safari/537.36', '-H', 'Accept: application/json,text/plain,*/*', '-H', 'Accept-Language: it-IT,it;q=0.9,en;q=0.7', '-H', 'Referer: https://www.viaggiatreno.it/infomobilita/index.jsp', '-H', 'Origin: https://www.viaggiatreno.it', '-H', 'Cache-Control: no-cache', 'http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/cercaNumeroTrenoTrenoAutocomplete/18774']' timed out after 30 seconds; timed out; timed out",
-      "lastAttemptAt": "2026-11-18T23:33:12+01:00"
+      "verifiedAt": "2026-11-18T23:40:38+01:00",
+      "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-11-18T23:33:12+01:00",
-  "liveSuccessCount": 0,
-  "retainedVerifiedCount": 2,
+  "generatedAt": "2026-11-18T23:40:38+01:00",
+  "liveSuccessCount": 2,
+  "retainedVerifiedCount": 0,
   "monitoredTrainCount": 2,
-  "liveComplete": false,
+  "liveComplete": true,
   "monitorWeekendEnabled": true,
   "monitorMode": "commuter-windows-5min"
 }
