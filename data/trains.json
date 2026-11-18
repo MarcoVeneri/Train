@@ -28,7 +28,7 @@
       "lastDetection": "ROMA TIBURTINA",
       "sourceTimestamp": 1794995190000,
       "dataDate": "2026-11-18",
-      "verifiedAt": "2026-11-18T19:20:44+01:00",
+      "verifiedAt": "2026-11-18T19:25:49+01:00",
       "source": "ViaggiaTreno · sostitutivo 34221",
       "logicalNumber": "4099",
       "replacementFor": "4099",
@@ -61,11 +61,11 @@
       "lastDetection": "RIGNANO SULL'ARNO REGGELLO",
       "sourceTimestamp": 1795025340000,
       "dataDate": "2026-11-18",
-      "verifiedAt": "2026-11-18T19:20:45+01:00",
+      "verifiedAt": "2026-11-18T19:25:51+01:00",
       "source": "ViaggiaTreno"
     }
   },
-  "generatedAt": "2026-11-18T19:20:45+01:00",
+  "generatedAt": "2026-11-18T19:25:51+01:00",
   "liveSuccessCount": 2,
   "retainedVerifiedCount": 0,
   "monitoredTrainCount": 2,
